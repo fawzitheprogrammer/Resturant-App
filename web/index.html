@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="/">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="A multi-restaurant e-commerce web app.">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="StackFood">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <meta name="google-signin-client_id" content="1049699819506-r9agjij7oigjssbffc2g6i2glegb21io.apps.googleusercontent.com">
+  <script type="text/javascript" src="https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js"></script>
+
+  <title>StackFood</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <script type="application/javascript" src="/assets/packages/flutter_inappwebview_web/assets/web/web_support.js" defer></script>
+</head>
+<body>
+  <!-- This script installs service_worker.js to provide PWA functionality to
+       application. For more information, see:
+       https://developers.google.com/web/fundamentals/primers/service-workers -->
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4zj-ORfND1SwsmpV_AOHO-b33cQuPqHs"></script>
+<!--  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>-->
+
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", function () {
+        navigator.serviceWorker.register("/firebase-messaging-sw.js");
+      });
+      window.addEventListener('flutter-first-frame', function () {
+        navigator.serviceWorker.register('flutter_service_worker.js');
+      });
+    }
+  </script>
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-messaging.js"></script>
+
+<!--  <div class="center">-->
+<!--    <img src="logo.png" alt = "logo" height="250px" width="250px" />-->
+<!--    <br>-->
+<!--    <div class="loader" style="width:250px;text-align: center;"><div class="classic-4"></div></div>-->
+<!--  </div>-->
+
+
+  <script>
+    var firebaseConfig = {
+      apiKey: "AIzaSyCeaw_gVN0iQwFHyuF8pQ6PbVDmSVQw8AY",
+      authDomain: "stackfood-bd3ee.firebaseapp.com",
+      projectId: "stackfood-bd3ee",
+      storageBucket: "stackfood-bd3ee.appspot.com",
+      messagingSenderId: "1049699819506",
+      appId: "1:1049699819506:web:a4b5e3bedc729aab89956b",
+      measurementId: "G-2QNRKR9K5R"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
+
+  <!-- Preloader -->
+  <div class="preloader">
+    <div class="preloader-container">
+      <!-- <img width="80" class="preloader-img" src="assets/img/preloader.png" alt=""> -->
+      <div id="animation-container">
+        <img width="80" src="assets/img/1.png" class="animation-image" alt="" />
+        <img width="80" src="assets/img/2.png" class="animation-image" alt="" />
+        <img width="80" src="assets/img/3.png" class="animation-image" alt="" />
+        <img width="80" src="assets/img/4.png" class="animation-image" alt="" />
+        <img width="80" src="assets/img/5.png" class="animation-image" alt="" />
+        <img width="80" src="assets/img/6.png" class="animation-image" alt="" />
+        <img width="80" src="assets/img/7.png" class="animation-image" alt="" />
+      </div>
+      <div class="loader"></div>
+    </div>
+  </div>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-container d-flex align-items-center justify-content-between">
+      <div class="header-start d-flex gap-5 align-items-center">
+        <img class="logo" src="assets/img/logo.png" alt="">
+        <div class="placeholder placeholder-wide"></div>
+        <div class="d-flex align-items-center gap-4">
+          <div class="placeholder"></div>
+          <div class="placeholder"></div>
+          <div class="placeholder"></div>
+          <div class="placeholder"></div>
+        </div>
+      </div>
+      <div class="header-end d-flex align-items-center gap-5">
+        <div class="placeholder"></div>
+        <div class="d-flex align-items-center gap-4">
+          <div class="placeholder"></div>
+          <img src="assets/img/icon-1.svg" class="svg" alt="">
+          <img src="assets/img/icon-2.svg" class="svg" alt="">
+          <img src="assets/img/icon-3.svg" class="svg" alt="">
+          <img src="assets/img/icon-4.svg" class="svg" alt="">
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- Script Goes Here -->
+  <script>
+        document.addEventListener("DOMContentLoaded", function () {
+        var images = document.querySelectorAll(".animation-image");
+        var currentIndex = 0;
+        function cycleImages() {
+            var currentImage = images[currentIndex];
+            var nextIndex = (currentIndex + 1) % images.length;
+            var nextImage = images[nextIndex];
+            currentImage.style.display = "none";
+            nextImage.style.display = "block";
+            currentIndex = nextIndex;
+        }
+        // Set an interval to call the cycleImages function every 3 seconds
+        setInterval(cycleImages, 250);
+        });
+  </script>
+
+  <script>
+    // Check if localStorage is supported in the browser
+      if (typeof(Storage) !== "undefined") {
+        // Get the item from localStorage
+        var itemValue = localStorage.getItem("flutter.theme");
+        // Check if the item exists
+        if (itemValue !== null) {
+          // Check the value of the item
+          if (itemValue === "true") {
+            // If the value is "true", add a class to the body
+            document.body.classList.add("theme-dark");
+          } else {
+            // If the value is not "true", remove the class from the body
+            document.body.classList.remove("theme-light");
+          }
+        } else {
+          console.log("Item not found in localStorage");
+        }
+      } else {
+        console.log("localStorage is not supported in this browser");
+      }
+
+  </script>
+
+  <script>
+    document.querySelectorAll("img.svg").forEach(function (img) {
+    var imgID = img.getAttribute("id");
+    var imgClass = img.getAttribute("class");
+    var imgURL = img.getAttribute("src");
+    // Create a new XMLHttpRequest
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", imgURL, true);
+    // Set the responseType to "document" to parse the response as an XML document
+    xhr.responseType = "document";
+    xhr.onload = function () {
+      if (xhr.status === 200) {
+        var data = xhr.response;
+        // Get the SVG tag from the response, ignore the rest
+        var svg = data.querySelector("svg");
+        // Add replaced image's ID to the new SVG
+        if (typeof imgID !== "undefined") {
+          svg.setAttribute("id", imgID);
+        }
+        // Add replaced image's classes to the new SVG
+        if (typeof imgClass !== "undefined") {
+          svg.setAttribute("class", imgClass + " replaced-svg");
+        }
+        // Remove any invalid XML tags
+        svg.removeAttribute("xmlns:a");
+        // Check if the viewport is set; set it if not
+        if (!svg.getAttribute("viewBox") && svg.getAttribute("height") && svg.getAttribute("width")) {
+          svg.setAttribute("viewBox", "0 0 " + svg.getAttribute("height") + " " + svg.getAttribute("width"));
+        }
+        // Replace the image with the new SVG
+        img.parentNode.replaceChild(svg, img);
+      }
+    };
+    xhr.send();
+  });
+  </script>
+
+  <script src="main.dart.js?version=7.3.0" type="application/javascript"></script>
+</body>
+</html>

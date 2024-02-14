@@ -1,0 +1,89 @@
+name: stackfood_multivendor
+description: A new Flutter application.
+publish_to: 'none' #
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.2.1 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  get: ^4.6.6
+  shared_preferences: ^2.0.15
+  connectivity_plus: ^5.0.2
+  firebase_core: ^2.4.1
+  firebase_messaging: ^14.2.1
+  flutter_local_notifications: ^16.3.0
+  path_provider: ^2.0.8
+  url_strategy: ^0.2.0
+  pin_code_fields: ^8.0.1
+  geolocator: ^10.1.0
+  google_maps_flutter: ^2.1.1
+  google_maps_flutter_web: ^0.5.4+3
+  flutter_typeahead: ^4.3.7
+  carousel_slider: ^4.0.0
+  shimmer_animation: ^2.1.0+1
+  image_picker: ^1.0.7
+  universal_html: ^2.0.8
+  flutter_inappwebview: ^6.0.0
+  url_launcher: ^6.0.17
+  http: ^1.1.2
+  pointer_interceptor: ^0.10.1
+  phone_number: ^2.0.1
+  country_code_picker: ^3.0.0
+  cached_network_image: ^3.3.0
+  google_sign_in: ^6.2.1
+  google_sign_in_web: ^0.12.3+2
+  flutter_facebook_auth: ^6.0.4
+  photo_view: ^0.14.0
+  dotted_border: ^2.0.0+2
+  share_plus: ^7.2.1
+  custom_map_markers: ^0.0.2+1
+  image_compression_flutter: ^1.0.2
+  card_swiper: ^3.0.1
+  expandable_bottom_sheet: ^1.1.1+1
+  uni_links: ^0.5.1
+  sign_in_with_apple: ^5.0.0
+  flutter_html: 3.0.0-alpha.5
+  flutter_widget_from_html: ^0.14.11
+  intl: ^0.18.0
+  flutter_slidable: ^3.0.0
+  just_the_tooltip: ^0.0.12
+  animated_flip_counter: ^0.2.0
+  meta_seo: ^3.0.5
+  fluttertoast: ^8.2.2
+  marquee: ^2.2.3
+  syncfusion_flutter_datepicker: ^24.1.45
+  firebase_crashlytics: ^3.4.3
+  file_picker: ^6.1.1
+  path: ^1.8.2
+  http_parser: ^4.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^3.0.1
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/image/
+    - assets/language/
+
+  fonts:
+    - family: Roboto
+      fonts:
+        - asset: assets/font/Roboto-Regular.ttf
+          weight: 400
+        - asset: assets/font/Roboto-Medium.ttf
+          weight: 500
+        - asset: assets/font/Roboto-Bold.ttf
+          weight: 700
+        - asset: assets/font/Roboto-Black.ttf
+          weight: 900
