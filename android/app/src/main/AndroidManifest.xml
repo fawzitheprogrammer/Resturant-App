@@ -29,7 +29,9 @@
         android:requestLegacyExternalStorage="true"
         android:usesCleartextTraffic="true"
         android:icon="@mipmap/ic_launcher">
-        <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyA4zj-ORfND1SwsmpV_AOHO-b33cQuPqHs"/>
+        
+        <meta-data android:name="com.google.android.geo.API_KEY" 
+        android:value="AIzaSyA4zj-ORfND1SwsmpV_AOHO-b33cQuPqHs"/>
 
         <activity
             android:name=".MainActivity"

@@ -82,7 +82,7 @@ Future<void> main() async {
       await NotificationHelper.initialize(flutterLocalNotificationsPlugin);
       FirebaseMessaging.onBackgroundMessage(myBackgroundMessageHandler);
     }
-  }catch(_) {}
+  } catch(_) {}
 
   if (ResponsiveHelper.isWeb()) {
     await FacebookAuth.instance.webAndDesktopInitialize(
