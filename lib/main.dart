@@ -8,6 +8,7 @@ import 'package:stackfood_multivendor/features/splash/controllers/splash_control
 import 'package:stackfood_multivendor/features/splash/controllers/theme_controller.dart';
 import 'package:stackfood_multivendor/features/favourite/controllers/favourite_controller.dart';
 import 'package:stackfood_multivendor/features/splash/domain/models/deep_link_body.dart';
+import 'package:stackfood_multivendor/firebase_options.dart';
 import 'package:stackfood_multivendor/helper/notification_helper.dart';
 import 'package:stackfood_multivendor/helper/responsive_helper.dart';
 import 'package:stackfood_multivendor/helper/route_helper.dart';
@@ -51,12 +52,7 @@ Future<void> main() async {
   DeepLinkBody? linkBody;
 
   if(GetPlatform.isWeb) {
-    await Firebase.initializeApp(options: const FirebaseOptions(
-      apiKey: 'AIzaSyCeaw_gVN0iQwFHyuF8pQ6PbVDmSVQw8AY',
-      appId: '1:1049699819506:web:a4b5e3bedc729aab89956b',
-      messagingSenderId: '1049699819506',
-      projectId: 'stackfood-bd3ee',
-    ));
+    await Firebase.initializeApp(options:DefaultFirebaseOptions.web );
     MetaSEO().config();
   }else {
     await Firebase.initializeApp();
