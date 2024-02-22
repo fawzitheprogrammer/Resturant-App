@@ -17,7 +17,10 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return web;
+      throw UnsupportedError(
+        'DefaultFirebaseOptions have not been configured for web - '
+        'you can reconfigure this by running the FlutterFire CLI again.',
+      );
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -46,15 +49,15 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBrxGFh_ewEJeZOcI1KTmM5prL3ugP6dec',
-    appId: '1:88309537787:web:a27a4cc45b1a990ee0895e',
-    messagingSenderId: '88309537787',
-    projectId: 'resturant-f093a',
-    authDomain: 'resturant-f093a.firebaseapp.com',
-    storageBucket: 'resturant-f093a.appspot.com',
-    measurementId: 'G-2P2D1N9D5E',
-  );
+  // static const FirebaseOptions web = FirebaseOptions(
+  //   apiKey: 'AIzaSyBrxGFh_ewEJeZOcI1KTmM5prL3ugP6dec',
+  //   appId: '1:88309537787:web:a27a4cc45b1a990ee0895e',
+  //   messagingSenderId: '88309537787',
+  //   projectId: 'resturant-f093a',
+  //   authDomain: 'resturant-f093a.firebaseapp.com',
+  //   storageBucket: 'resturant-f093a.appspot.com',
+  //   measurementId: 'G-2P2D1N9D5E',
+  // );
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyC_DIU9Kv8QLMrOsQKKOTzP80KRRtgoXLc',
@@ -62,7 +65,6 @@ class DefaultFirebaseOptions {
     messagingSenderId: '88309537787',
     projectId: 'resturant-f093a',
     storageBucket: 'resturant-f093a.appspot.com',
-    authDomain: 'resturant-f093a.firebaseapp.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
@@ -72,6 +74,5 @@ class DefaultFirebaseOptions {
     projectId: 'resturant-f093a',
     storageBucket: 'resturant-f093a.appspot.com',
     iosBundleId: 'com.sixamtech.stackFood',
-    authDomain: 'resturant-f093a.firebaseapp.com',
   );
 }
