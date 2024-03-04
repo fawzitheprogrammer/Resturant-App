@@ -234,7 +234,7 @@ class AppConstants {
         imageUrl: Images.spanish,
         languageName: 'كوردی',
         countryCode: 'KU',
-        languageCode: 'ku'),
+        languageCode: 'fa'),
     // LanguageModel(imageUrl: Images.bengali, languageName: 'Bengali', countryCode: 'BN', languageCode: 'bn'),
   ];
 

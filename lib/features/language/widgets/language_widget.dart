@@ -23,11 +23,11 @@ class LanguageWidget extends StatelessWidget {
       },
       child: Container(
         padding: const EdgeInsets.all(Dimensions.paddingSizeSmall),
-        //margin: const EdgeInsets.all(Dimensions.paddingSizeExtraSmall),
+        margin: const EdgeInsets.all(Dimensions.paddingSizeExtraSmall),
         decoration: BoxDecoration(
           color: Theme.of(context).cardColor,
           borderRadius: BorderRadius.circular(Dimensions.radiusSmall),
-          boxShadow: const [BoxShadow(color: Colors.black12, blurRadius: 5, spreadRadius: 1)],
+          ///boxShadow: const [BoxShadow(color: Colors.black12, blurRadius: 5, spreadRadius: 1)],
         ),
         child: Stack(children: [
 

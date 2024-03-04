@@ -36,9 +36,9 @@ class _ChooseLanguageScreenState extends State<ChooseLanguageScreen> {
 
             Expanded(child: Center(
               child: Container(
-                decoration: const BoxDecoration(
-                    image: DecorationImage(image: AssetImage(Images.languageBackground),)
-                ),
+                // decoration: const BoxDecoration(
+                //     image: DecorationImage(image: AssetImage(Images.languageBackground),)
+                // ),
                 child: Scrollbar(
                   controller: scrollController,
                   child: SingleChildScrollView(
@@ -66,13 +66,13 @@ class _ChooseLanguageScreenState extends State<ChooseLanguageScreen> {
 
                           Directionality(
                             textDirection: TextDirection.ltr,
-                            child: GridView.builder(
-                              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: ResponsiveHelper.isDesktop(context) ? 2 : ResponsiveHelper.isTab(context) ? 3 : 2,
-                                childAspectRatio: ResponsiveHelper.isDesktop(context) ? 6 : (1/1),
-                                mainAxisSpacing: Dimensions.paddingSizeDefault,
-                                crossAxisSpacing: Dimensions.paddingSizeDefault,
-                              ),
+                            child: ListView.builder(
+                              // gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                              //   crossAxisCount: ResponsiveHelper.isDesktop(context) ? 2 : ResponsiveHelper.isTab(context) ? 3 : 2,
+                              //   childAspectRatio: ResponsiveHelper.isDesktop(context) ? 6 : (1/1),
+                              //   mainAxisSpacing: Dimensions.paddingSizeDefault,
+                              //   crossAxisSpacing: Dimensions.paddingSizeDefault,
+                              // ),
                               itemCount: localizationController.languages.length,
                               physics: const NeverScrollableScrollPhysics(),
                               shrinkWrap: true,
