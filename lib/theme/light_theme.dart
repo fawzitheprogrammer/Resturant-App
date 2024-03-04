@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 ThemeData light = ThemeData(
   fontFamily: AppConstants.fontFamily,
-  primaryColor: const Color(0xFFA6330A),
+  primaryColor: const Color(0xFFC60000),
   secondaryHeaderColor: const Color(0xFF1ED7AA),
   disabledColor: const Color(0xFFBABFC4),
   brightness: Brightness.light,
