@@ -1,0 +1,800 @@
+Date : 2024-03-04 14:00:47
+Directory : g:\Resturant\Resturant App\lib
+Total : 533 files,  56019 codes, 1312 comments, 6840 blanks, all 64171 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| Dart     |        533 |     56,019 |      1,312 |      6,840 |     64,171 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++---------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                          | files      | code       | comment    | blank      | total      |
++---------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                             |        533 |     56,019 |      1,312 |      6,840 |     64,171 |
+| . (Files)                                                                                                     |          2 |        227 |         42 |         22 |        291 |
+| api                                                                                                           |          2 |        259 |          4 |         31 |        294 |
+| common                                                                                                        |         58 |      5,843 |        417 |        660 |      6,920 |
+| common\enums                                                                                                  |          1 |          7 |          1 |          0 |          8 |
+| common\models                                                                                                 |          5 |      1,069 |          6 |         85 |      1,160 |
+| common\widgets                                                                                                |         52 |      4,767 |        410 |        575 |      5,752 |
+| common\widgets (Files)                                                                                        |         50 |      4,686 |        410 |        562 |      5,658 |
+| common\widgets\hover_widgets                                                                                  |          2 |         81 |          0 |         13 |         94 |
+| features                                                                                                      |        447 |     47,555 |        580 |      5,962 |     54,097 |
+| features\address                                                                                              |         12 |      1,142 |          5 |        138 |      1,285 |
+| features\address\controllers                                                                                  |          1 |         60 |          4 |         10 |         74 |
+| features\address\domain                                                                                       |          6 |        233 |          0 |         30 |        263 |
+| features\address\domain\models                                                                                |          2 |        109 |          0 |         10 |        119 |
+| features\address\domain\reposotories                                                                          |          2 |         66 |          0 |         11 |         77 |
+| features\address\domain\services                                                                              |          2 |         58 |          0 |          9 |         67 |
+| features\address\enums                                                                                        |          1 |          5 |          0 |          4 |          9 |
+| features\address\screens                                                                                      |          2 |        704 |          1 |         71 |        776 |
+| features\address\widgets                                                                                      |          2 |        140 |          0 |         23 |        163 |
+| features\auth                                                                                                 |         42 |      5,888 |         40 |        675 |      6,603 |
+| features\auth\controllers                                                                                     |          3 |        568 |          2 |        119 |        689 |
+| features\auth\domain                                                                                          |         19 |      1,045 |          5 |        143 |      1,193 |
+| features\auth\domain\models                                                                                   |          7 |        271 |          0 |         33 |        304 |
+| features\auth\domain\reposotories                                                                             |          6 |        354 |          3 |         57 |        414 |
+| features\auth\domain\services                                                                                 |          6 |        420 |          2 |         53 |        475 |
+| features\auth\screens                                                                                         |          5 |      2,503 |         26 |        225 |      2,754 |
+| features\auth\screens (Files)                                                                                 |          4 |      1,975 |         26 |        185 |      2,186 |
+| features\auth\screens\web                                                                                     |          1 |        528 |          0 |         40 |        568 |
+| features\auth\widgets                                                                                         |         15 |      1,772 |          7 |        188 |      1,967 |
+| features\business                                                                                             |         16 |        995 |          0 |        166 |      1,161 |
+| features\business\controllers                                                                                 |          1 |         81 |          0 |         21 |        102 |
+| features\business\domain                                                                                      |          6 |        236 |          0 |         37 |        273 |
+| features\business\domain\models                                                                               |          2 |         95 |          0 |         13 |        108 |
+| features\business\domain\reposotories                                                                         |          2 |         58 |          0 |         13 |         71 |
+| features\business\domain\services                                                                             |          2 |         83 |          0 |         11 |         94 |
+| features\business\screens                                                                                     |          2 |        274 |          0 |         42 |        316 |
+| features\business\widgets                                                                                     |          7 |        404 |          0 |         66 |        470 |
+| features\cart                                                                                                 |         14 |      1,455 |         18 |        198 |      1,671 |
+| features\cart\controllers                                                                                     |          1 |        205 |          0 |         46 |        251 |
+| features\cart\domain                                                                                          |          5 |        458 |          5 |         54 |        517 |
+| features\cart\domain\models                                                                                   |          1 |        123 |          2 |         11 |        136 |
+| features\cart\domain\repositories                                                                             |          2 |        109 |          3 |         16 |        128 |
+| features\cart\domain\services                                                                                 |          2 |        226 |          0 |         27 |        253 |
+| features\cart\screens                                                                                         |          1 |        143 |          0 |         26 |        169 |
+| features\cart\widgets                                                                                         |          7 |        649 |         13 |         72 |        734 |
+| features\category                                                                                             |          8 |        737 |         35 |         87 |        859 |
+| features\category\controllers                                                                                 |          1 |        157 |         19 |         33 |        209 |
+| features\category\domain                                                                                      |          5 |        188 |         16 |         27 |        231 |
+| features\category\domain\models                                                                               |          1 |         58 |          0 |          5 |         63 |
+| features\category\domain\reposotories                                                                         |          2 |         85 |         16 |         13 |        114 |
+| features\category\domain\services                                                                             |          2 |         45 |          0 |          9 |         54 |
+| features\category\screens                                                                                     |          2 |        392 |          0 |         27 |        419 |
+| features\chat                                                                                                 |         16 |      2,347 |         18 |        311 |      2,676 |
+| features\chat\controllers                                                                                     |          1 |        280 |          2 |         41 |        323 |
+| features\chat\domain                                                                                          |          6 |        415 |          1 |         47 |        463 |
+| features\chat\domain\models                                                                                   |          2 |        217 |          0 |         24 |        241 |
+| features\chat\domain\repositories                                                                             |          2 |         79 |          1 |         11 |         91 |
+| features\chat\domain\services                                                                                 |          2 |        119 |          0 |         12 |        131 |
+| features\chat\enums                                                                                           |          1 |          7 |          1 |          0 |          8 |
+| features\chat\screens                                                                                         |          2 |        507 |          1 |         56 |        564 |
+| features\chat\widgets                                                                                         |          6 |      1,138 |         13 |        167 |      1,318 |
+| features\checkout                                                                                             |         48 |      7,422 |        134 |        922 |      8,478 |
+| features\checkout\controllers                                                                                 |          1 |        532 |          3 |        106 |        641 |
+| features\checkout\domain                                                                                      |         10 |      1,076 |          7 |        113 |      1,196 |
+| features\checkout\domain\models                                                                               |          6 |        744 |          2 |         66 |        812 |
+| features\checkout\domain\repositories                                                                         |          2 |        100 |          5 |         18 |        123 |
+| features\checkout\domain\services                                                                             |          2 |        232 |          0 |         29 |        261 |
+| features\checkout\screens                                                                                     |          5 |      1,262 |          9 |        193 |      1,464 |
+| features\checkout\widgets                                                                                     |         32 |      4,552 |        115 |        510 |      5,177 |
+| features\coupon                                                                                               |          8 |        532 |          3 |         72 |        607 |
+| features\coupon\controllers                                                                                   |          1 |        127 |          2 |         17 |        146 |
+| features\coupon\domain                                                                                        |          5 |        193 |          0 |         28 |        221 |
+| features\coupon\domain\models                                                                                 |          1 |         85 |          0 |         10 |         95 |
+| features\coupon\domain\reposotories                                                                           |          2 |         67 |          0 |         11 |         78 |
+| features\coupon\domain\services                                                                               |          2 |         41 |          0 |          7 |         48 |
+| features\coupon\screens                                                                                       |          1 |         85 |          1 |          9 |         95 |
+| features\coupon\widgets                                                                                       |          1 |        127 |          0 |         18 |        145 |
+| features\cuisine                                                                                              |          9 |        389 |          0 |         47 |        436 |
+| features\cuisine\controllers                                                                                  |          1 |         64 |          0 |         12 |         76 |
+| features\cuisine\domain                                                                                       |          6 |        168 |          0 |         26 |        194 |
+| features\cuisine\domain\models                                                                                |          2 |         85 |          0 |         12 |         97 |
+| features\cuisine\domain\repositories                                                                          |          2 |         49 |          0 |          9 |         58 |
+| features\cuisine\domain\services                                                                              |          2 |         34 |          0 |          5 |         39 |
+| features\cuisine\screens                                                                                      |          2 |        157 |          0 |          9 |        166 |
+| features\dashboard                                                                                            |          9 |        586 |         15 |         77 |        678 |
+| features\dashboard\controllers                                                                                |          1 |         36 |          0 |          5 |         41 |
+| features\dashboard\domain                                                                                     |          4 |         40 |          0 |         11 |         51 |
+| features\dashboard\domain\repositories                                                                        |          2 |         26 |          0 |          8 |         34 |
+| features\dashboard\domain\services                                                                            |          2 |         14 |          0 |          3 |         17 |
+| features\dashboard\screens                                                                                    |          1 |        223 |         15 |         18 |        256 |
+| features\dashboard\widgets                                                                                    |          3 |        287 |          0 |         43 |        330 |
+| features\favourite                                                                                            |          7 |        244 |         46 |         39 |        329 |
+| features\favourite\controllers                                                                                |          1 |         89 |          4 |         10 |        103 |
+| features\favourite\domain                                                                                     |          4 |         60 |         42 |         15 |        117 |
+| features\favourite\domain\repositories                                                                        |          2 |         35 |          0 |          8 |         43 |
+| features\favourite\domain\services                                                                            |          2 |         25 |         42 |          7 |         74 |
+| features\favourite\screens                                                                                    |          1 |         65 |          0 |         11 |         76 |
+| features\favourite\widgets                                                                                    |          1 |         30 |          0 |          3 |         33 |
+| features\home                                                                                                 |         49 |      5,677 |         20 |        643 |      6,340 |
+| features\home\controllers                                                                                     |          1 |         46 |          0 |          7 |         53 |
+| features\home\domain                                                                                          |          5 |        119 |          4 |         22 |        145 |
+| features\home\domain\models                                                                                   |          1 |         64 |          0 |          9 |         73 |
+| features\home\domain\repositories                                                                             |          2 |         40 |          4 |         10 |         54 |
+| features\home\domain\services                                                                                 |          2 |         15 |          0 |          3 |         18 |
+| features\home\screens                                                                                         |          4 |        759 |         10 |        122 |        891 |
+| features\home\widgets                                                                                         |         39 |      4,753 |          6 |        492 |      5,251 |
+| features\home\widgets (Files)                                                                                 |         26 |      2,971 |          6 |        315 |      3,292 |
+| features\home\widgets\theme1                                                                                  |          9 |      1,368 |          0 |        131 |      1,499 |
+| features\home\widgets\web                                                                                     |          4 |        414 |          0 |         46 |        460 |
+| features\html                                                                                                 |          7 |        196 |          0 |         27 |        223 |
+| features\html\controllers                                                                                     |          1 |         14 |          0 |          5 |         19 |
+| features\html\domain                                                                                          |          4 |         79 |          0 |         12 |         91 |
+| features\html\domain\repositories                                                                             |          2 |         49 |          0 |          9 |         58 |
+| features\html\domain\services                                                                                 |          2 |         30 |          0 |          3 |         33 |
+| features\html\enums                                                                                           |          1 |          8 |          0 |          0 |          8 |
+| features\html\screens                                                                                         |          1 |         95 |          0 |         10 |        105 |
+| features\interest                                                                                             |          6 |        214 |          0 |         34 |        248 |
+| features\interest\controllers                                                                                 |          1 |         34 |          0 |         10 |         44 |
+| features\interest\domain                                                                                      |          4 |         66 |          0 |         12 |         78 |
+| features\interest\domain\repositories                                                                         |          2 |         37 |          0 |          8 |         45 |
+| features\interest\domain\services                                                                             |          2 |         29 |          0 |          4 |         33 |
+| features\interest\screens                                                                                     |          1 |        114 |          0 |         12 |        126 |
+| features\language                                                                                             |         10 |        443 |         16 |         65 |        524 |
+| features\language\controllers                                                                                 |          1 |         66 |          3 |         13 |         82 |
+| features\language\domain                                                                                      |          5 |        128 |          0 |         24 |        152 |
+| features\language\domain\models                                                                               |          1 |          7 |          0 |          2 |          9 |
+| features\language\domain\repository                                                                           |          2 |         69 |          0 |         14 |         83 |
+| features\language\domain\service                                                                              |          2 |         52 |          0 |          8 |         60 |
+| features\language\screens                                                                                     |          1 |         85 |         10 |         14 |        109 |
+| features\language\widgets                                                                                     |          3 |        164 |          3 |         14 |        181 |
+| features\location                                                                                             |         16 |      1,703 |          8 |        196 |      1,907 |
+| features\location\controllers                                                                                 |          1 |        243 |          0 |         40 |        283 |
+| features\location\domain                                                                                      |          7 |        515 |          8 |         68 |        591 |
+| features\location\domain\models                                                                               |          3 |        292 |          0 |         38 |        330 |
+| features\location\domain\reposotories                                                                         |          2 |         80 |          8 |         16 |        104 |
+| features\location\domain\services                                                                             |          2 |        143 |          0 |         14 |        157 |
+| features\location\screens                                                                                     |          3 |        378 |          0 |         45 |        423 |
+| features\location\widgets                                                                                     |          5 |        567 |          0 |         43 |        610 |
+| features\loyalty                                                                                              |         10 |        707 |          0 |        120 |        827 |
+| features\loyalty\controllers                                                                                  |          1 |         72 |          0 |         16 |         88 |
+| features\loyalty\domain                                                                                       |          4 |         87 |          0 |         18 |        105 |
+| features\loyalty\domain\repositories                                                                          |          2 |         55 |          0 |         11 |         66 |
+| features\loyalty\domain\services                                                                              |          2 |         32 |          0 |          7 |         39 |
+| features\loyalty\screens                                                                                      |          1 |        138 |          0 |         21 |        159 |
+| features\loyalty\widgets                                                                                      |          4 |        410 |          0 |         65 |        475 |
+| features\menu                                                                                                 |          4 |        513 |        145 |         21 |        679 |
+| features\menu\domain                                                                                          |          1 |          6 |          0 |          2 |          8 |
+| features\menu\domain\models                                                                                   |          1 |          6 |          0 |          2 |          8 |
+| features\menu\screens                                                                                         |          1 |        347 |        144 |          6 |        497 |
+| features\menu\widgets                                                                                         |          2 |        160 |          1 |         13 |        174 |
+| features\notification                                                                                         |          9 |        506 |          4 |         75 |        585 |
+| features\notification\controllers                                                                             |          1 |         40 |          0 |         10 |         50 |
+| features\notification\domain                                                                                  |          6 |        230 |          0 |         37 |        267 |
+| features\notification\domain\models                                                                           |          2 |        113 |          0 |         16 |        129 |
+| features\notification\domain\repository                                                                       |          2 |         73 |          0 |         13 |         86 |
+| features\notification\domain\service                                                                          |          2 |         44 |          0 |          8 |         52 |
+| features\notification\screens                                                                                 |          1 |        158 |          4 |         20 |        182 |
+| features\notification\widgets                                                                                 |          1 |         78 |          0 |          8 |         86 |
+| features\onboard                                                                                              |          7 |        184 |          0 |         36 |        220 |
+| features\onboard\controllers                                                                                  |          1 |         19 |          0 |          6 |         25 |
+| features\onboard\domain                                                                                       |          5 |         58 |          0 |         14 |         72 |
+| features\onboard\domain\models                                                                                |          1 |          9 |          0 |          2 |         11 |
+| features\onboard\domain\repository                                                                            |          2 |         34 |          0 |          9 |         43 |
+| features\onboard\domain\service                                                                               |          2 |         15 |          0 |          3 |         18 |
+| features\onboard\screens                                                                                      |          1 |        107 |          0 |         16 |        123 |
+| features\order                                                                                                |         34 |      5,263 |         31 |        657 |      5,951 |
+| features\order\controllers                                                                                    |          1 |        431 |          0 |         77 |        508 |
+| features\order\domain                                                                                         |         11 |      1,494 |          3 |        158 |      1,655 |
+| features\order\domain\models                                                                                  |          7 |        975 |          0 |         87 |      1,062 |
+| features\order\domain\repositories                                                                            |          2 |        209 |          3 |         25 |        237 |
+| features\order\domain\services                                                                                |          2 |        310 |          0 |         46 |        356 |
+| features\order\screens                                                                                        |          5 |        822 |         17 |        105 |        944 |
+| features\order\widgets                                                                                        |         17 |      2,516 |         11 |        317 |      2,844 |
+| features\product                                                                                              |         14 |        771 |          0 |        120 |        891 |
+| features\product\controllers                                                                                  |          2 |        212 |          0 |         47 |        259 |
+| features\product\domain                                                                                       |         10 |        454 |          0 |         56 |        510 |
+| features\product\domain\models                                                                                |          2 |         99 |          0 |         10 |        109 |
+| features\product\domain\repositories                                                                          |          4 |        106 |          0 |         20 |        126 |
+| features\product\domain\services                                                                              |          4 |        249 |          0 |         26 |        275 |
+| features\product\screens                                                                                      |          2 |        105 |          0 |         17 |        122 |
+| features\profile                                                                                              |         12 |      1,166 |          3 |        146 |      1,315 |
+| features\profile\controllers                                                                                  |          1 |         77 |          0 |         16 |         93 |
+| features\profile\domain                                                                                       |          5 |        197 |          3 |         25 |        225 |
+| features\profile\domain\models                                                                                |          1 |         72 |          0 |          5 |         77 |
+| features\profile\domain\repositories                                                                          |          2 |         72 |          3 |         11 |         86 |
+| features\profile\domain\services                                                                              |          2 |         53 |          0 |          9 |         62 |
+| features\profile\screens                                                                                      |          2 |        588 |          0 |         68 |        656 |
+| features\profile\widgets                                                                                      |          4 |        304 |          0 |         37 |        341 |
+| features\refer and earn                                                                                       |          3 |        255 |          0 |         40 |        295 |
+| features\refer and earn\controllers                                                                           |          1 |         15 |          0 |          4 |         19 |
+| features\refer and earn\screens                                                                               |          1 |        167 |          0 |         28 |        195 |
+| features\refer and earn\widgets                                                                               |          1 |         73 |          0 |          8 |         81 |
+| features\restaurant                                                                                           |         16 |      2,503 |         16 |        306 |      2,825 |
+| features\restaurant\controllers                                                                               |          1 |        329 |          0 |         70 |        399 |
+| features\restaurant\domain                                                                                    |          6 |        410 |          3 |         54 |        467 |
+| features\restaurant\domain\models                                                                             |          2 |         50 |          0 |         10 |         60 |
+| features\restaurant\domain\repositories                                                                       |          2 |        160 |          3 |         19 |        182 |
+| features\restaurant\domain\services                                                                           |          2 |        200 |          0 |         25 |        225 |
+| features\restaurant\screens                                                                                   |          4 |        700 |         10 |         73 |        783 |
+| features\restaurant\widgets                                                                                   |          5 |      1,064 |          3 |        109 |      1,176 |
+| features\review                                                                                               |         12 |        764 |          4 |        106 |        874 |
+| features\review\controllers                                                                                   |          1 |         96 |          0 |         23 |        119 |
+| features\review\domain                                                                                        |          4 |        119 |          0 |         19 |        138 |
+| features\review\domain\repositories                                                                           |          2 |         83 |          0 |         12 |         95 |
+| features\review\domain\services                                                                               |          2 |         36 |          0 |          7 |         43 |
+| features\review\screens                                                                                       |          2 |        125 |          0 |         14 |        139 |
+| features\review\widgets                                                                                       |          5 |        424 |          4 |         50 |        478 |
+| features\search                                                                                               |         10 |      1,048 |          0 |        146 |      1,194 |
+| features\search\controllers                                                                                   |          1 |        248 |          0 |         55 |        303 |
+| features\search\domain                                                                                        |          4 |        176 |          0 |         26 |        202 |
+| features\search\domain\repositories                                                                           |          2 |         67 |          0 |         14 |         81 |
+| features\search\domain\services                                                                               |          2 |        109 |          0 |         12 |        121 |
+| features\search\screens                                                                                       |          1 |        249 |          0 |         33 |        282 |
+| features\search\widgets                                                                                       |          4 |        375 |          0 |         32 |        407 |
+| features\splash                                                                                               |          9 |      1,264 |         16 |        150 |      1,430 |
+| features\splash\controllers                                                                                   |          2 |        149 |          0 |         28 |        177 |
+| features\splash\domain                                                                                        |          6 |        966 |         14 |        105 |      1,085 |
+| features\splash\domain\models                                                                                 |          2 |        763 |          1 |         69 |        833 |
+| features\splash\domain\repositories                                                                           |          2 |        120 |         13 |         21 |        154 |
+| features\splash\domain\services                                                                               |          2 |         83 |          0 |         15 |         98 |
+| features\splash\screens                                                                                       |          1 |        149 |          2 |         17 |        168 |
+| features\support                                                                                              |          5 |        339 |          0 |         43 |        382 |
+| features\support\screens                                                                                      |          1 |        125 |          0 |         14 |        139 |
+| features\support\widgets                                                                                      |          4 |        214 |          0 |         29 |        243 |
+| features\update                                                                                               |          1 |         58 |          0 |          8 |         66 |
+| features\update\screens                                                                                       |          1 |         58 |          0 |          8 |         66 |
+| features\verification                                                                                         |          8 |        712 |          2 |         84 |        798 |
+| features\verification\controllers                                                                             |          1 |         72 |          0 |         12 |         84 |
+| features\verification\domein                                                                                  |          4 |        153 |          0 |         25 |        178 |
+| features\verification\domein\reposotories                                                                     |          2 |         90 |          0 |         15 |        105 |
+| features\verification\domein\services                                                                         |          2 |         63 |          0 |         10 |         73 |
+| features\verification\screens                                                                                 |          3 |        487 |          2 |         47 |        536 |
+| features\wallet                                                                                               |         16 |      1,532 |          1 |        207 |      1,740 |
+| features\wallet\controllers                                                                                   |          1 |        118 |          0 |         27 |        145 |
+| features\wallet\domain                                                                                        |          7 |        343 |          0 |         44 |        387 |
+| features\wallet\domain\models                                                                                 |          3 |        204 |          0 |         22 |        226 |
+| features\wallet\domain\repositories                                                                           |          2 |         88 |          0 |         14 |        102 |
+| features\wallet\domain\services                                                                               |          2 |         51 |          0 |          8 |         59 |
+| features\wallet\screens                                                                                       |          1 |        207 |          0 |         25 |        232 |
+| features\wallet\widgets                                                                                       |          7 |        864 |          1 |        111 |        976 |
+| helper                                                                                                        |         16 |      1,561 |        258 |        129 |      1,948 |
+| interface                                                                                                     |          1 |          7 |          0 |          4 |         11 |
+| theme                                                                                                         |          2 |         64 |          0 |          4 |         68 |
+| util                                                                                                          |          5 |        503 |         11 |         28 |        542 |
++---------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++---------------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                                                                      | language | code       | comment    | blank      | total      |
++---------------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| g:\Resturant\Resturant App\lib\api\api_checker.dart                                                           | Dart     |         16 |          1 |          2 |         19 |
+| g:\Resturant\Resturant App\lib\api\api_client.dart                                                            | Dart     |        243 |          3 |         29 |        275 |
+| g:\Resturant\Resturant App\lib\common\enums\user_type.dart                                                    | Dart     |          7 |          1 |          0 |          8 |
+| g:\Resturant\Resturant App\lib\common\models\online_cart_model.dart                                           | Dart     |        100 |          0 |         13 |        113 |
+| g:\Resturant\Resturant App\lib\common\models\product_model.dart                                               | Dart     |        281 |          0 |         28 |        309 |
+| g:\Resturant\Resturant App\lib\common\models\response_model.dart                                              | Dart     |          8 |          0 |          1 |          9 |
+| g:\Resturant\Resturant App\lib\common\models\restaurant_model.dart                                            | Dart     |        639 |          6 |         39 |        684 |
+| g:\Resturant\Resturant App\lib\common\models\review_model.dart                                                | Dart     |         41 |          0 |          4 |         45 |
+| g:\Resturant\Resturant App\lib\common\widgets\bottom_cart_widget.dart                                         | Dart     |         45 |          0 |          6 |         51 |
+| g:\Resturant\Resturant App\lib\common\widgets\cart_snackbar_widget.dart                                       | Dart     |         26 |          0 |          1 |         27 |
+| g:\Resturant\Resturant App\lib\common\widgets\cart_widget.dart                                                | Dart     |         38 |          0 |          3 |         41 |
+| g:\Resturant\Resturant App\lib\common\widgets\code_picker_widget.dart                                         | Dart     |        291 |          1 |         20 |        312 |
+| g:\Resturant\Resturant App\lib\common\widgets\confirmation_dialog_widget.dart                                 | Dart     |         77 |          0 |         10 |         87 |
+| g:\Resturant\Resturant App\lib\common\widgets\cookies_view_widget.dart                                        | Dart     |         67 |          0 |         12 |         79 |
+| g:\Resturant\Resturant App\lib\common\widgets\custom_app_bar_widget.dart                                      | Dart     |         46 |          0 |          5 |         51 |
+| g:\Resturant\Resturant App\lib\common\widgets\custom_button_widget.dart                                       | Dart     |         65 |          0 |          5 |         70 |
+| g:\Resturant\Resturant App\lib\common\widgets\custom_dialog_widget.dart                                       | Dart     |         55 |          0 |          5 |         60 |
+| g:\Resturant\Resturant App\lib\common\widgets\custom_divider_widget.dart                                      | Dart     |         30 |          0 |          2 |         32 |
+| g:\Resturant\Resturant App\lib\common\widgets\custom_dropdown_widget.dart                                     | Dart     |        210 |         16 |         21 |        247 |
+| g:\Resturant\Resturant App\lib\common\widgets\custom_image_widget.dart                                        | Dart     |         20 |          0 |          3 |         23 |
+| g:\Resturant\Resturant App\lib\common\widgets\custom_ink_well_widget.dart                                     | Dart     |         21 |          0 |          4 |         25 |
+| g:\Resturant\Resturant App\lib\common\widgets\custom_loader_widget.dart                                       | Dart     |         14 |          0 |          3 |         17 |
+| g:\Resturant\Resturant App\lib\common\widgets\custom_snackbar_widget.dart                                     | Dart     |         34 |          0 |          3 |         37 |
+| g:\Resturant\Resturant App\lib\common\widgets\custom_text_field_widget.dart                                   | Dart     |        163 |          0 |         13 |        176 |
+| g:\Resturant\Resturant App\lib\common\widgets\custom_web_slider_widget.dart                                   | Dart     |         81 |          1 |         10 |         92 |
+| g:\Resturant\Resturant App\lib\common\widgets\customizable_space_bar_widget.dart                              | Dart     |         19 |          2 |          4 |         25 |
+| g:\Resturant\Resturant App\lib\common\widgets\discount_tag_widget.dart                                        | Dart     |         66 |          1 |          9 |         76 |
+| g:\Resturant\Resturant App\lib\common\widgets\discount_tag_without_image_widget.dart                          | Dart     |         33 |          1 |          3 |         37 |
+| g:\Resturant\Resturant App\lib\common\widgets\footer_view_widget.dart                                         | Dart     |        306 |         43 |         53 |        402 |
+| g:\Resturant\Resturant App\lib\common\widgets\hover_widgets\on_hover_widget.dart                              | Dart     |         55 |          0 |          6 |         61 |
+| g:\Resturant\Resturant App\lib\common\widgets\hover_widgets\text_hover_widget.dart                            | Dart     |         26 |          0 |          7 |         33 |
+| g:\Resturant\Resturant App\lib\common\widgets\image_viewer_screen_widget.dart                                 | Dart     |         55 |          0 |          8 |         63 |
+| g:\Resturant\Resturant App\lib\common\widgets\menu_drawer_widget.dart                                         | Dart     |        226 |          2 |         22 |        250 |
+| g:\Resturant\Resturant App\lib\common\widgets\my_text_field_widget.dart                                       | Dart     |         88 |          1 |          7 |         96 |
+| g:\Resturant\Resturant App\lib\common\widgets\no_data_screen_widget.dart                                      | Dart     |         62 |          0 |         11 |         73 |
+| g:\Resturant\Resturant App\lib\common\widgets\no_internet_screen_widget.dart                                  | Dart     |         52 |          1 |          4 |         57 |
+| g:\Resturant\Resturant App\lib\common\widgets\not_available_widget.dart                                       | Dart     |         23 |          0 |          3 |         26 |
+| g:\Resturant\Resturant App\lib\common\widgets\not_found_widget.dart                                           | Dart     |         19 |          0 |          3 |         22 |
+| g:\Resturant\Resturant App\lib\common\widgets\not_logged_in_screen.dart                                       | Dart     |         63 |          1 |         10 |         74 |
+| g:\Resturant\Resturant App\lib\common\widgets\paginated_list_view_widget.dart                                 | Dart     |         89 |          0 |         16 |        105 |
+| g:\Resturant\Resturant App\lib\common\widgets\product_bottom_sheet_widget.dart                                | Dart     |        692 |          4 |         89 |        785 |
+| g:\Resturant\Resturant App\lib\common\widgets\product_shimmer_widget.dart                                     | Dart     |         83 |          0 |         13 |         96 |
+| g:\Resturant\Resturant App\lib\common\widgets\product_view_widget.dart                                        | Dart     |         85 |          2 |          6 |         93 |
+| g:\Resturant\Resturant App\lib\common\widgets\product_widget.dart                                             | Dart     |        289 |          7 |         37 |        333 |
+| g:\Resturant\Resturant App\lib\common\widgets\quantity_button_widget.dart                                     | Dart     |         30 |          0 |          2 |         32 |
+| g:\Resturant\Resturant App\lib\common\widgets\rating_bar_widget.dart                                          | Dart     |         63 |          0 |         10 |         73 |
+| g:\Resturant\Resturant App\lib\common\widgets\search_field_widget.dart                                        | Dart     |         42 |          0 |          4 |         46 |
+| g:\Resturant\Resturant App\lib\common\widgets\title_widget.dart                                               | Dart     |         45 |          0 |          7 |         52 |
+| g:\Resturant\Resturant App\lib\common\widgets\veg_filter_widget.dart                                          | Dart     |         55 |          0 |          7 |         62 |
+| g:\Resturant\Resturant App\lib\common\widgets\web_constrained_box.dart                                        | Dart     |         16 |          0 |          3 |         19 |
+| g:\Resturant\Resturant App\lib\common\widgets\web_header.dart                                                 | Dart     |          0 |        296 |          1 |        297 |
+| g:\Resturant\Resturant App\lib\common\widgets\web_header_skeleton.dart                                        | Dart     |          0 |         16 |          1 |         17 |
+| g:\Resturant\Resturant App\lib\common\widgets\web_itm_widget.dart                                             | Dart     |        110 |          0 |         13 |        123 |
+| g:\Resturant\Resturant App\lib\common\widgets\web_menu_bar.dart                                               | Dart     |        301 |          0 |         37 |        338 |
+| g:\Resturant\Resturant App\lib\common\widgets\web_page_title_widget.dart                                      | Dart     |         15 |          0 |          4 |         19 |
+| g:\Resturant\Resturant App\lib\common\widgets\web_product_view.dart                                           | Dart     |         79 |          0 |          7 |         86 |
+| g:\Resturant\Resturant App\lib\common\widgets\web_product_widget.dart                                         | Dart     |        178 |         15 |         19 |        212 |
+| g:\Resturant\Resturant App\lib\common\widgets\web_restaurant_widget.dart                                      | Dart     |        153 |          0 |         14 |        167 |
+| g:\Resturant\Resturant App\lib\common\widgets\web_screen_title_widget.dart                                    | Dart     |         15 |          0 |          4 |         19 |
+| g:\Resturant\Resturant App\lib\common\widgets\web_search_field_widget.dart                                    | Dart     |         51 |          0 |          5 |         56 |
+| g:\Resturant\Resturant App\lib\features\address\controllers\address_controller.dart                           | Dart     |         60 |          4 |         10 |         74 |
+| g:\Resturant\Resturant App\lib\features\address\domain\models\address_model.dart                              | Dart     |         82 |          0 |          5 |         87 |
+| g:\Resturant\Resturant App\lib\features\address\domain\models\zone_model.dart                                 | Dart     |         27 |          0 |          5 |         32 |
+| g:\Resturant\Resturant App\lib\features\address\domain\reposotories\address_repo.dart                         | Dart     |         63 |          0 |         10 |         73 |
+| g:\Resturant\Resturant App\lib\features\address\domain\reposotories\address_repo_interface.dart               | Dart     |          3 |          0 |          1 |          4 |
+| g:\Resturant\Resturant App\lib\features\address\domain\services\address_service.dart                          | Dart     |         49 |          0 |          8 |         57 |
+| g:\Resturant\Resturant App\lib\features\address\domain\services\address_service_interface.dart                | Dart     |          9 |          0 |          1 |         10 |
+| g:\Resturant\Resturant App\lib\features\address\enums\address.dart                                            | Dart     |          5 |          0 |          4 |          9 |
+| g:\Resturant\Resturant App\lib\features\address\screens\add_address_screen.dart                               | Dart     |        558 |          1 |         49 |        608 |
+| g:\Resturant\Resturant App\lib\features\address\screens\address_screen.dart                                   | Dart     |        146 |          0 |         22 |        168 |
+| g:\Resturant\Resturant App\lib\features\address\widgets\address_card_widget.dart                              | Dart     |         71 |          0 |         12 |         83 |
+| g:\Resturant\Resturant App\lib\features\address\widgets\address_confirmation_dialogue_widget.dart             | Dart     |         69 |          0 |         11 |         80 |
+| g:\Resturant\Resturant App\lib\features\auth\controllers\auth_controller.dart                                 | Dart     |        128 |          0 |         31 |        159 |
+| g:\Resturant\Resturant App\lib\features\auth\controllers\deliveryman_registration_controller.dart             | Dart     |        258 |          0 |         50 |        308 |
+| g:\Resturant\Resturant App\lib\features\auth\controllers\restaurant_registration_controller.dart              | Dart     |        182 |          2 |         38 |        222 |
+| g:\Resturant\Resturant App\lib\features\auth\domain\models\delivery_man_body_model.dart                       | Dart     |         50 |          0 |          4 |         54 |
+| g:\Resturant\Resturant App\lib\features\auth\domain\models\restaurant_body_model.dart                         | Dart     |         67 |          0 |          6 |         73 |
+| g:\Resturant\Resturant App\lib\features\auth\domain\models\signup_body_model.dart                             | Dart     |         27 |          0 |          4 |         31 |
+| g:\Resturant\Resturant App\lib\features\auth\domain\models\social_log_in_body_model.dart                      | Dart     |         24 |          0 |          4 |         28 |
+| g:\Resturant\Resturant App\lib\features\auth\domain\models\translation_body_model.dart                        | Dart     |         21 |          0 |          3 |         24 |
+| g:\Resturant\Resturant App\lib\features\auth\domain\models\vehicle_model.dart                                 | Dart     |         15 |          0 |          3 |         18 |
+| g:\Resturant\Resturant App\lib\features\auth\domain\models\zone_model.dart                                    | Dart     |         67 |          0 |          9 |         76 |
+| g:\Resturant\Resturant App\lib\features\auth\domain\reposotories\auth_repo.dart                               | Dart     |        221 |          2 |         35 |        258 |
+| g:\Resturant\Resturant App\lib\features\auth\domain\reposotories\auth_repo_interface.dart                     | Dart     |         31 |          0 |          2 |         33 |
+| g:\Resturant\Resturant App\lib\features\auth\domain\reposotories\deliveryman_registration_repo.dart           | Dart     |         52 |          1 |          9 |         62 |
+| g:\Resturant\Resturant App\lib\features\auth\domain\reposotories\deliveryman_registration_repo_interface.dart | Dart     |          8 |          0 |          1 |          9 |
+| g:\Resturant\Resturant App\lib\features\auth\domain\reposotories\restaurant_registration_repo.dart            | Dart     |         35 |          0 |          8 |         43 |
+| g:\Resturant\Resturant App\lib\features\auth\domain\reposotories\restaurant_registration_repo_interface.dart  | Dart     |          7 |          0 |          2 |          9 |
+| g:\Resturant\Resturant App\lib\features\auth\domain\services\auth_service.dart                                | Dart     |        157 |          2 |         24 |        183 |
+| g:\Resturant\Resturant App\lib\features\auth\domain\services\auth_service_interface.dart                      | Dart     |         28 |          0 |          2 |         30 |
+| g:\Resturant\Resturant App\lib\features\auth\domain\services\deliveryman_registration_service.dart            | Dart     |        124 |          0 |         14 |        138 |
+| g:\Resturant\Resturant App\lib\features\auth\domain\services\deliveryman_registration_service_interface.dart  | Dart     |         17 |          0 |          3 |         20 |
+| g:\Resturant\Resturant App\lib\features\auth\domain\services\restaurant_registration_service.dart             | Dart     |         83 |          0 |          9 |         92 |
+| g:\Resturant\Resturant App\lib\features\auth\domain\services\restaurant_registration_service_interface.dart   | Dart     |         11 |          0 |          1 |         12 |
+| g:\Resturant\Resturant App\lib\features\auth\screens\delivery_man_registration_screen.dart                    | Dart     |        720 |          2 |         66 |        788 |
+| g:\Resturant\Resturant App\lib\features\auth\screens\restaurant_registration_screen.dart                      | Dart     |      1,096 |         21 |         93 |      1,210 |
+| g:\Resturant\Resturant App\lib\features\auth\screens\sign_in_screen.dart                                      | Dart     |        106 |          3 |         14 |        123 |
+| g:\Resturant\Resturant App\lib\features\auth\screens\sign_up_screen.dart                                      | Dart     |         53 |          0 |         12 |         65 |
+| g:\Resturant\Resturant App\lib\features\auth\screens\web\deliveryman_registration_web_screen.dart             | Dart     |        528 |          0 |         40 |        568 |
+| g:\Resturant\Resturant App\lib\features\auth\widgets\auth_dialog_widget.dart                                  | Dart     |         95 |          0 |         12 |        107 |
+| g:\Resturant\Resturant App\lib\features\auth\widgets\custom_time_picker_widget.dart                           | Dart     |        111 |          0 |         17 |        128 |
+| g:\Resturant\Resturant App\lib\features\auth\widgets\deliveryman_additional_data_section_widget.dart          | Dart     |        188 |          0 |         10 |        198 |
+| g:\Resturant\Resturant App\lib\features\auth\widgets\guest_button_widget.dart                                 | Dart     |         31 |          0 |          3 |         34 |
+| g:\Resturant\Resturant App\lib\features\auth\widgets\min_max_time_picker_widget.dart                          | Dart     |         54 |          0 |          6 |         60 |
+| g:\Resturant\Resturant App\lib\features\auth\widgets\pass_view_widget.dart                                    | Dart     |         34 |          0 |         10 |         44 |
+| g:\Resturant\Resturant App\lib\features\auth\widgets\registration_stepper.dart                                | Dart     |         36 |          0 |          5 |         41 |
+| g:\Resturant\Resturant App\lib\features\auth\widgets\registration_stepper_widget.dart                         | Dart     |         63 |          0 |          7 |         70 |
+| g:\Resturant\Resturant App\lib\features\auth\widgets\restaurant_additional_data_section_widget.dart           | Dart     |        188 |          0 |         10 |        198 |
+| g:\Resturant\Resturant App\lib\features\auth\widgets\select_location_view_widget.dart                         | Dart     |        312 |          1 |         28 |        341 |
+| g:\Resturant\Resturant App\lib\features\auth\widgets\sign_in_widget.dart                                      | Dart     |        187 |          0 |         21 |        208 |
+| g:\Resturant\Resturant App\lib\features\auth\widgets\sign_up_widget.dart                                      | Dart     |        302 |          0 |         39 |        341 |
+| g:\Resturant\Resturant App\lib\features\auth\widgets\social_login_widget.dart                                 | Dart     |         95 |          6 |         12 |        113 |
+| g:\Resturant\Resturant App\lib\features\auth\widgets\trams_conditions_check_box_widget.dart                   | Dart     |         33 |          0 |          6 |         39 |
+| g:\Resturant\Resturant App\lib\features\auth\widgets\zone_selection_widget.dart                               | Dart     |         43 |          0 |          2 |         45 |
+| g:\Resturant\Resturant App\lib\features\business\controllers\business_controller.dart                         | Dart     |         81 |          0 |         21 |        102 |
+| g:\Resturant\Resturant App\lib\features\business\domain\models\business_plan_body.dart                        | Dart     |         21 |          0 |          4 |         25 |
+| g:\Resturant\Resturant App\lib\features\business\domain\models\package_model.dart                             | Dart     |         74 |          0 |          9 |         83 |
+| g:\Resturant\Resturant App\lib\features\business\domain\reposotories\business_repo.dart                       | Dart     |         51 |          0 |         12 |         63 |
+| g:\Resturant\Resturant App\lib\features\business\domain\reposotories\business_repo_interface.dart             | Dart     |          7 |          0 |          1 |          8 |
+| g:\Resturant\Resturant App\lib\features\business\domain\services\business_service.dart                        | Dart     |         76 |          0 |          9 |         85 |
+| g:\Resturant\Resturant App\lib\features\business\domain\services\business_service_interface.dart              | Dart     |          7 |          0 |          2 |          9 |
+| g:\Resturant\Resturant App\lib\features\business\screens\business_plan_screen.dart                            | Dart     |        238 |          0 |         35 |        273 |
+| g:\Resturant\Resturant App\lib\features\business\screens\subscription_success_screen.dart                     | Dart     |         36 |          0 |          7 |         43 |
+| g:\Resturant\Resturant App\lib\features\business\widgets\base_card_widget.dart                                | Dart     |         39 |          0 |          4 |         43 |
+| g:\Resturant\Resturant App\lib\features\business\widgets\business_payment_method_bottom_sheet_widget.dart     | Dart     |        125 |          0 |         17 |        142 |
+| g:\Resturant\Resturant App\lib\features\business\widgets\curve_clipper_widget.dart                            | Dart     |         50 |          0 |          9 |         59 |
+| g:\Resturant\Resturant App\lib\features\business\widgets\package_widget.dart                                  | Dart     |         23 |          0 |          5 |         28 |
+| g:\Resturant\Resturant App\lib\features\business\widgets\payment_cart_widget.dart                             | Dart     |         44 |          0 |          4 |         48 |
+| g:\Resturant\Resturant App\lib\features\business\widgets\subscription_card_widget.dart                        | Dart     |         87 |          0 |         20 |        107 |
+| g:\Resturant\Resturant App\lib\features\business\widgets\success_widget.dart                                  | Dart     |         36 |          0 |          7 |         43 |
+| g:\Resturant\Resturant App\lib\features\cart\controllers\cart_controller.dart                                 | Dart     |        205 |          0 |         46 |        251 |
+| g:\Resturant\Resturant App\lib\features\cart\domain\models\cart_model.dart                                    | Dart     |        123 |          2 |         11 |        136 |
+| g:\Resturant\Resturant App\lib\features\cart\domain\repositories\cart_repository.dart                         | Dart     |         97 |          3 |         15 |        115 |
+| g:\Resturant\Resturant App\lib\features\cart\domain\repositories\cart_repository_interface.dart               | Dart     |         12 |          0 |          1 |         13 |
+| g:\Resturant\Resturant App\lib\features\cart\domain\services\cart_service.dart                                | Dart     |        202 |          0 |         25 |        227 |
+| g:\Resturant\Resturant App\lib\features\cart\domain\services\cart_service_interface.dart                      | Dart     |         24 |          0 |          2 |         26 |
+| g:\Resturant\Resturant App\lib\features\cart\screens\cart_screen.dart                                         | Dart     |        143 |          0 |         26 |        169 |
+| g:\Resturant\Resturant App\lib\features\cart\widgets\cart_product_widget.dart                                 | Dart     |        197 |         10 |         20 |        227 |
+| g:\Resturant\Resturant App\lib\features\cart\widgets\cart_suggested_item_view_widget.dart                     | Dart     |         79 |          0 |          5 |         84 |
+| g:\Resturant\Resturant App\lib\features\cart\widgets\checkout_button_widget.dart                              | Dart     |         96 |          0 |         10 |        106 |
+| g:\Resturant\Resturant App\lib\features\cart\widgets\cutlary_view_widget.dart                                 | Dart     |         48 |          0 |          7 |         55 |
+| g:\Resturant\Resturant App\lib\features\cart\widgets\not_available_bottom_sheet.dart                          | Dart     |         78 |          0 |          7 |         85 |
+| g:\Resturant\Resturant App\lib\features\cart\widgets\not_available_product_view_widget.dart                   | Dart     |         52 |          0 |          5 |         57 |
+| g:\Resturant\Resturant App\lib\features\cart\widgets\pricing_view_widget.dart                                 | Dart     |         99 |          3 |         18 |        120 |
+| g:\Resturant\Resturant App\lib\features\category\controllers\category_controller.dart                         | Dart     |        157 |         19 |         33 |        209 |
+| g:\Resturant\Resturant App\lib\features\category\domain\models\category_model.dart                            | Dart     |         58 |          0 |          5 |         63 |
+| g:\Resturant\Resturant App\lib\features\category\domain\reposotories\category_repository.dart                 | Dart     |         74 |         16 |         12 |        102 |
+| g:\Resturant\Resturant App\lib\features\category\domain\reposotories\category_repository_interface.dart       | Dart     |         11 |          0 |          1 |         12 |
+| g:\Resturant\Resturant App\lib\features\category\domain\services\category_service.dart                        | Dart     |         34 |          0 |          8 |         42 |
+| g:\Resturant\Resturant App\lib\features\category\domain\services\category_service_interface.dart              | Dart     |         11 |          0 |          1 |         12 |
+| g:\Resturant\Resturant App\lib\features\category\screens\category_product_screen.dart                         | Dart     |        302 |          0 |         15 |        317 |
+| g:\Resturant\Resturant App\lib\features\category\screens\category_screen.dart                                 | Dart     |         90 |          0 |         12 |        102 |
+| g:\Resturant\Resturant App\lib\features\chat\controllers\chat_controller.dart                                 | Dart     |        280 |          2 |         41 |        323 |
+| g:\Resturant\Resturant App\lib\features\chat\domain\models\conversation_model.dart                            | Dart     |        138 |          0 |         14 |        152 |
+| g:\Resturant\Resturant App\lib\features\chat\domain\models\message_model.dart                                 | Dart     |         79 |          0 |         10 |         89 |
+| g:\Resturant\Resturant App\lib\features\chat\domain\repositories\chat_repository.dart                         | Dart     |         66 |          1 |         10 |         77 |
+| g:\Resturant\Resturant App\lib\features\chat\domain\repositories\chat_repository_interface.dart               | Dart     |         13 |          0 |          1 |         14 |
+| g:\Resturant\Resturant App\lib\features\chat\domain\services\chat_service.dart                                | Dart     |        101 |          0 |         11 |        112 |
+| g:\Resturant\Resturant App\lib\features\chat\domain\services\chat_service_interface.dart                      | Dart     |         18 |          0 |          1 |         19 |
+| g:\Resturant\Resturant App\lib\features\chat\enums\user_type_enum.dart                                        | Dart     |          7 |          1 |          0 |          8 |
+| g:\Resturant\Resturant App\lib\features\chat\screens\chat_screen.dart                                         | Dart     |        273 |          0 |         28 |        301 |
+| g:\Resturant\Resturant App\lib\features\chat\screens\conversation_screen.dart                                 | Dart     |        234 |          1 |         28 |        263 |
+| g:\Resturant\Resturant App\lib\features\chat\widgets\chatting_shimmer_widget.dart                             | Dart     |        192 |          0 |         40 |        232 |
+| g:\Resturant\Resturant App\lib\features\chat\widgets\image_dialog_widget.dart                                 | Dart     |         39 |          0 |          4 |         43 |
+| g:\Resturant\Resturant App\lib\features\chat\widgets\message_bubble_shimmer_widget.dart                       | Dart     |         39 |          0 |          3 |         42 |
+| g:\Resturant\Resturant App\lib\features\chat\widgets\message_bubble_widget.dart                               | Dart     |        186 |          0 |         23 |        209 |
+| g:\Resturant\Resturant App\lib\features\chat\widgets\web_chat_view_widget.dart                                | Dart     |        458 |         12 |         56 |        526 |
+| g:\Resturant\Resturant App\lib\features\chat\widgets\web_conversation_list_view_widget.dart                   | Dart     |        224 |          1 |         41 |        266 |
+| g:\Resturant\Resturant App\lib\features\checkout\controllers\checkout_controller.dart                         | Dart     |        532 |          3 |        106 |        641 |
+| g:\Resturant\Resturant App\lib\features\checkout\domain\models\date_month_body_model.dart                     | Dart     |          9 |          0 |          1 |         10 |
+| g:\Resturant\Resturant App\lib\features\checkout\domain\models\distance_model.dart                            | Dart     |         92 |          0 |         16 |        108 |
+| g:\Resturant\Resturant App\lib\features\checkout\domain\models\offline_method_model.dart                      | Dart     |         86 |          0 |         11 |         97 |
+| g:\Resturant\Resturant App\lib\features\checkout\domain\models\place_order_body_model.dart                    | Dart     |        480 |          0 |         29 |        509 |
+| g:\Resturant\Resturant App\lib\features\checkout\domain\models\pricing_view_model.dart                        | Dart     |         59 |          2 |          4 |         65 |
+| g:\Resturant\Resturant App\lib\features\checkout\domain\models\timeslote_model.dart                           | Dart     |         18 |          0 |          5 |         23 |
+| g:\Resturant\Resturant App\lib\features\checkout\domain\repositories\checkout_repository.dart                 | Dart     |         85 |          5 |         17 |        107 |
+| g:\Resturant\Resturant App\lib\features\checkout\domain\repositories\checkout_repository_interface.dart       | Dart     |         15 |          0 |          1 |         16 |
+| g:\Resturant\Resturant App\lib\features\checkout\domain\services\checkout_service.dart                        | Dart     |        206 |          0 |         26 |        232 |
+| g:\Resturant\Resturant App\lib\features\checkout\domain\services\checkout_service_interface.dart              | Dart     |         26 |          0 |          3 |         29 |
+| g:\Resturant\Resturant App\lib\features\checkout\screens\checkout_screen.dart                                 | Dart     |        449 |          3 |         85 |        537 |
+| g:\Resturant\Resturant App\lib\features\checkout\screens\offline_payment_screen.dart                          | Dart     |        294 |          1 |         43 |        338 |
+| g:\Resturant\Resturant App\lib\features\checkout\screens\order_successful_screen.dart                         | Dart     |        117 |          0 |         21 |        138 |
+| g:\Resturant\Resturant App\lib\features\checkout\screens\payment_screen.dart                                  | Dart     |        236 |          1 |         30 |        267 |
+| g:\Resturant\Resturant App\lib\features\checkout\screens\payment_webview_screen.dart                          | Dart     |        166 |          4 |         14 |        184 |
+| g:\Resturant\Resturant App\lib\features\checkout\widgets\address_dialogue.dart                                | Dart     |         63 |          0 |          5 |         68 |
+| g:\Resturant\Resturant App\lib\features\checkout\widgets\bottom_section_widget.dart                           | Dart     |        284 |          6 |         39 |        329 |
+| g:\Resturant\Resturant App\lib\features\checkout\widgets\checkout_screen_shimmer_view.dart                    | Dart     |        601 |          0 |         75 |        676 |
+| g:\Resturant\Resturant App\lib\features\checkout\widgets\condition_check_box.dart                             | Dart     |         46 |         10 |          5 |         61 |
+| g:\Resturant\Resturant App\lib\features\checkout\widgets\congratulation_dialogue.dart                         | Dart     |         65 |          0 |          8 |         73 |
+| g:\Resturant\Resturant App\lib\features\checkout\widgets\coupon_bottom_sheet.dart                             | Dart     |        216 |          2 |         17 |        235 |
+| g:\Resturant\Resturant App\lib\features\checkout\widgets\coupon_section.dart                                  | Dart     |        104 |          0 |          6 |        110 |
+| g:\Resturant\Resturant App\lib\features\checkout\widgets\custom_date_picker.dart                              | Dart     |         65 |          1 |          4 |         70 |
+| g:\Resturant\Resturant App\lib\features\checkout\widgets\delivery_instruction_view.dart                       | Dart     |        129 |          1 |         14 |        144 |
+| g:\Resturant\Resturant App\lib\features\checkout\widgets\delivery_man_tips_section.dart                       | Dart     |        208 |          0 |         18 |        226 |
+| g:\Resturant\Resturant App\lib\features\checkout\widgets\delivery_option_button.dart                          | Dart     |         71 |          4 |          9 |         84 |
+| g:\Resturant\Resturant App\lib\features\checkout\widgets\delivery_section.dart                                | Dart     |        203 |          0 |         24 |        227 |
+| g:\Resturant\Resturant App\lib\features\checkout\widgets\guest_delivery_address.dart                          | Dart     |        192 |          0 |         26 |        218 |
+| g:\Resturant\Resturant App\lib\features\checkout\widgets\offline_info_edit_dialog.dart                        | Dart     |        128 |          0 |         19 |        147 |
+| g:\Resturant\Resturant App\lib\features\checkout\widgets\offline_payment_button.dart                          | Dart     |        145 |          0 |         14 |        159 |
+| g:\Resturant\Resturant App\lib\features\checkout\widgets\offline_success_dialog.dart                          | Dart     |         89 |          0 |         13 |        102 |
+| g:\Resturant\Resturant App\lib\features\checkout\widgets\order_place_button.dart                              | Dart     |        319 |          0 |         21 |        340 |
+| g:\Resturant\Resturant App\lib\features\checkout\widgets\order_successfull_dialog_widget.dart                 | Dart     |         89 |          6 |         11 |        106 |
+| g:\Resturant\Resturant App\lib\features\checkout\widgets\order_type_widget.dart                               | Dart     |         39 |         19 |          4 |         62 |
+| g:\Resturant\Resturant App\lib\features\checkout\widgets\partial_pay_dialog.dart                              | Dart     |         92 |          0 |         12 |        104 |
+| g:\Resturant\Resturant App\lib\features\checkout\widgets\partial_pay_view.dart                                | Dart     |        102 |          0 |         14 |        116 |
+| g:\Resturant\Resturant App\lib\features\checkout\widgets\payment_button.dart                                  | Dart     |         40 |         17 |          6 |         63 |
+| g:\Resturant\Resturant App\lib\features\checkout\widgets\payment_button_new.dart                              | Dart     |         44 |          0 |          6 |         50 |
+| g:\Resturant\Resturant App\lib\features\checkout\widgets\payment_failed_dialog.dart                           | Dart     |         84 |          0 |          8 |         92 |
+| g:\Resturant\Resturant App\lib\features\checkout\widgets\payment_method_bottom_sheet.dart                     | Dart     |        230 |          0 |         25 |        255 |
+| g:\Resturant\Resturant App\lib\features\checkout\widgets\payment_section.dart                                 | Dart     |        107 |          0 |         11 |        118 |
+| g:\Resturant\Resturant App\lib\features\checkout\widgets\slot_widget.dart                                     | Dart     |         37 |          0 |          3 |         40 |
+| g:\Resturant\Resturant App\lib\features\checkout\widgets\subscription_view.dart                               | Dart     |        164 |          0 |         18 |        182 |
+| g:\Resturant\Resturant App\lib\features\checkout\widgets\time_slot_bottom_sheet.dart                          | Dart     |        238 |         23 |         23 |        284 |
+| g:\Resturant\Resturant App\lib\features\checkout\widgets\time_slot_section.dart                               | Dart     |        119 |          1 |         12 |        132 |
+| g:\Resturant\Resturant App\lib\features\checkout\widgets\tips_widget.dart                                     | Dart     |         45 |          0 |          5 |         50 |
+| g:\Resturant\Resturant App\lib\features\checkout\widgets\top_section_widget.dart                              | Dart     |        194 |         25 |         35 |        254 |
+| g:\Resturant\Resturant App\lib\features\coupon\controllers\coupon_controller.dart                             | Dart     |        127 |          2 |         17 |        146 |
+| g:\Resturant\Resturant App\lib\features\coupon\domain\models\coupon_model.dart                                | Dart     |         85 |          0 |         10 |         95 |
+| g:\Resturant\Resturant App\lib\features\coupon\domain\reposotories\coupon_repository.dart                     | Dart     |         59 |          0 |         10 |         69 |
+| g:\Resturant\Resturant App\lib\features\coupon\domain\reposotories\coupon_repository_interface.dart           | Dart     |          8 |          0 |          1 |          9 |
+| g:\Resturant\Resturant App\lib\features\coupon\domain\services\coupon_service.dart                            | Dart     |         32 |          0 |          6 |         38 |
+| g:\Resturant\Resturant App\lib\features\coupon\domain\services\coupon_service_interface.dart                  | Dart     |          9 |          0 |          1 |         10 |
+| g:\Resturant\Resturant App\lib\features\coupon\screens\coupon_screen.dart                                     | Dart     |         85 |          1 |          9 |         95 |
+| g:\Resturant\Resturant App\lib\features\coupon\widgets\coupon_card_widget.dart                                | Dart     |        127 |          0 |         18 |        145 |
+| g:\Resturant\Resturant App\lib\features\cuisine\controllers\cuisine_controller.dart                           | Dart     |         64 |          0 |         12 |         76 |
+| g:\Resturant\Resturant App\lib\features\cuisine\domain\models\cuisine_model.dart                              | Dart     |         56 |          0 |          7 |         63 |
+| g:\Resturant\Resturant App\lib\features\cuisine\domain\models\cuisine_restaurants_model.dart                  | Dart     |         29 |          0 |          5 |         34 |
+| g:\Resturant\Resturant App\lib\features\cuisine\domain\repositories\cuisine_repository.dart                   | Dart     |         44 |          0 |          8 |         52 |
+| g:\Resturant\Resturant App\lib\features\cuisine\domain\repositories\cuisine_repository_interface.dart         | Dart     |          5 |          0 |          1 |          6 |
+| g:\Resturant\Resturant App\lib\features\cuisine\domain\services\cuisine_service.dart                          | Dart     |         27 |          0 |          4 |         31 |
+| g:\Resturant\Resturant App\lib\features\cuisine\domain\services\cuisine_service_interface.dart                | Dart     |          7 |          0 |          1 |          8 |
+| g:\Resturant\Resturant App\lib\features\cuisine\screens\cuisine_restaurant_screen.dart                        | Dart     |         65 |          0 |          5 |         70 |
+| g:\Resturant\Resturant App\lib\features\cuisine\screens\cuisine_screen.dart                                   | Dart     |         92 |          0 |          4 |         96 |
+| g:\Resturant\Resturant App\lib\features\dashboard\controllers\dashboard_controller.dart                       | Dart     |         36 |          0 |          5 |         41 |
+| g:\Resturant\Resturant App\lib\features\dashboard\domain\repositories\dashboard_repo.dart                     | Dart     |         23 |          0 |          6 |         29 |
+| g:\Resturant\Resturant App\lib\features\dashboard\domain\repositories\dashboard_repo_interface.dart           | Dart     |          3 |          0 |          2 |          5 |
+| g:\Resturant\Resturant App\lib\features\dashboard\domain\services\dashboard_service.dart                      | Dart     |         11 |          0 |          2 |         13 |
+| g:\Resturant\Resturant App\lib\features\dashboard\domain\services\dashboard_service_interface.dart            | Dart     |          3 |          0 |          1 |          4 |
+| g:\Resturant\Resturant App\lib\features\dashboard\screens\dashboard_screen.dart                               | Dart     |        223 |         15 |         18 |        256 |
+| g:\Resturant\Resturant App\lib\features\dashboard\widgets\address_bottom_sheet.dart                           | Dart     |        133 |          0 |         16 |        149 |
+| g:\Resturant\Resturant App\lib\features\dashboard\widgets\bottom_nav_item.dart                                | Dart     |         16 |          0 |          3 |         19 |
+| g:\Resturant\Resturant App\lib\features\dashboard\widgets\running_order_view_widget.dart                      | Dart     |        138 |          0 |         24 |        162 |
+| g:\Resturant\Resturant App\lib\features\favourite\controllers\favourite_controller.dart                       | Dart     |         89 |          4 |         10 |        103 |
+| g:\Resturant\Resturant App\lib\features\favourite\domain\repositories\favourite_repository.dart               | Dart     |         28 |          0 |          7 |         35 |
+| g:\Resturant\Resturant App\lib\features\favourite\domain\repositories\favourite_repository_interface.dart     | Dart     |          7 |          0 |          1 |          8 |
+| g:\Resturant\Resturant App\lib\features\favourite\domain\services\favourite_service.dart                      | Dart     |         19 |         42 |          5 |         66 |
+| g:\Resturant\Resturant App\lib\features\favourite\domain\services\favourite_service_interface.dart            | Dart     |          6 |          0 |          2 |          8 |
+| g:\Resturant\Resturant App\lib\features\favourite\screens\favourite_screen.dart                               | Dart     |         65 |          0 |         11 |         76 |
+| g:\Resturant\Resturant App\lib\features\favourite\widgets\fav_item_view_widget.dart                           | Dart     |         30 |          0 |          3 |         33 |
+| g:\Resturant\Resturant App\lib\features\home\controllers\home_controller.dart                                 | Dart     |         46 |          0 |          7 |         53 |
+| g:\Resturant\Resturant App\lib\features\home\domain\models\banner_model.dart                                  | Dart     |         64 |          0 |          9 |         73 |
+| g:\Resturant\Resturant App\lib\features\home\domain\repositories\home_repository.dart                         | Dart     |         37 |          4 |          9 |         50 |
+| g:\Resturant\Resturant App\lib\features\home\domain\repositories\home_repository_interface.dart               | Dart     |          3 |          0 |          1 |          4 |
+| g:\Resturant\Resturant App\lib\features\home\domain\services\home_service.dart                                | Dart     |         11 |          0 |          2 |         13 |
+| g:\Resturant\Resturant App\lib\features\home\domain\services\home_service_interface.dart                      | Dart     |          4 |          0 |          1 |          5 |
+| g:\Resturant\Resturant App\lib\features\home\screens\home_screen.dart                                         | Dart     |        303 |          2 |         47 |        352 |
+| g:\Resturant\Resturant App\lib\features\home\screens\map_view_screen.dart                                     | Dart     |        173 |          6 |         25 |        204 |
+| g:\Resturant\Resturant App\lib\features\home\screens\theme1_home_screen.dart                                  | Dart     |        178 |          2 |         12 |        192 |
+| g:\Resturant\Resturant App\lib\features\home\screens\web_home_screen.dart                                     | Dart     |        105 |          0 |         38 |        143 |
+| g:\Resturant\Resturant App\lib\features\home\widgets\all_restaurant_filter_widget.dart                        | Dart     |         94 |          0 |         18 |        112 |
+| g:\Resturant\Resturant App\lib\features\home\widgets\all_restaurants_widget.dart                              | Dart     |         21 |          0 |          2 |         23 |
+| g:\Resturant\Resturant App\lib\features\home\widgets\arrow_icon_button_widget.dart                            | Dart     |         26 |          0 |          5 |         31 |
+| g:\Resturant\Resturant App\lib\features\home\widgets\bad_weather_widget.dart                                  | Dart     |         55 |          0 |          9 |         64 |
+| g:\Resturant\Resturant App\lib\features\home\widgets\banner_view_widget.dart                                  | Dart     |        118 |          0 |          6 |        124 |
+| g:\Resturant\Resturant App\lib\features\home\widgets\best_review_item_view_widget.dart                        | Dart     |         61 |          0 |         10 |         71 |
+| g:\Resturant\Resturant App\lib\features\home\widgets\category_pop_up_widget.dart                              | Dart     |        122 |          0 |          5 |        127 |
+| g:\Resturant\Resturant App\lib\features\home\widgets\cuisine_card_widget.dart                                 | Dart     |         57 |          0 |          4 |         61 |
+| g:\Resturant\Resturant App\lib\features\home\widgets\cuisine_view_widget.dart                                 | Dart     |        134 |          0 |         14 |        148 |
+| g:\Resturant\Resturant App\lib\features\home\widgets\enjoy_off_banner_view_widget.dart                        | Dart     |         31 |          0 |          3 |         34 |
+| g:\Resturant\Resturant App\lib\features\home\widgets\filter_view_widget.dart                                  | Dart     |         76 |          0 |          4 |         80 |
+| g:\Resturant\Resturant App\lib\features\home\widgets\icon_with_text_row_widget.dart                           | Dart     |         40 |          0 |          8 |         48 |
+| g:\Resturant\Resturant App\lib\features\home\widgets\item_card_widget.dart                                    | Dart     |        347 |          1 |         31 |        379 |
+| g:\Resturant\Resturant App\lib\features\home\widgets\location_banner_view_widget.dart                         | Dart     |         56 |          0 |          5 |         61 |
+| g:\Resturant\Resturant App\lib\features\home\widgets\new_on_stackfood_view_widget.dart                        | Dart     |         71 |          0 |          7 |         78 |
+| g:\Resturant\Resturant App\lib\features\home\widgets\order_again_view_widget.dart                             | Dart     |         64 |          0 |          5 |         69 |
+| g:\Resturant\Resturant App\lib\features\home\widgets\overflow_container_widget.dart                           | Dart     |         27 |          0 |          4 |         31 |
+| g:\Resturant\Resturant App\lib\features\home\widgets\popular_foods_nearby_view_widget.dart                    | Dart     |         79 |          0 |         12 |         91 |
+| g:\Resturant\Resturant App\lib\features\home\widgets\popular_restaurants_view_widget.dart                     | Dart     |        296 |          0 |         35 |        331 |
+| g:\Resturant\Resturant App\lib\features\home\widgets\refer_banner_view_widget.dart                            | Dart     |         89 |          1 |          4 |         94 |
+| g:\Resturant\Resturant App\lib\features\home\widgets\restaurant_details_sheet_widget.dart                     | Dart     |        158 |          0 |         23 |        181 |
+| g:\Resturant\Resturant App\lib\features\home\widgets\restaurant_filter_button_widget.dart                     | Dart     |         27 |          0 |          4 |         31 |
+| g:\Resturant\Resturant App\lib\features\home\widgets\restaurants_card_widget.dart                             | Dart     |        353 |          1 |         33 |        387 |
+| g:\Resturant\Resturant App\lib\features\home\widgets\restaurants_view_widget.dart                             | Dart     |        306 |          1 |         26 |        333 |
+| g:\Resturant\Resturant App\lib\features\home\widgets\theme1\banner_view_widget1.dart                          | Dart     |        112 |          0 |          7 |        119 |
+| g:\Resturant\Resturant App\lib\features\home\widgets\theme1\best_reviewed_item_widget1.dart                   | Dart     |        250 |          0 |         25 |        275 |
+| g:\Resturant\Resturant App\lib\features\home\widgets\theme1\category_widget1.dart                             | Dart     |        181 |          0 |         11 |        192 |
+| g:\Resturant\Resturant App\lib\features\home\widgets\theme1\cuisine_widget1.dart                              | Dart     |        112 |          0 |          7 |        119 |
+| g:\Resturant\Resturant App\lib\features\home\widgets\theme1\item_campaign_widget1.dart                        | Dart     |         90 |          0 |          7 |         97 |
+| g:\Resturant\Resturant App\lib\features\home\widgets\theme1\near_by_button_widget1.dart                       | Dart     |         38 |          0 |          7 |         45 |
+| g:\Resturant\Resturant App\lib\features\home\widgets\theme1\popular_item_widget1.dart                         | Dart     |        228 |          0 |         22 |        250 |
+| g:\Resturant\Resturant App\lib\features\home\widgets\theme1\popular_store_widget1.dart                        | Dart     |        195 |          0 |         18 |        213 |
+| g:\Resturant\Resturant App\lib\features\home\widgets\theme1\restaurant_widget.dart                            | Dart     |        162 |          0 |         27 |        189 |
+| g:\Resturant\Resturant App\lib\features\home\widgets\today_trends_view_widget.dart                            | Dart     |        103 |          1 |         19 |        123 |
+| g:\Resturant\Resturant App\lib\features\home\widgets\web\web_banner_view_widget.dart                          | Dart     |        175 |          0 |         21 |        196 |
+| g:\Resturant\Resturant App\lib\features\home\widgets\web\web_cuisine_view_widget.dart                         | Dart     |        144 |          0 |         10 |        154 |
+| g:\Resturant\Resturant App\lib\features\home\widgets\web\web_loaction_and_refer_banner_view_widget.dart       | Dart     |         33 |          0 |          7 |         40 |
+| g:\Resturant\Resturant App\lib\features\home\widgets\web\web_new_on_stackfood_view_widget.dart                | Dart     |         62 |          0 |          8 |         70 |
+| g:\Resturant\Resturant App\lib\features\home\widgets\what_on_your_mind_view_widget.dart                       | Dart     |        160 |          1 |         19 |        180 |
+| g:\Resturant\Resturant App\lib\features\html\controllers\html_controller.dart                                 | Dart     |         14 |          0 |          5 |         19 |
+| g:\Resturant\Resturant App\lib\features\html\domain\repositories\html_repository.dart                         | Dart     |         43 |          0 |          8 |         51 |
+| g:\Resturant\Resturant App\lib\features\html\domain\repositories\html_repository_interface.dart               | Dart     |          6 |          0 |          1 |          7 |
+| g:\Resturant\Resturant App\lib\features\html\domain\services\html_service.dart                                | Dart     |         26 |          0 |          2 |         28 |
+| g:\Resturant\Resturant App\lib\features\html\domain\services\html_service_interface.dart                      | Dart     |          4 |          0 |          1 |          5 |
+| g:\Resturant\Resturant App\lib\features\html\enums\html_type.dart                                             | Dart     |          8 |          0 |          0 |          8 |
+| g:\Resturant\Resturant App\lib\features\html\screens\html_viewer_screen.dart                                  | Dart     |         95 |          0 |         10 |        105 |
+| g:\Resturant\Resturant App\lib\features\interest\controllers\interest_controller.dart                         | Dart     |         34 |          0 |         10 |         44 |
+| g:\Resturant\Resturant App\lib\features\interest\domain\repositories\interest_repository.dart                 | Dart     |         33 |          0 |          7 |         40 |
+| g:\Resturant\Resturant App\lib\features\interest\domain\repositories\interest_repository_interface.dart       | Dart     |          4 |          0 |          1 |          5 |
+| g:\Resturant\Resturant App\lib\features\interest\domain\services\interest_service.dart                        | Dart     |         24 |          0 |          3 |         27 |
+| g:\Resturant\Resturant App\lib\features\interest\domain\services\interest_service_interface.dart              | Dart     |          5 |          0 |          1 |          6 |
+| g:\Resturant\Resturant App\lib\features\interest\screens\interest_screen.dart                                 | Dart     |        114 |          0 |         12 |        126 |
+| g:\Resturant\Resturant App\lib\features\language\controllers\localization_controller.dart                     | Dart     |         66 |          3 |         13 |         82 |
+| g:\Resturant\Resturant App\lib\features\language\domain\models\language_model.dart                            | Dart     |          7 |          0 |          2 |          9 |
+| g:\Resturant\Resturant App\lib\features\language\domain\repository\language_repository.dart                   | Dart     |         60 |          0 |         12 |         72 |
+| g:\Resturant\Resturant App\lib\features\language\domain\repository\language_repository_interface.dart         | Dart     |          9 |          0 |          2 |         11 |
+| g:\Resturant\Resturant App\lib\features\language\domain\service\language_service.dart                         | Dart     |         43 |          0 |          7 |         50 |
+| g:\Resturant\Resturant App\lib\features\language\domain\service\language_service_interface.dart               | Dart     |          9 |          0 |          1 |         10 |
+| g:\Resturant\Resturant App\lib\features\language\screens\language_screen.dart                                 | Dart     |         85 |         10 |         14 |        109 |
+| g:\Resturant\Resturant App\lib\features\language\widgets\language_widget.dart                                 | Dart     |         55 |          3 |          6 |         64 |
+| g:\Resturant\Resturant App\lib\features\language\widgets\save_button_widget.dart                              | Dart     |         48 |          0 |          3 |         51 |
+| g:\Resturant\Resturant App\lib\features\language\widgets\web_language_widget.dart                             | Dart     |         61 |          0 |          5 |         66 |
+| g:\Resturant\Resturant App\lib\features\location\controllers\location_controller.dart                         | Dart     |        243 |          0 |         40 |        283 |
+| g:\Resturant\Resturant App\lib\features\location\domain\models\place_details_model.dart                       | Dart     |        206 |          0 |         28 |        234 |
+| g:\Resturant\Resturant App\lib\features\location\domain\models\prediction_model.dart                          | Dart     |         29 |          0 |          3 |         32 |
+| g:\Resturant\Resturant App\lib\features\location\domain\models\zone_response_model.dart                       | Dart     |         57 |          0 |          7 |         64 |
+| g:\Resturant\Resturant App\lib\features\location\domain\reposotories\location_repo.dart                       | Dart     |         70 |          8 |         15 |         93 |
+| g:\Resturant\Resturant App\lib\features\location\domain\reposotories\location_repo_interface.dart             | Dart     |         10 |          0 |          1 |         11 |
+| g:\Resturant\Resturant App\lib\features\location\domain\services\location_service.dart                        | Dart     |        126 |          0 |         13 |        139 |
+| g:\Resturant\Resturant App\lib\features\location\domain\services\location_service_interface.dart              | Dart     |         17 |          0 |          1 |         18 |
+| g:\Resturant\Resturant App\lib\features\location\screens\access_location_screen.dart                          | Dart     |         98 |          0 |          8 |        106 |
+| g:\Resturant\Resturant App\lib\features\location\screens\map_screen.dart                                      | Dart     |        118 |          0 |         22 |        140 |
+| g:\Resturant\Resturant App\lib\features\location\screens\pick_map_screen.dart                                 | Dart     |        162 |          0 |         15 |        177 |
+| g:\Resturant\Resturant App\lib\features\location\widgets\bottom_button.dart                                   | Dart     |        112 |          0 |          6 |        118 |
+| g:\Resturant\Resturant App\lib\features\location\widgets\location_search_dialog.dart                          | Dart     |         68 |          0 |          5 |         73 |
+| g:\Resturant\Resturant App\lib\features\location\widgets\permission_dialog.dart                               | Dart     |         53 |          0 |          6 |         59 |
+| g:\Resturant\Resturant App\lib\features\location\widgets\pick_map_dialog.dart                                 | Dart     |        281 |          0 |         21 |        302 |
+| g:\Resturant\Resturant App\lib\features\location\widgets\serach_location_widget.dart                          | Dart     |         53 |          0 |          5 |         58 |
+| g:\Resturant\Resturant App\lib\features\loyalty\controllers\loyalty_controller.dart                           | Dart     |         72 |          0 |         16 |         88 |
+| g:\Resturant\Resturant App\lib\features\loyalty\domain\repositories\loyalty_repository.dart                   | Dart     |         48 |          0 |         10 |         58 |
+| g:\Resturant\Resturant App\lib\features\loyalty\domain\repositories\loyalty_repository_interface.dart         | Dart     |          7 |          0 |          1 |          8 |
+| g:\Resturant\Resturant App\lib\features\loyalty\domain\services\loyalty_service.dart                          | Dart     |         24 |          0 |          6 |         30 |
+| g:\Resturant\Resturant App\lib\features\loyalty\domain\services\loyalty_service_interface.dart                | Dart     |          8 |          0 |          1 |          9 |
+| g:\Resturant\Resturant App\lib\features\loyalty\screens\loyalty_screen.dart                                   | Dart     |        138 |          0 |         21 |        159 |
+| g:\Resturant\Resturant App\lib\features\loyalty\widgets\loyalty_bottom_sheet_widget.dart                      | Dart     |        122 |          0 |         21 |        143 |
+| g:\Resturant\Resturant App\lib\features\loyalty\widgets\loyalty_card_widget.dart                              | Dart     |        131 |          0 |         23 |        154 |
+| g:\Resturant\Resturant App\lib\features\loyalty\widgets\loyalty_history_card_widget.dart                      | Dart     |         65 |          0 |         11 |         76 |
+| g:\Resturant\Resturant App\lib\features\loyalty\widgets\loyalty_history_widget.dart                           | Dart     |         92 |          0 |         10 |        102 |
+| g:\Resturant\Resturant App\lib\features\menu\domain\models\menu_model.dart                                    | Dart     |          6 |          0 |          2 |          8 |
+| g:\Resturant\Resturant App\lib\features\menu\screens\menu_screen.dart                                         | Dart     |        347 |        144 |          6 |        497 |
+| g:\Resturant\Resturant App\lib\features\menu\widgets\menu_button.dart                                         | Dart     |         87 |          0 |         10 |         97 |
+| g:\Resturant\Resturant App\lib\features\menu\widgets\portion_widget.dart                                      | Dart     |         73 |          1 |          3 |         77 |
+| g:\Resturant\Resturant App\lib\features\notification\controllers\notification_controller.dart                 | Dart     |         40 |          0 |         10 |         50 |
+| g:\Resturant\Resturant App\lib\features\notification\domain\models\notification_body_model.dart               | Dart     |         69 |          0 |          8 |         77 |
+| g:\Resturant\Resturant App\lib\features\notification\domain\models\notification_model.dart                    | Dart     |         44 |          0 |          8 |         52 |
+| g:\Resturant\Resturant App\lib\features\notification\domain\repository\notification_repository.dart           | Dart     |         66 |          0 |         12 |         78 |
+| g:\Resturant\Resturant App\lib\features\notification\domain\repository\notification_repository_interface.dart | Dart     |          7 |          0 |          1 |          8 |
+| g:\Resturant\Resturant App\lib\features\notification\domain\service\notification_service.dart                 | Dart     |         36 |          0 |          7 |         43 |
+| g:\Resturant\Resturant App\lib\features\notification\domain\service\notification_service_interface.dart       | Dart     |          8 |          0 |          1 |          9 |
+| g:\Resturant\Resturant App\lib\features\notification\screens\notification_screen.dart                         | Dart     |        158 |          4 |         20 |        182 |
+| g:\Resturant\Resturant App\lib\features\notification\widgets\notification_dialog_widget.dart                  | Dart     |         78 |          0 |          8 |         86 |
+| g:\Resturant\Resturant App\lib\features\onboard\controllers\onboard_controller.dart                           | Dart     |         19 |          0 |          6 |         25 |
+| g:\Resturant\Resturant App\lib\features\onboard\domain\models\onboarding_model.dart                           | Dart     |          9 |          0 |          2 |         11 |
+| g:\Resturant\Resturant App\lib\features\onboard\domain\repository\onboard_repository.dart                     | Dart     |         31 |          0 |          7 |         38 |
+| g:\Resturant\Resturant App\lib\features\onboard\domain\repository\onboard_repository_interface.dart           | Dart     |          3 |          0 |          2 |          5 |
+| g:\Resturant\Resturant App\lib\features\onboard\domain\service\notification_service.dart                      | Dart     |         11 |          0 |          2 |         13 |
+| g:\Resturant\Resturant App\lib\features\onboard\domain\service\onboard_service_interface.dart                 | Dart     |          4 |          0 |          1 |          5 |
+| g:\Resturant\Resturant App\lib\features\onboard\screens\onboarding_screen.dart                                | Dart     |        107 |          0 |         16 |        123 |
+| g:\Resturant\Resturant App\lib\features\order\controllers\order_controller.dart                               | Dart     |        431 |          0 |         77 |        508 |
+| g:\Resturant\Resturant App\lib\features\order\domain\models\delivery_log_model.dart                           | Dart     |        101 |          0 |          9 |        110 |
+| g:\Resturant\Resturant App\lib\features\order\domain\models\order_cancellation_body.dart                      | Dart     |         61 |          0 |          7 |         68 |
+| g:\Resturant\Resturant App\lib\features\order\domain\models\order_details_model.dart                          | Dart     |        140 |          0 |         12 |        152 |
+| g:\Resturant\Resturant App\lib\features\order\domain\models\order_model.dart                                  | Dart     |        542 |          0 |         39 |        581 |
+| g:\Resturant\Resturant App\lib\features\order\domain\models\pause_log_model.dart                              | Dart     |         49 |          0 |          9 |         58 |
+| g:\Resturant\Resturant App\lib\features\order\domain\models\refund_model.dart                                 | Dart     |         45 |          0 |          7 |         52 |
+| g:\Resturant\Resturant App\lib\features\order\domain\models\subscription_schedule_model.dart                  | Dart     |         37 |          0 |          4 |         41 |
+| g:\Resturant\Resturant App\lib\features\order\domain\repositories\order_repository.dart                       | Dart     |        184 |          3 |         24 |        211 |
+| g:\Resturant\Resturant App\lib\features\order\domain\repositories\order_repository_interface.dart             | Dart     |         25 |          0 |          1 |         26 |
+| g:\Resturant\Resturant App\lib\features\order\domain\services\order_service.dart                              | Dart     |        274 |          0 |         44 |        318 |
+| g:\Resturant\Resturant App\lib\features\order\domain\services\order_service_interface.dart                    | Dart     |         36 |          0 |          2 |         38 |
+| g:\Resturant\Resturant App\lib\features\order\screens\guest_track_order_screen.dart                           | Dart     |        176 |          1 |         20 |        197 |
+| g:\Resturant\Resturant App\lib\features\order\screens\order_details_screen.dart                               | Dart     |        185 |          0 |         25 |        210 |
+| g:\Resturant\Resturant App\lib\features\order\screens\order_screen.dart                                       | Dart     |         90 |          1 |         13 |        104 |
+| g:\Resturant\Resturant App\lib\features\order\screens\order_tracking_screen.dart                              | Dart     |        222 |         15 |         30 |        267 |
+| g:\Resturant\Resturant App\lib\features\order\screens\refund_request_screen.dart                              | Dart     |        149 |          0 |         17 |        166 |
+| g:\Resturant\Resturant App\lib\features\order\widgets\address_details_widget.dart                             | Dart     |         30 |          0 |          7 |         37 |
+| g:\Resturant\Resturant App\lib\features\order\widgets\bottom_view_widget.dart                                 | Dart     |        202 |          0 |         15 |        217 |
+| g:\Resturant\Resturant App\lib\features\order\widgets\cancellation_dialogue.dart                              | Dart     |         91 |          0 |         10 |        101 |
+| g:\Resturant\Resturant App\lib\features\order\widgets\custom_stepper.dart                                     | Dart     |         33 |          0 |          7 |         40 |
+| g:\Resturant\Resturant App\lib\features\order\widgets\delivery_details.dart                                   | Dart     |         24 |          0 |          4 |         28 |
+| g:\Resturant\Resturant App\lib\features\order\widgets\guest_custom_stepper.dart                               | Dart     |         86 |          0 |         14 |        100 |
+| g:\Resturant\Resturant App\lib\features\order\widgets\guest_track_order_input_view_widget.dart                | Dart     |        106 |          0 |         14 |        120 |
+| g:\Resturant\Resturant App\lib\features\order\widgets\log_dialog.dart                                         | Dart     |        126 |          0 |         24 |        150 |
+| g:\Resturant\Resturant App\lib\features\order\widgets\order_info_section.dart                                 | Dart     |        699 |          2 |         97 |        798 |
+| g:\Resturant\Resturant App\lib\features\order\widgets\order_pricing_section.dart                              | Dart     |        194 |          1 |         27 |        222 |
+| g:\Resturant\Resturant App\lib\features\order\widgets\order_product_widget.dart                               | Dart     |        125 |          0 |         10 |        135 |
+| g:\Resturant\Resturant App\lib\features\order\widgets\order_shimmer_widget.dart                               | Dart     |         82 |          0 |          6 |         88 |
+| g:\Resturant\Resturant App\lib\features\order\widgets\order_view_widget.dart                                  | Dart     |        193 |          0 |         19 |        212 |
+| g:\Resturant\Resturant App\lib\features\order\widgets\subscription_pause_dialog.dart                          | Dart     |        146 |          1 |         17 |        164 |
+| g:\Resturant\Resturant App\lib\features\order\widgets\track_details_view.dart                                 | Dart     |        152 |          0 |         18 |        170 |
+| g:\Resturant\Resturant App\lib\features\order\widgets\tracking_stepper_widget.dart                            | Dart     |         50 |          0 |          4 |         54 |
+| g:\Resturant\Resturant App\lib\features\order\widgets\traking_map_widget.dart                                 | Dart     |        177 |          7 |         24 |        208 |
+| g:\Resturant\Resturant App\lib\features\product\controllers\campaign_controller.dart                          | Dart     |         39 |          0 |         10 |         49 |
+| g:\Resturant\Resturant App\lib\features\product\controllers\product_controller.dart                           | Dart     |        173 |          0 |         37 |        210 |
+| g:\Resturant\Resturant App\lib\features\product\domain\models\basic_campaign_model.dart                       | Dart     |         53 |          0 |          5 |         58 |
+| g:\Resturant\Resturant App\lib\features\product\domain\models\review_body_model.dart                          | Dart     |         46 |          0 |          5 |         51 |
+| g:\Resturant\Resturant App\lib\features\product\domain\repositories\campaign_repository.dart                  | Dart     |         60 |          0 |         11 |         71 |
+| g:\Resturant\Resturant App\lib\features\product\domain\repositories\campaign_repository_interface.dart        | Dart     |          5 |          0 |          1 |          6 |
+| g:\Resturant\Resturant App\lib\features\product\domain\repositories\product_repository.dart                   | Dart     |         35 |          0 |          6 |         41 |
+| g:\Resturant\Resturant App\lib\features\product\domain\repositories\product_repository_interface.dart         | Dart     |          6 |          0 |          2 |          8 |
+| g:\Resturant\Resturant App\lib\features\product\domain\services\campaign_service.dart                         | Dart     |         20 |          0 |          6 |         26 |
+| g:\Resturant\Resturant App\lib\features\product\domain\services\campaign_service_interface.dart               | Dart     |          7 |          0 |          1 |          8 |
+| g:\Resturant\Resturant App\lib\features\product\domain\services\product_service.dart                          | Dart     |        206 |          0 |         17 |        223 |
+| g:\Resturant\Resturant App\lib\features\product\domain\services\product_service_interface.dart                | Dart     |         16 |          0 |          2 |         18 |
+| g:\Resturant\Resturant App\lib\features\product\screens\item_campaign_screen.dart                             | Dart     |         36 |          0 |          9 |         45 |
+| g:\Resturant\Resturant App\lib\features\product\screens\popular_food_screen.dart                              | Dart     |         69 |          0 |          8 |         77 |
+| g:\Resturant\Resturant App\lib\features\profile\controllers\profile_controller.dart                           | Dart     |         77 |          0 |         16 |         93 |
+| g:\Resturant\Resturant App\lib\features\profile\domain\models\userinfo_model.dart                             | Dart     |         72 |          0 |          5 |         77 |
+| g:\Resturant\Resturant App\lib\features\profile\domain\repositories\profile_repository.dart                   | Dart     |         64 |          3 |         10 |         77 |
+| g:\Resturant\Resturant App\lib\features\profile\domain\repositories\profile_repository_interface.dart         | Dart     |          8 |          0 |          1 |          9 |
+| g:\Resturant\Resturant App\lib\features\profile\domain\services\profile_service.dart                          | Dart     |         42 |          0 |          7 |         49 |
+| g:\Resturant\Resturant App\lib\features\profile\domain\services\profile_service_interface.dart                | Dart     |         11 |          0 |          2 |         13 |
+| g:\Resturant\Resturant App\lib\features\profile\screens\profile_screen.dart                                   | Dart     |        227 |          0 |         34 |        261 |
+| g:\Resturant\Resturant App\lib\features\profile\screens\update_profile_screen.dart                            | Dart     |        361 |          0 |         34 |        395 |
+| g:\Resturant\Resturant App\lib\features\profile\widgets\profile_bg_widget.dart                                | Dart     |         55 |          0 |         12 |         67 |
+| g:\Resturant\Resturant App\lib\features\profile\widgets\profile_button_widget.dart                            | Dart     |         46 |          0 |          4 |         50 |
+| g:\Resturant\Resturant App\lib\features\profile\widgets\profile_card_widget.dart                              | Dart     |         31 |          0 |          2 |         33 |
+| g:\Resturant\Resturant App\lib\features\profile\widgets\web_profile_widget.dart                               | Dart     |        172 |          0 |         19 |        191 |
+| g:\Resturant\Resturant App\lib\features\refer and earn\controllers\refer_and_earn_controller.dart             | Dart     |         15 |          0 |          4 |         19 |
+| g:\Resturant\Resturant App\lib\features\refer and earn\screens\refer_and_earn_screen.dart                     | Dart     |        167 |          0 |         28 |        195 |
+| g:\Resturant\Resturant App\lib\features\refer and earn\widgets\bottom_sheet_view_widget.dart                  | Dart     |         73 |          0 |          8 |         81 |
+| g:\Resturant\Resturant App\lib\features\restaurant\controllers\restaurant_controller.dart                     | Dart     |        329 |          0 |         70 |        399 |
+| g:\Resturant\Resturant App\lib\features\restaurant\domain\models\cart_suggested_item_model.dart               | Dart     |         20 |          0 |          5 |         25 |
+| g:\Resturant\Resturant App\lib\features\restaurant\domain\models\recommended_product_model.dart               | Dart     |         30 |          0 |          5 |         35 |
+| g:\Resturant\Resturant App\lib\features\restaurant\domain\repositories\restaurant_repository.dart             | Dart     |        145 |          3 |         18 |        166 |
+| g:\Resturant\Resturant App\lib\features\restaurant\domain\repositories\restaurant_repository_interface.dart   | Dart     |         15 |          0 |          1 |         16 |
+| g:\Resturant\Resturant App\lib\features\restaurant\domain\services\restaurant_service.dart                    | Dart     |        170 |          0 |         23 |        193 |
+| g:\Resturant\Resturant App\lib\features\restaurant\domain\services\restaurant_service_interface.dart          | Dart     |         30 |          0 |          2 |         32 |
+| g:\Resturant\Resturant App\lib\features\restaurant\screens\all_restaurant_screen.dart                         | Dart     |         92 |          0 |          9 |        101 |
+| g:\Resturant\Resturant App\lib\features\restaurant\screens\campaign_screen.dart                               | Dart     |        137 |          4 |         17 |        158 |
+| g:\Resturant\Resturant App\lib\features\restaurant\screens\restaurant_product_search_screen.dart              | Dart     |        107 |          0 |         13 |        120 |
+| g:\Resturant\Resturant App\lib\features\restaurant\screens\restaurant_screen.dart                             | Dart     |        364 |          6 |         34 |        404 |
+| g:\Resturant\Resturant App\lib\features\restaurant\widgets\coupon_view_widget.dart                            | Dart     |        104 |          0 |         10 |        114 |
+| g:\Resturant\Resturant App\lib\features\restaurant\widgets\info_view_widget.dart                              | Dart     |        182 |          1 |         23 |        206 |
+| g:\Resturant\Resturant App\lib\features\restaurant\widgets\restaurant_description_view_widget.dart            | Dart     |        164 |          2 |         13 |        179 |
+| g:\Resturant\Resturant App\lib\features\restaurant\widgets\restaurant_info_section_widget.dart                | Dart     |        194 |          0 |         13 |        207 |
+| g:\Resturant\Resturant App\lib\features\restaurant\widgets\restaurant_screen_shimmer_widget.dart              | Dart     |        420 |          0 |         50 |        470 |
+| g:\Resturant\Resturant App\lib\features\review\controllers\review_controller.dart                             | Dart     |         96 |          0 |         23 |        119 |
+| g:\Resturant\Resturant App\lib\features\review\domain\repositories\review_repository.dart                     | Dart     |         72 |          0 |         11 |         83 |
+| g:\Resturant\Resturant App\lib\features\review\domain\repositories\review_repository_interface.dart           | Dart     |         11 |          0 |          1 |         12 |
+| g:\Resturant\Resturant App\lib\features\review\domain\services\review_service.dart                            | Dart     |         26 |          0 |          5 |         31 |
+| g:\Resturant\Resturant App\lib\features\review\domain\services\review_service_interface.dart                  | Dart     |         10 |          0 |          2 |         12 |
+| g:\Resturant\Resturant App\lib\features\review\screens\rate_review_screen.dart                                | Dart     |         66 |          0 |          7 |         73 |
+| g:\Resturant\Resturant App\lib\features\review\screens\review_screen.dart                                     | Dart     |         59 |          0 |          7 |         66 |
+| g:\Resturant\Resturant App\lib\features\review\widgets\deliver_man_review_widget.dart                         | Dart     |        120 |          1 |         11 |        132 |
+| g:\Resturant\Resturant App\lib\features\review\widgets\delivery_man_widget.dart                               | Dart     |         42 |          0 |          3 |         45 |
+| g:\Resturant\Resturant App\lib\features\review\widgets\product_review_widget.dart                             | Dart     |        158 |          3 |         11 |        172 |
+| g:\Resturant\Resturant App\lib\features\review\widgets\review_dialog_widget.dart                              | Dart     |         52 |          0 |         11 |         63 |
+| g:\Resturant\Resturant App\lib\features\review\widgets\review_widget.dart                                     | Dart     |         52 |          0 |         14 |         66 |
+| g:\Resturant\Resturant App\lib\features\search\controllers\search_controller.dart                             | Dart     |        248 |          0 |         55 |        303 |
+| g:\Resturant\Resturant App\lib\features\search\domain\repositories\search_repository.dart                     | Dart     |         57 |          0 |         13 |         70 |
+| g:\Resturant\Resturant App\lib\features\search\domain\repositories\search_repository_interface.dart           | Dart     |         10 |          0 |          1 |         11 |
+| g:\Resturant\Resturant App\lib\features\search\domain\services\search_service.dart                            | Dart     |         97 |          0 |         10 |        107 |
+| g:\Resturant\Resturant App\lib\features\search\domain\services\search_service_interface.dart                  | Dart     |         12 |          0 |          2 |         14 |
+| g:\Resturant\Resturant App\lib\features\search\screens\search_screen.dart                                     | Dart     |        249 |          0 |         33 |        282 |
+| g:\Resturant\Resturant App\lib\features\search\widgets\custom_check_box_widget.dart                           | Dart     |         25 |          0 |          3 |         28 |
+| g:\Resturant\Resturant App\lib\features\search\widgets\filter_widget.dart                                     | Dart     |        226 |          0 |         14 |        240 |
+| g:\Resturant\Resturant App\lib\features\search\widgets\item_view_widget.dart                                  | Dart     |         24 |          0 |          3 |         27 |
+| g:\Resturant\Resturant App\lib\features\search\widgets\search_result_widget.dart                              | Dart     |        100 |          0 |         12 |        112 |
+| g:\Resturant\Resturant App\lib\features\splash\controllers\splash_controller.dart                             | Dart     |        130 |          0 |         23 |        153 |
+| g:\Resturant\Resturant App\lib\features\splash\controllers\theme_controller.dart                              | Dart     |         19 |          0 |          5 |         24 |
+| g:\Resturant\Resturant App\lib\features\splash\domain\models\config_model.dart                                | Dart     |        731 |          1 |         62 |        794 |
+| g:\Resturant\Resturant App\lib\features\splash\domain\models\deep_link_body.dart                              | Dart     |         32 |          0 |          7 |         39 |
+| g:\Resturant\Resturant App\lib\features\splash\domain\repositories\splash_repository.dart                     | Dart     |        105 |         13 |         20 |        138 |
+| g:\Resturant\Resturant App\lib\features\splash\domain\repositories\splash_repository_interface.dart           | Dart     |         15 |          0 |          1 |         16 |
+| g:\Resturant\Resturant App\lib\features\splash\domain\services\splash_service.dart                            | Dart     |         67 |          0 |         14 |         81 |
+| g:\Resturant\Resturant App\lib\features\splash\domain\services\splash_service_interface.dart                  | Dart     |         16 |          0 |          1 |         17 |
+| g:\Resturant\Resturant App\lib\features\splash\screens\splash_screen.dart                                     | Dart     |        149 |          2 |         17 |        168 |
+| g:\Resturant\Resturant App\lib\features\support\screens\support_screen.dart                                   | Dart     |        125 |          0 |         14 |        139 |
+| g:\Resturant\Resturant App\lib\features\support\widgets\custom_card_widget.dart                               | Dart     |         36 |          0 |          2 |         38 |
+| g:\Resturant\Resturant App\lib\features\support\widgets\element_widget.dart                                   | Dart     |         28 |          0 |          5 |         33 |
+| g:\Resturant\Resturant App\lib\features\support\widgets\support_button_widget.dart                            | Dart     |         42 |          0 |          6 |         48 |
+| g:\Resturant\Resturant App\lib\features\support\widgets\web_support_widget.dart                               | Dart     |        108 |          0 |         16 |        124 |
+| g:\Resturant\Resturant App\lib\features\update\screens\update_screen.dart                                     | Dart     |         58 |          0 |          8 |         66 |
+| g:\Resturant\Resturant App\lib\features\verification\controllers\verification_controller.dart                 | Dart     |         72 |          0 |         12 |         84 |
+| g:\Resturant\Resturant App\lib\features\verification\domein\reposotories\verification_repo.dart               | Dart     |         79 |          0 |         14 |         93 |
+| g:\Resturant\Resturant App\lib\features\verification\domein\reposotories\verification_repo_interface.dart     | Dart     |         11 |          0 |          1 |         12 |
+| g:\Resturant\Resturant App\lib\features\verification\domein\services\verification_service.dart                | Dart     |         54 |          0 |          9 |         63 |
+| g:\Resturant\Resturant App\lib\features\verification\domein\services\verification_service_interface.dart      | Dart     |          9 |          0 |          1 |         10 |
+| g:\Resturant\Resturant App\lib\features\verification\screens\forget_pass_screen.dart                          | Dart     |        136 |          1 |         17 |        154 |
+| g:\Resturant\Resturant App\lib\features\verification\screens\new_pass_screen.dart                             | Dart     |        150 |          1 |         15 |        166 |
+| g:\Resturant\Resturant App\lib\features\verification\screens\verification_screen.dart                         | Dart     |        201 |          0 |         15 |        216 |
+| g:\Resturant\Resturant App\lib\features\wallet\controllers\wallet_controller.dart                             | Dart     |        118 |          0 |         27 |        145 |
+| g:\Resturant\Resturant App\lib\features\wallet\domain\models\fund_bonus_model.dart                            | Dart     |        109 |          0 |          7 |        116 |
+| g:\Resturant\Resturant App\lib\features\wallet\domain\models\wallet_filter_body_model.dart                    | Dart     |         15 |          0 |          3 |         18 |
+| g:\Resturant\Resturant App\lib\features\wallet\domain\models\wallet_model.dart                                | Dart     |         80 |          0 |         12 |         92 |
+| g:\Resturant\Resturant App\lib\features\wallet\domain\repositories\wallet_repository.dart                     | Dart     |         76 |          0 |         13 |         89 |
+| g:\Resturant\Resturant App\lib\features\wallet\domain\repositories\wallet_repository_interface.dart           | Dart     |         12 |          0 |          1 |         13 |
+| g:\Resturant\Resturant App\lib\features\wallet\domain\services\wallet_service.dart                            | Dart     |         42 |          0 |          7 |         49 |
+| g:\Resturant\Resturant App\lib\features\wallet\domain\services\wallet_service_interface.dart                  | Dart     |          9 |          0 |          1 |         10 |
+| g:\Resturant\Resturant App\lib\features\wallet\screens\wallet_screen.dart                                     | Dart     |        207 |          0 |         25 |        232 |
+| g:\Resturant\Resturant App\lib\features\wallet\widgets\add_fund_dialogue_widget.dart                          | Dart     |        160 |          0 |         23 |        183 |
+| g:\Resturant\Resturant App\lib\features\wallet\widgets\bonus_banner_widget.dart                               | Dart     |         86 |          0 |          9 |         95 |
+| g:\Resturant\Resturant App\lib\features\wallet\widgets\fund_payment_dialog_widget.dart                        | Dart     |         49 |          1 |          5 |         55 |
+| g:\Resturant\Resturant App\lib\features\wallet\widgets\history_cart_widget.dart                               | Dart     |         63 |          0 |         10 |         73 |
+| g:\Resturant\Resturant App\lib\features\wallet\widgets\wallet_card_widget.dart                                | Dart     |        184 |          0 |         22 |        206 |
+| g:\Resturant\Resturant App\lib\features\wallet\widgets\wallet_history_widget.dart                             | Dart     |        160 |          0 |         17 |        177 |
+| g:\Resturant\Resturant App\lib\features\wallet\widgets\web_bonus_banner_view_widget.dart                      | Dart     |        162 |          0 |         25 |        187 |
+| g:\Resturant\Resturant App\lib\firebase_options.dart                                                          | Dart     |         53 |         21 |          5 |         79 |
+| g:\Resturant\Resturant App\lib\helper\address_helper.dart                                                     | Dart     |         36 |          0 |          6 |         42 |
+| g:\Resturant\Resturant App\lib\helper\auth_helper.dart                                                        | Dart     |         13 |          0 |          4 |         17 |
+| g:\Resturant\Resturant App\lib\helper\cart_helper.dart                                                        | Dart     |        112 |          0 |         21 |        133 |
+| g:\Resturant\Resturant App\lib\helper\checkout_helper.dart                                                    | Dart     |          0 |        244 |          0 |        244 |
+| g:\Resturant\Resturant App\lib\helper\color_coverter.dart                                                     | Dart     |         10 |          0 |          1 |         11 |
+| g:\Resturant\Resturant App\lib\helper\custom_validator.dart                                                   | Dart     |         22 |          0 |          4 |         26 |
+| g:\Resturant\Resturant App\lib\helper\date_converter.dart                                                     | Dart     |        159 |          2 |         35 |        196 |
+| g:\Resturant\Resturant App\lib\helper\extensions.dart                                                         | Dart     |          4 |          0 |          0 |          4 |
+| g:\Resturant\Resturant App\lib\helper\get_di.dart                                                             | Dart     |        333 |          4 |          9 |        346 |
+| g:\Resturant\Resturant App\lib\helper\link_converter.dart                                                     | Dart     |         28 |          0 |          9 |         37 |
+| g:\Resturant\Resturant App\lib\helper\notification_helper.dart                                                | Dart     |        197 |          6 |         12 |        215 |
+| g:\Resturant\Resturant App\lib\helper\price_converter.dart                                                    | Dart     |         73 |          0 |          9 |         82 |
+| g:\Resturant\Resturant App\lib\helper\product_helper.dart                                                     | Dart     |          9 |          0 |          4 |         13 |
+| g:\Resturant\Resturant App\lib\helper\responsive_helper.dart                                                  | Dart     |         44 |          0 |          6 |         50 |
+| g:\Resturant\Resturant App\lib\helper\route_helper.dart                                                       | Dart     |        495 |          2 |          8 |        505 |
+| g:\Resturant\Resturant App\lib\helper\scroll_helper.dart                                                      | Dart     |         26 |          0 |          1 |         27 |
+| g:\Resturant\Resturant App\lib\interface\repository_interface.dart                                            | Dart     |          7 |          0 |          4 |         11 |
+| g:\Resturant\Resturant App\lib\main.dart                                                                      | Dart     |        174 |         21 |         17 |        212 |
+| g:\Resturant\Resturant App\lib\theme\dark_theme.dart                                                          | Dart     |         32 |          0 |          2 |         34 |
+| g:\Resturant\Resturant App\lib\theme\light_theme.dart                                                         | Dart     |         32 |          0 |          2 |         34 |
+| g:\Resturant\Resturant App\lib\util\app_constants.dart                                                        | Dart     |        230 |         11 |         15 |        256 |
+| g:\Resturant\Resturant App\lib\util\dimensions.dart                                                           | Dart     |         21 |          0 |          5 |         26 |
+| g:\Resturant\Resturant App\lib\util\images.dart                                                               | Dart     |        220 |          0 |          2 |        222 |
+| g:\Resturant\Resturant App\lib\util\messages.dart                                                             | Dart     |          9 |          0 |          2 |         11 |
+| g:\Resturant\Resturant App\lib\util\styles.dart                                                               | Dart     |         23 |          0 |          4 |         27 |
+| Total                                                                                                         |          |     56,019 |      1,312 |      6,840 |     64,171 |
++---------------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
