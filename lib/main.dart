@@ -8,7 +8,6 @@ import 'package:swift_tech_resto/features/splash/controllers/splash_controller.d
 import 'package:swift_tech_resto/features/splash/controllers/theme_controller.dart';
 import 'package:swift_tech_resto/features/favourite/controllers/favourite_controller.dart';
 import 'package:swift_tech_resto/features/splash/domain/models/deep_link_body.dart';
-import 'package:swift_tech_resto/firebase_options.dart';
 import 'package:swift_tech_resto/helper/notification_helper.dart';
 import 'package:swift_tech_resto/helper/responsive_helper.dart';
 import 'package:swift_tech_resto/helper/route_helper.dart';

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "88309537787",
+    "project_id": "resturant-f093a",
+    "storage_bucket": "resturant-f093a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:88309537787:android:5bbe15c67d60d2bae0895e",
+        "android_client_info": {
+          "package_name": "com.swifttech.resto.food"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBC6OqnwCHTjgeRZjatFOgqUGTLuuJ15Mk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
