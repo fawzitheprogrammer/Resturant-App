@@ -1,4 +1,4 @@
-package com.sixamtech.stack_food
+package com.swifttech.resto.food
 
 import io.flutter.embedding.android.FlutterActivity
 
