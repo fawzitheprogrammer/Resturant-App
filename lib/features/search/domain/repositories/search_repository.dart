@@ -1,7 +1,7 @@
-import 'package:stackfood_multivendor/common/models/product_model.dart';
-import 'package:stackfood_multivendor/api/api_client.dart';
-import 'package:stackfood_multivendor/features/search/domain/repositories/search_repository_interface.dart';
-import 'package:stackfood_multivendor/util/app_constants.dart';
+import 'package:swift_tech_resto/common/models/product_model.dart';
+import 'package:swift_tech_resto/api/api_client.dart';
+import 'package:swift_tech_resto/features/search/domain/repositories/search_repository_interface.dart';
+import 'package:swift_tech_resto/util/app_constants.dart';
 import 'package:get/get_connect.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -14,21 +14,24 @@ class SearchRepository implements SearchRepositoryInterface {
   Future<List<Product>?> getSuggestedFoods() async {
     List<Product>? suggestedFoodList = [];
     Response response = await apiClient.getData(AppConstants.suggestedFoodUri);
-    if(response.statusCode == 200) {
+    if (response.statusCode == 200) {
       suggestedFoodList = [];
-      response.body.forEach((suggestedFood) => suggestedFoodList!.add(Product.fromJson(suggestedFood)));
+      response.body.forEach((suggestedFood) =>
+          suggestedFoodList!.add(Product.fromJson(suggestedFood)));
     }
     return suggestedFoodList;
   }
 
   @override
   Future<Response> getSearchData(String query, bool isRestaurant) async {
-    return await apiClient.getData('${AppConstants.searchUri}${isRestaurant ? 'restaurants' : 'products'}/search?name=$query&offset=1&limit=50');
+    return await apiClient.getData(
+        '${AppConstants.searchUri}${isRestaurant ? 'restaurants' : 'products'}/search?name=$query&offset=1&limit=50');
   }
 
   @override
   Future<bool> saveSearchHistory(List<String> searchHistories) async {
-    return await sharedPreferences.setStringList(AppConstants.searchHistory, searchHistories);
+    return await sharedPreferences.setStringList(
+        AppConstants.searchHistory, searchHistories);
   }
 
   @override
@@ -65,6 +68,4 @@ class SearchRepository implements SearchRepositoryInterface {
   Future update(Map<String, dynamic> body, int? id) {
     throw UnimplementedError();
   }
-
-  
 }

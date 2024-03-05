@@ -1,6 +1,6 @@
-import 'package:stackfood_multivendor/common/models/product_model.dart';
-import 'package:stackfood_multivendor/common/models/restaurant_model.dart';
-import 'package:stackfood_multivendor/features/search/domain/services/search_service_interface.dart';
+import 'package:swift_tech_resto/common/models/product_model.dart';
+import 'package:swift_tech_resto/common/models/restaurant_model.dart';
+import 'package:swift_tech_resto/features/search/domain/services/search_service_interface.dart';
 import 'package:get/get.dart';
 
 class SearchController extends GetxController implements GetxService {
@@ -129,7 +129,7 @@ class SearchController extends GetxController implements GetxService {
 
   void setSearchMode(bool isSearchMode, {bool canUpdate = true}) {
     _isSearchMode = isSearchMode;
-    if(isSearchMode) {
+    if (isSearchMode) {
       _searchText = '';
       _prodResultText = '';
       _restResultText = '';
@@ -152,10 +152,10 @@ class SearchController extends GetxController implements GetxService {
       _upperValue = 0;
       _lowerValue = 0;
     }
-    if (_isRestaurant){
+    if (_isRestaurant) {
       _isRestaurant = !_isRestaurant;
     }
-    if(canUpdate) {
+    if (canUpdate) {
       update();
     }
   }
@@ -167,12 +167,28 @@ class SearchController extends GetxController implements GetxService {
   }
 
   void sortFoodSearchList() {
-    _searchProductList = searchServiceInterface.sortFoodSearchList(_allProductList, _upperValue, _lowerValue, _rating, _veg, _nonVeg, _isAvailableFoods, _isDiscountedFoods, _sortIndex);
+    _searchProductList = searchServiceInterface.sortFoodSearchList(
+        _allProductList,
+        _upperValue,
+        _lowerValue,
+        _rating,
+        _veg,
+        _nonVeg,
+        _isAvailableFoods,
+        _isDiscountedFoods,
+        _sortIndex);
     update();
   }
 
   void sortRestSearchList() {
-    _searchRestList = searchServiceInterface.sortRestaurantSearchList(_allRestList, _restaurantRating, _restaurantVeg, _restaurantNonVeg, _isAvailableRestaurant, _isDiscountedRestaurant, _restaurantSortIndex);
+    _searchRestList = searchServiceInterface.sortRestaurantSearchList(
+        _allRestList,
+        _restaurantRating,
+        _restaurantVeg,
+        _restaurantNonVeg,
+        _isAvailableRestaurant,
+        _isDiscountedRestaurant,
+        _restaurantSortIndex);
     update();
   }
 
@@ -187,7 +203,8 @@ class SearchController extends GetxController implements GetxService {
   }
 
   void searchData(String query) async {
-    if((_isRestaurant && query.isNotEmpty && query != _restResultText) || (!_isRestaurant && query.isNotEmpty && query != _prodResultText)) {
+    if ((_isRestaurant && query.isNotEmpty && query != _restResultText) ||
+        (!_isRestaurant && query.isNotEmpty && query != _prodResultText)) {
       _searchText = query;
       _rating = -1;
       _restaurantRating = -1;
@@ -207,7 +224,8 @@ class SearchController extends GetxController implements GetxService {
       _isSearchMode = false;
       update();
 
-      Response response = await searchServiceInterface.getSearchData(query, _isRestaurant);
+      Response response =
+          await searchServiceInterface.getSearchData(query, _isRestaurant);
       if (response.statusCode == 200) {
         if (query.isEmpty) {
           if (_isRestaurant) {
@@ -220,14 +238,18 @@ class SearchController extends GetxController implements GetxService {
             _restResultText = query;
             _searchRestList = [];
             _allRestList = [];
-            _searchRestList!.addAll(RestaurantModel.fromJson(response.body).restaurants!);
-            _allRestList!.addAll(RestaurantModel.fromJson(response.body).restaurants!);
+            _searchRestList!
+                .addAll(RestaurantModel.fromJson(response.body).restaurants!);
+            _allRestList!
+                .addAll(RestaurantModel.fromJson(response.body).restaurants!);
           } else {
             _prodResultText = query;
             _searchProductList = [];
             _allProductList = [];
-            _searchProductList!.addAll(ProductModel.fromJson(response.body).products!);
-            _allProductList!.addAll(ProductModel.fromJson(response.body).products!);
+            _searchProductList!
+                .addAll(ProductModel.fromJson(response.body).products!);
+            _allProductList!
+                .addAll(ProductModel.fromJson(response.body).products!);
           }
         }
       }
@@ -298,6 +320,4 @@ class SearchController extends GetxController implements GetxService {
     _restaurantSortIndex = -1;
     update();
   }
-
-
 }

@@ -1,12 +1,16 @@
-import 'package:stackfood_multivendor/util/dimensions.dart';
-import 'package:stackfood_multivendor/util/styles.dart';
+import 'package:swift_tech_resto/util/dimensions.dart';
+import 'package:swift_tech_resto/util/styles.dart';
 import 'package:flutter/material.dart';
 
 class RatingBarWidget extends StatelessWidget {
   final double? rating;
   final double size;
   final int? ratingCount;
-  const RatingBarWidget({super.key, required this.rating, required this.ratingCount, this.size = 18});
+  const RatingBarWidget(
+      {super.key,
+      required this.rating,
+      required this.ratingCount,
+      this.size = 18});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +21,8 @@ class RatingBarWidget extends StatelessWidget {
 
     for (int i = 0; i < 5; i++) {
       if (i < realNumber) {
-        starList.add(Icon(Icons.star, color: Theme.of(context).primaryColor, size: size));
+        starList.add(Icon(Icons.star,
+            color: Theme.of(context).primaryColor, size: size));
       } else if (i == realNumber) {
         starList.add(SizedBox(
           height: size,
@@ -25,7 +30,8 @@ class RatingBarWidget extends StatelessWidget {
           child: Stack(
             fit: StackFit.expand,
             children: [
-              Icon(Icons.star, color: Theme.of(context).primaryColor, size: size),
+              Icon(Icons.star,
+                  color: Theme.of(context).primaryColor, size: size),
               ClipRect(
                 clipper: _Clipper(part: partNumber),
                 child: Icon(Icons.star, color: Colors.grey, size: size),
@@ -37,13 +43,18 @@ class RatingBarWidget extends StatelessWidget {
         starList.add(Icon(Icons.star, color: Colors.grey, size: size));
       }
     }
-    ratingCount != null ? starList.add(Padding(
-      padding: const EdgeInsets.only(left: Dimensions.paddingSizeExtraSmall),
-      child: Text(
-        '($ratingCount)', textDirection: TextDirection.ltr,
-        style: robotoRegular.copyWith(fontSize: size*0.8, color: Theme.of(context).disabledColor),
-      ),
-    )) : const SizedBox();
+    ratingCount != null
+        ? starList.add(Padding(
+            padding:
+                const EdgeInsets.only(left: Dimensions.paddingSizeExtraSmall),
+            child: Text(
+              '($ratingCount)',
+              textDirection: TextDirection.ltr,
+              style: robotoRegular.copyWith(
+                  fontSize: size * 0.8, color: Theme.of(context).disabledColor),
+            ),
+          ))
+        : const SizedBox();
 
     return Row(
       mainAxisSize: MainAxisSize.min,

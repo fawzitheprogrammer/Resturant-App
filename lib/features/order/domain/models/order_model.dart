@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:stackfood_multivendor/features/address/domain/models/address_model.dart';
-import 'package:stackfood_multivendor/common/models/restaurant_model.dart';
+import 'package:swift_tech_resto/features/address/domain/models/address_model.dart';
+import 'package:swift_tech_resto/common/models/restaurant_model.dart';
 
 class PaginatedOrderModel {
   int? totalSize;
@@ -33,7 +33,6 @@ class PaginatedOrderModel {
     }
     return data;
   }
-
 }
 
 class OrderModel {
@@ -88,58 +87,58 @@ class OrderModel {
   List<String>? orderProof;
   OfflinePayment? offlinePayment;
 
-  OrderModel(
-      {this.id,
-        this.userId,
-        this.orderAmount,
-        this.couponDiscountAmount,
-        this.couponDiscountTitle,
-        this.paymentStatus,
-        this.orderStatus,
-        this.totalTaxAmount,
-        this.paymentMethod,
-        this.couponCode,
-        this.orderNote,
-        this.orderType,
-        this.createdAt,
-        this.updatedAt,
-        this.deliveryCharge,
-        this.scheduleAt,
-        this.otp,
-        this.pending,
-        this.accepted,
-        this.confirmed,
-        this.processing,
-        this.handover,
-        this.pickedUp,
-        this.delivered,
-        this.canceled,
-        this.refundRequested,
-        this.refunded,
-        this.scheduled,
-        this.restaurantDiscountAmount,
-        this.failed,
-        this.dmTips,
-        this.processingTime,
-        this.detailsCount,
-        this.deliveryMan,
-        this.deliveryAddress,
-        this.restaurant,
-        this.refund,
-        this.taxStatus,
-        this.cancellationReason,
-        this.cancellationNote,
-        this.subscriptionId,
-        this.subscription,
-        this.cutlery,
-        this.unavailableItemNote,
-        this.deliveryInstruction,
-        this.additionalCharge,
-        this.partiallyPaidAmount,
-        this.payments,
-        this.orderProof,
-        this.offlinePayment,
-      });
+  OrderModel({
+    this.id,
+    this.userId,
+    this.orderAmount,
+    this.couponDiscountAmount,
+    this.couponDiscountTitle,
+    this.paymentStatus,
+    this.orderStatus,
+    this.totalTaxAmount,
+    this.paymentMethod,
+    this.couponCode,
+    this.orderNote,
+    this.orderType,
+    this.createdAt,
+    this.updatedAt,
+    this.deliveryCharge,
+    this.scheduleAt,
+    this.otp,
+    this.pending,
+    this.accepted,
+    this.confirmed,
+    this.processing,
+    this.handover,
+    this.pickedUp,
+    this.delivered,
+    this.canceled,
+    this.refundRequested,
+    this.refunded,
+    this.scheduled,
+    this.restaurantDiscountAmount,
+    this.failed,
+    this.dmTips,
+    this.processingTime,
+    this.detailsCount,
+    this.deliveryMan,
+    this.deliveryAddress,
+    this.restaurant,
+    this.refund,
+    this.taxStatus,
+    this.cancellationReason,
+    this.cancellationNote,
+    this.subscriptionId,
+    this.subscription,
+    this.cutlery,
+    this.unavailableItemNote,
+    this.deliveryInstruction,
+    this.additionalCharge,
+    this.partiallyPaidAmount,
+    this.payments,
+    this.orderProof,
+    this.offlinePayment,
+  });
 
   OrderModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -189,13 +188,16 @@ class OrderModel {
     cancellationReason = json['cancellation_reason'];
     cancellationNote = json['cancellation_note'];
     subscriptionId = json['subscription_id'];
-    subscription = json['subscription'] != null ? SubscriptionModel.fromJson(json['subscription']) : null;
+    subscription = json['subscription'] != null
+        ? SubscriptionModel.fromJson(json['subscription'])
+        : null;
     cutlery = json['cutlery'];
     unavailableItemNote = json['unavailable_item_note'];
     deliveryInstruction = json['delivery_instruction'];
     additionalCharge = json['additional_charge']?.toDouble() ?? 0;
-    if(json['partially_paid_amount'] != null){
-      partiallyPaidAmount = double.parse(json['partially_paid_amount'].toString());
+    if (json['partially_paid_amount'] != null) {
+      partiallyPaidAmount =
+          double.parse(json['partially_paid_amount'].toString());
     }
     if (json['payments'] != null) {
       payments = <Payments>[];
@@ -203,19 +205,19 @@ class OrderModel {
         payments!.add(Payments.fromJson(v));
       });
     }
-    if(json['order_proof'] != null && json['order_proof'] != "null"){
-      if(json['order_proof'].toString().startsWith('[')){
+    if (json['order_proof'] != null && json['order_proof'] != "null") {
+      if (json['order_proof'].toString().startsWith('[')) {
         orderProof = [];
-        if(json['order_proof'] is String) {
+        if (json['order_proof'] is String) {
           jsonDecode(json['order_proof']).forEach((v) {
             orderProof!.add(v);
           });
-        }else{
+        } else {
           json['order_proof'].forEach((v) {
             orderProof!.add(v);
           });
         }
-      }else{
+      } else {
         orderProof = [];
         orderProof!.add(json['order_proof'].toString());
       }
@@ -310,20 +312,19 @@ class DeliveryMan {
 
   DeliveryMan(
       {this.id,
-        this.fName,
-        this.lName,
-        this.phone,
-        this.email,
-        this.image,
-        this.zoneId,
-        this.active,
-        this.available,
-        this.avgRating,
-        this.ratingCount,
-        this.lat,
-        this.lng,
-        this.location
-      });
+      this.fName,
+      this.lName,
+      this.phone,
+      this.email,
+      this.image,
+      this.zoneId,
+      this.active,
+      this.available,
+      this.avgRating,
+      this.ratingCount,
+      this.lat,
+      this.lng,
+      this.location});
 
   DeliveryMan.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -371,13 +372,14 @@ class Payments {
   String? createdAt;
   String? updatedAt;
 
-  Payments({this.id,
-    this.orderId,
-    this.amount,
-    this.paymentStatus,
-    this.paymentMethod,
-    this.createdAt,
-    this.updatedAt});
+  Payments(
+      {this.id,
+      this.orderId,
+      this.amount,
+      this.paymentStatus,
+      this.paymentMethod,
+      this.createdAt,
+      this.updatedAt});
 
   Payments.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -520,23 +522,23 @@ class SubscriptionModel {
   bool? isPausedToday;
   Restaurant? restaurant;
 
-  SubscriptionModel(
-      {this.id,
-        this.status,
-        this.startAt,
-        this.endAt,
-        this.note,
-        this.type,
-        this.quantity,
-        this.userId,
-        this.restaurantId,
-        this.billingAmount,
-        this.paidAmount,
-        this.createdAt,
-        this.updatedAt,
-        this.isPausedToday,
-        this.restaurant,
-      });
+  SubscriptionModel({
+    this.id,
+    this.status,
+    this.startAt,
+    this.endAt,
+    this.note,
+    this.type,
+    this.quantity,
+    this.userId,
+    this.restaurantId,
+    this.billingAmount,
+    this.paidAmount,
+    this.createdAt,
+    this.updatedAt,
+    this.isPausedToday,
+    this.restaurant,
+  });
 
   SubscriptionModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -553,7 +555,8 @@ class SubscriptionModel {
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
     isPausedToday = json['is_paused_today'];
-    restaurant = json['restaurant'] != null ? Restaurant.fromJson(json['store']) : null;
+    restaurant =
+        json['restaurant'] != null ? Restaurant.fromJson(json['store']) : null;
   }
 
   Map<String, dynamic> toJson() {

@@ -1,13 +1,13 @@
-import 'package:stackfood_multivendor/common/widgets/custom_loader_widget.dart';
-import 'package:stackfood_multivendor/features/address/controllers/address_controller.dart';
-import 'package:stackfood_multivendor/features/auth/controllers/auth_controller.dart';
-import 'package:stackfood_multivendor/features/location/controllers/location_controller.dart';
-import 'package:stackfood_multivendor/features/location/widgets/pick_map_dialog.dart';
-import 'package:stackfood_multivendor/features/splash/domain/models/config_model.dart';
-import 'package:stackfood_multivendor/features/splash/domain/services/splash_service_interface.dart';
-import 'package:stackfood_multivendor/helper/address_helper.dart';
-import 'package:stackfood_multivendor/helper/responsive_helper.dart';
-import 'package:stackfood_multivendor/helper/route_helper.dart';
+import 'package:swift_tech_resto/common/widgets/custom_loader_widget.dart';
+import 'package:swift_tech_resto/features/address/controllers/address_controller.dart';
+import 'package:swift_tech_resto/features/auth/controllers/auth_controller.dart';
+import 'package:swift_tech_resto/features/location/controllers/location_controller.dart';
+import 'package:swift_tech_resto/features/location/widgets/pick_map_dialog.dart';
+import 'package:swift_tech_resto/features/splash/domain/models/config_model.dart';
+import 'package:swift_tech_resto/features/splash/domain/services/splash_service_interface.dart';
+import 'package:swift_tech_resto/helper/address_helper.dart';
+import 'package:swift_tech_resto/helper/responsive_helper.dart';
+import 'package:swift_tech_resto/helper/route_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -68,7 +68,7 @@ class SplashController extends GetxController implements GetxService {
 
   void setNearestRestaurantIndex(int index, {bool notify = true}) {
     _nearestRestaurantIndex = index;
-    if(notify) {
+    if (notify) {
       update();
     }
   }
@@ -101,53 +101,69 @@ class SplashController extends GetxController implements GetxService {
     return isSuccess;
   }
 
-  Future<void> navigateToLocationScreen(String page, {bool offNamed = false, bool offAll = false}) async {
+  Future<void> navigateToLocationScreen(String page,
+      {bool offNamed = false, bool offAll = false}) async {
     bool fromSignup = page == RouteHelper.signUp;
     bool fromHome = page == 'home';
-    if(!fromHome && AddressHelper.getAddressFromSharedPref() != null) {
+    if (!fromHome && AddressHelper.getAddressFromSharedPref() != null) {
       Get.dialog(const CustomLoaderWidget(), barrierDismissible: false);
       Get.find<LocationController>().autoNavigate(
-          AddressHelper.getAddressFromSharedPref(), fromSignup, null, false, ResponsiveHelper.isDesktop(Get.context)
-      );
-    }else if(Get.find<AuthController>().isLoggedIn()) {
+          AddressHelper.getAddressFromSharedPref(),
+          fromSignup,
+          null,
+          false,
+          ResponsiveHelper.isDesktop(Get.context));
+    } else if (Get.find<AuthController>().isLoggedIn()) {
       Get.dialog(const CustomLoaderWidget(), barrierDismissible: false);
       await Get.find<AddressController>().getAddressList();
       Get.back();
-      if(Get.find<AddressController>().addressList != null && Get.find<AddressController>().addressList!.isEmpty) {
-        if(ResponsiveHelper.isDesktop(Get.context)) {
-          showGeneralDialog(context: Get.context!, pageBuilder: (_,__,___) {
-            return SizedBox(
-              height: 300, width: 300,
-              child: PickMapDialog(
-                fromSignUp: (page == RouteHelper.signUp), canRoute: false, fromAddAddress: false, route: null,
-              ),
-            );
-          });
+      if (Get.find<AddressController>().addressList != null &&
+          Get.find<AddressController>().addressList!.isEmpty) {
+        if (ResponsiveHelper.isDesktop(Get.context)) {
+          showGeneralDialog(
+              context: Get.context!,
+              pageBuilder: (_, __, ___) {
+                return SizedBox(
+                  height: 300,
+                  width: 300,
+                  child: PickMapDialog(
+                    fromSignUp: (page == RouteHelper.signUp),
+                    canRoute: false,
+                    fromAddAddress: false,
+                    route: null,
+                  ),
+                );
+              });
         } else {
           Get.toNamed(RouteHelper.getPickMapRoute(page, false));
         }
-      }else {
-        if(offNamed) {
+      } else {
+        if (offNamed) {
           Get.offNamed(RouteHelper.getAccessLocationRoute(page));
-        }else if(offAll) {
+        } else if (offAll) {
           Get.offAllNamed(RouteHelper.getAccessLocationRoute(page));
-        }else {
+        } else {
           Get.toNamed(RouteHelper.getAccessLocationRoute(page));
         }
       }
-    }else {
-      if(ResponsiveHelper.isDesktop(Get.context)) {
-        showGeneralDialog(context: Get.context!, pageBuilder: (_,__,___) {
-          return SizedBox(
-            height: 300, width: 300,
-            child: PickMapDialog(
-                fromSignUp: (page == RouteHelper.signUp), canRoute: false, fromAddAddress: false, route: null),
-          );
-        });
+    } else {
+      if (ResponsiveHelper.isDesktop(Get.context)) {
+        showGeneralDialog(
+            context: Get.context!,
+            pageBuilder: (_, __, ___) {
+              return SizedBox(
+                height: 300,
+                width: 300,
+                child: PickMapDialog(
+                    fromSignUp: (page == RouteHelper.signUp),
+                    canRoute: false,
+                    fromAddAddress: false,
+                    route: null),
+              );
+            });
       } else {
         Get.toNamed(RouteHelper.getPickMapRoute(page, false));
       }
     }
   }
-
 }

@@ -1,16 +1,17 @@
 import 'dart:convert';
 
-import 'package:stackfood_multivendor/api/api_client.dart';
-import 'package:stackfood_multivendor/features/notification/domain/models/notification_model.dart';
-import 'package:stackfood_multivendor/features/notification/domain/repository/notification_repository_interface.dart';
-import 'package:stackfood_multivendor/util/app_constants.dart';
+import 'package:swift_tech_resto/api/api_client.dart';
+import 'package:swift_tech_resto/features/notification/domain/models/notification_model.dart';
+import 'package:swift_tech_resto/features/notification/domain/repository/notification_repository_interface.dart';
+import 'package:swift_tech_resto/util/app_constants.dart';
 import 'package:get/get_connect.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class NotificationRepository implements NotificationRepositoryInterface {
   final ApiClient apiClient;
   final SharedPreferences sharedPreferences;
-  NotificationRepository({required this.apiClient, required this.sharedPreferences});
+  NotificationRepository(
+      {required this.apiClient, required this.sharedPreferences});
 
   @override
   void saveSeenNotificationCount(int count) {
@@ -25,7 +26,7 @@ class NotificationRepository implements NotificationRepositoryInterface {
   @override
   List<int> getNotificationIdList() {
     List<String>? list = [];
-    if(sharedPreferences.containsKey(AppConstants.notificationIdList)) {
+    if (sharedPreferences.containsKey(AppConstants.notificationIdList)) {
       list = sharedPreferences.getStringList(AppConstants.notificationIdList);
     }
     List<int> notificationIdList = [];
@@ -65,7 +66,8 @@ class NotificationRepository implements NotificationRepositoryInterface {
     Response response = await apiClient.getData(AppConstants.notificationUri);
     if (response.statusCode == 200) {
       notificationList = [];
-      response.body.forEach((notification) => notificationList!.add(NotificationModel.fromJson(notification)));
+      response.body.forEach((notification) =>
+          notificationList!.add(NotificationModel.fromJson(notification)));
     }
     return notificationList;
   }
@@ -74,5 +76,4 @@ class NotificationRepository implements NotificationRepositoryInterface {
   Future update(Map<String, dynamic> body, int? id) {
     throw UnimplementedError();
   }
-
 }

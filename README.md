@@ -1,4 +1,4 @@
-# stackfood_multivendor
+# swift_tech_resto
 
 A new Flutter application.
 

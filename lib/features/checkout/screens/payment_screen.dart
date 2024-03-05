@@ -1,16 +1,16 @@
 import 'dart:async';
-import 'package:stackfood_multivendor/features/checkout/widgets/payment_failed_dialog.dart';
-import 'package:stackfood_multivendor/features/splash/controllers/splash_controller.dart';
-import 'package:stackfood_multivendor/features/order/domain/models/order_model.dart';
-import 'package:stackfood_multivendor/features/location/domain/models/zone_response_model.dart';
-import 'package:stackfood_multivendor/features/loyalty/controllers/loyalty_controller.dart';
-import 'package:stackfood_multivendor/features/wallet/widgets/fund_payment_dialog_widget.dart';
-import 'package:stackfood_multivendor/helper/address_helper.dart';
-import 'package:stackfood_multivendor/helper/route_helper.dart';
-import 'package:stackfood_multivendor/util/app_constants.dart';
-import 'package:stackfood_multivendor/util/dimensions.dart';
-import 'package:stackfood_multivendor/common/widgets/custom_app_bar_widget.dart';
-import 'package:stackfood_multivendor/common/widgets/menu_drawer_widget.dart';
+import 'package:swift_tech_resto/features/checkout/widgets/payment_failed_dialog.dart';
+import 'package:swift_tech_resto/features/splash/controllers/splash_controller.dart';
+import 'package:swift_tech_resto/features/order/domain/models/order_model.dart';
+import 'package:swift_tech_resto/features/location/domain/models/zone_response_model.dart';
+import 'package:swift_tech_resto/features/loyalty/controllers/loyalty_controller.dart';
+import 'package:swift_tech_resto/features/wallet/widgets/fund_payment_dialog_widget.dart';
+import 'package:swift_tech_resto/helper/address_helper.dart';
+import 'package:swift_tech_resto/helper/route_helper.dart';
+import 'package:swift_tech_resto/util/app_constants.dart';
+import 'package:swift_tech_resto/util/dimensions.dart';
+import 'package:swift_tech_resto/common/widgets/custom_app_bar_widget.dart';
+import 'package:swift_tech_resto/common/widgets/menu_drawer_widget.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
@@ -23,8 +23,14 @@ class PaymentScreen extends StatefulWidget {
   final String? subscriptionUrl;
   final String guestId;
   final String contactNumber;
-  const PaymentScreen({super.key, required this.orderModel, required this.paymentMethod, this.addFundUrl, this.subscriptionUrl,
-    required this.guestId, required this.contactNumber});
+  const PaymentScreen(
+      {super.key,
+      required this.orderModel,
+      required this.paymentMethod,
+      this.addFundUrl,
+      this.subscriptionUrl,
+      required this.guestId,
+      required this.contactNumber});
 
   @override
   PaymentScreenState createState() => PaymentScreenState();
@@ -41,9 +47,14 @@ class PaymentScreenState extends State<PaymentScreen> {
   @override
   void initState() {
     super.initState();
-    if(widget.addFundUrl == '' && widget.addFundUrl!.isEmpty && widget.subscriptionUrl == '' && widget.subscriptionUrl!.isEmpty) {
-      selectedUrl = '${AppConstants.baseUrl}/payment-mobile?customer_id=${widget.orderModel.userId == 0 ? widget.guestId : widget.orderModel.userId}&order_id=${widget.orderModel.id}&payment_method=${widget.paymentMethod}';
-    } else if(widget.subscriptionUrl != '' && widget.subscriptionUrl!.isNotEmpty){
+    if (widget.addFundUrl == '' &&
+        widget.addFundUrl!.isEmpty &&
+        widget.subscriptionUrl == '' &&
+        widget.subscriptionUrl!.isEmpty) {
+      selectedUrl =
+          '${AppConstants.baseUrl}/payment-mobile?customer_id=${widget.orderModel.userId == 0 ? widget.guestId : widget.orderModel.userId}&order_id=${widget.orderModel.id}&payment_method=${widget.paymentMethod}';
+    } else if (widget.subscriptionUrl != '' &&
+        widget.subscriptionUrl!.isNotEmpty) {
       selectedUrl = widget.subscriptionUrl!;
     } else {
       selectedUrl = widget.addFundUrl!;
@@ -52,36 +63,49 @@ class PaymentScreenState extends State<PaymentScreen> {
   }
 
   void _initData() async {
-
-    if(widget.addFundUrl == null && widget.addFundUrl!.isEmpty){
-      ZoneData zoneData = AddressHelper.getAddressFromSharedPref()!.zoneData!.firstWhere((data) => data.id == widget.orderModel.restaurant!.zoneId);
+    if (widget.addFundUrl == null && widget.addFundUrl!.isEmpty) {
+      ZoneData zoneData = AddressHelper.getAddressFromSharedPref()!
+          .zoneData!
+          .firstWhere(
+              (data) => data.id == widget.orderModel.restaurant!.zoneId);
       maxCodOrderAmount = zoneData.maxCodOrderAmount;
     }
 
-    browser = MyInAppBrowser(orderID: widget.orderModel.id.toString(), orderAmount: widget.orderModel.orderAmount, maxCodOrderAmount: maxCodOrderAmount, addFundUrl: widget.addFundUrl, subscriptionUrl: widget.subscriptionUrl, contactNumber: widget.contactNumber);
+    browser = MyInAppBrowser(
+        orderID: widget.orderModel.id.toString(),
+        orderAmount: widget.orderModel.orderAmount,
+        maxCodOrderAmount: maxCodOrderAmount,
+        addFundUrl: widget.addFundUrl,
+        subscriptionUrl: widget.subscriptionUrl,
+        contactNumber: widget.contactNumber);
 
-      await InAppWebViewController.setWebContentsDebuggingEnabled(true);
+    await InAppWebViewController.setWebContentsDebuggingEnabled(true);
 
-      bool swAvailable = await WebViewFeature.isFeatureSupported(WebViewFeature.SERVICE_WORKER_BASIC_USAGE);
-      bool swInterceptAvailable = await WebViewFeature.isFeatureSupported(WebViewFeature.SERVICE_WORKER_SHOULD_INTERCEPT_REQUEST);
+    bool swAvailable = await WebViewFeature.isFeatureSupported(
+        WebViewFeature.SERVICE_WORKER_BASIC_USAGE);
+    bool swInterceptAvailable = await WebViewFeature.isFeatureSupported(
+        WebViewFeature.SERVICE_WORKER_SHOULD_INTERCEPT_REQUEST);
 
-      if (swAvailable && swInterceptAvailable) {
-        ServiceWorkerController serviceWorkerController = ServiceWorkerController.instance();
-        await serviceWorkerController.setServiceWorkerClient(ServiceWorkerClient(
-          shouldInterceptRequest: (request) async {
-            if (kDebugMode) {
-              print(request);
-            }
-            return null;
-          },
-        ));
-      }
+    if (swAvailable && swInterceptAvailable) {
+      ServiceWorkerController serviceWorkerController =
+          ServiceWorkerController.instance();
+      await serviceWorkerController.setServiceWorkerClient(ServiceWorkerClient(
+        shouldInterceptRequest: (request) async {
+          if (kDebugMode) {
+            print(request);
+          }
+          return null;
+        },
+      ));
+    }
 
     await browser.openUrlRequest(
       urlRequest: URLRequest(url: WebUri(selectedUrl)),
       settings: InAppBrowserClassSettings(
-        webViewSettings: InAppWebViewSettings(useShouldOverrideUrlLoading: true, useOnLoadResource: true),
-        browserSettings: InAppBrowserSettings(hideUrlBar: true, hideToolbarTop: GetPlatform.isAndroid),
+        webViewSettings: InAppWebViewSettings(
+            useShouldOverrideUrlLoading: true, useOnLoadResource: true),
+        browserSettings: InAppBrowserSettings(
+            hideUrlBar: true, hideToolbarTop: GetPlatform.isAndroid),
       ),
     );
   }
@@ -95,16 +119,22 @@ class PaymentScreenState extends State<PaymentScreen> {
       },
       child: Scaffold(
         backgroundColor: Theme.of(context).primaryColor,
-        appBar: CustomAppBarWidget(title: 'payment'.tr, onBackPressed: () => _exitApp()),
-        endDrawer: const MenuDrawerWidget(), endDrawerEnableOpenDragGesture: false,
+        appBar: CustomAppBarWidget(
+            title: 'payment'.tr, onBackPressed: () => _exitApp()),
+        endDrawer: const MenuDrawerWidget(),
+        endDrawerEnableOpenDragGesture: false,
         body: Center(
           child: SizedBox(
             width: Dimensions.webMaxWidth,
             child: Stack(
               children: [
-                _isLoading ? Center(
-                  child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(Theme.of(context).primaryColor)),
-                ) : const SizedBox.shrink(),
+                _isLoading
+                    ? Center(
+                        child: CircularProgressIndicator(
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                                Theme.of(context).primaryColor)),
+                      )
+                    : const SizedBox.shrink(),
               ],
             ),
           ),
@@ -115,16 +145,25 @@ class PaymentScreenState extends State<PaymentScreen> {
 
   Future<bool?> _exitApp() async {
     if (kDebugMode) {
-      print('---------- : ${widget.orderModel.orderStatus} / ${widget.orderModel.paymentMethod}/ ${widget.orderModel.id}');
-      print('---check------- : ${widget.addFundUrl == null} && ${widget.addFundUrl!.isEmpty} && ${widget.subscriptionUrl == ''} && ${widget.subscriptionUrl!.isEmpty}');
+      print(
+          '---------- : ${widget.orderModel.orderStatus} / ${widget.orderModel.paymentMethod}/ ${widget.orderModel.id}');
+      print(
+          '---check------- : ${widget.addFundUrl == null} && ${widget.addFundUrl!.isEmpty} && ${widget.subscriptionUrl == ''} && ${widget.subscriptionUrl!.isEmpty}');
     }
-    if((widget.addFundUrl == null || widget.addFundUrl!.isEmpty) && widget.subscriptionUrl == '' && widget.subscriptionUrl!.isEmpty){
-      return Get.dialog(PaymentFailedDialog(orderID: widget.orderModel.id.toString(), orderAmount: widget.orderModel.orderAmount, maxCodOrderAmount: maxCodOrderAmount, contactPersonNumber: widget.contactNumber));
+    if ((widget.addFundUrl == null || widget.addFundUrl!.isEmpty) &&
+        widget.subscriptionUrl == '' &&
+        widget.subscriptionUrl!.isEmpty) {
+      return Get.dialog(PaymentFailedDialog(
+          orderID: widget.orderModel.id.toString(),
+          orderAmount: widget.orderModel.orderAmount,
+          maxCodOrderAmount: maxCodOrderAmount,
+          contactPersonNumber: widget.contactNumber));
     } else {
-      return Get.dialog(FundPaymentDialogWidget(isSubscription: widget.subscriptionUrl != null && widget.subscriptionUrl!.isNotEmpty));
+      return Get.dialog(FundPaymentDialogWidget(
+          isSubscription: widget.subscriptionUrl != null &&
+              widget.subscriptionUrl!.isNotEmpty));
     }
   }
-
 }
 
 class MyInAppBrowser extends InAppBrowser {
@@ -134,8 +173,15 @@ class MyInAppBrowser extends InAppBrowser {
   final String? addFundUrl;
   final String? subscriptionUrl;
   final String? contactNumber;
-  MyInAppBrowser({required this.orderID, required this.orderAmount, required this.maxCodOrderAmount, this.contactNumber, super.windowId,
-    super.initialUserScripts, this.addFundUrl, this.subscriptionUrl});
+  MyInAppBrowser(
+      {required this.orderID,
+      required this.orderAmount,
+      required this.maxCodOrderAmount,
+      this.contactNumber,
+      super.windowId,
+      super.initialUserScripts,
+      this.addFundUrl,
+      this.subscriptionUrl});
 
   bool _canRedirect = true;
 
@@ -183,12 +229,21 @@ class MyInAppBrowser extends InAppBrowser {
 
   @override
   void onExit() {
-    if(_canRedirect) {
+    if (_canRedirect) {
       // Get.dialog(PaymentFailedDialog(orderID: orderID, orderAmount: orderAmount, maxCodOrderAmount: maxCodOrderAmount));
-      if((addFundUrl == null || addFundUrl!.isEmpty) && subscriptionUrl == '' && subscriptionUrl!.isEmpty){
-        Get.dialog(PaymentFailedDialog(orderID: orderID, orderAmount: orderAmount, maxCodOrderAmount: maxCodOrderAmount, contactPersonNumber: contactNumber,));
+      if ((addFundUrl == null || addFundUrl!.isEmpty) &&
+          subscriptionUrl == '' &&
+          subscriptionUrl!.isEmpty) {
+        Get.dialog(PaymentFailedDialog(
+          orderID: orderID,
+          orderAmount: orderAmount,
+          maxCodOrderAmount: maxCodOrderAmount,
+          contactPersonNumber: contactNumber,
+        ));
       } else {
-        Get.dialog(FundPaymentDialogWidget(isSubscription: subscriptionUrl != null && subscriptionUrl!.isNotEmpty));
+        Get.dialog(FundPaymentDialogWidget(
+            isSubscription:
+                subscriptionUrl != null && subscriptionUrl!.isNotEmpty));
       }
     }
     if (kDebugMode) {
@@ -197,7 +252,8 @@ class MyInAppBrowser extends InAppBrowser {
   }
 
   @override
-  Future<NavigationActionPolicy> shouldOverrideUrlLoading(navigationAction) async {
+  Future<NavigationActionPolicy> shouldOverrideUrlLoading(
+      navigationAction) async {
     if (kDebugMode) {
       print("\n\nOverride ${navigationAction.request.url}\n\n");
     }
@@ -207,7 +263,8 @@ class MyInAppBrowser extends InAppBrowser {
   @override
   void onLoadResource(resource) {
     if (kDebugMode) {
-      print("Started at: ${resource.startTime}ms ---> duration: ${resource.duration}ms ${resource.url ?? ''}");
+      print(
+          "Started at: ${resource.startTime}ms ---> duration: ${resource.duration}ms ${resource.url ?? ''}");
     }
   }
 
@@ -223,7 +280,7 @@ class MyInAppBrowser extends InAppBrowser {
   }
 
   void _redirect(String url, String? contactNumber) {
-    if(_canRedirect) {
+    if (_canRedirect) {
       bool isSuccess = url.contains('${AppConstants.baseUrl}/payment-success');
       bool isFailed = url.contains('${AppConstants.baseUrl}/payment-fail');
       bool isCancel = url.contains('${AppConstants.baseUrl}/payment-cancel');
@@ -232,9 +289,12 @@ class MyInAppBrowser extends InAppBrowser {
         close();
       }
 
-      if((addFundUrl == '' && addFundUrl!.isEmpty && subscriptionUrl == '' && subscriptionUrl!.isEmpty)){
+      if ((addFundUrl == '' &&
+          addFundUrl!.isEmpty &&
+          subscriptionUrl == '' &&
+          subscriptionUrl!.isEmpty)) {
         _orderPaymentDoneDecision(isSuccess, isFailed, isCancel);
-      } else{
+      } else {
         _decideSubscriptionOrWallet(isSuccess, isFailed, isCancel);
       }
     }
@@ -242,26 +302,44 @@ class MyInAppBrowser extends InAppBrowser {
 
   void _orderPaymentDoneDecision(bool isSuccess, bool isFailed, bool isCancel) {
     if (isSuccess) {
-      double total = ((orderAmount! / 100) * Get.find<SplashController>().configModel!.loyaltyPointItemPurchasePoint!);
+      double total = ((orderAmount! / 100) *
+          Get.find<SplashController>()
+              .configModel!
+              .loyaltyPointItemPurchasePoint!);
       Get.find<LoyaltyController>().saveEarningPoint(total.toStringAsFixed(0));
-      Get.offNamed(RouteHelper.getOrderSuccessRoute(orderID, 'success', orderAmount, contactNumber));
+      Get.offNamed(RouteHelper.getOrderSuccessRoute(
+          orderID, 'success', orderAmount, contactNumber));
     } else if (isFailed || isCancel) {
-      Get.offNamed(RouteHelper.getOrderSuccessRoute(orderID, 'fail', orderAmount, contactNumber));
+      Get.offNamed(RouteHelper.getOrderSuccessRoute(
+          orderID, 'fail', orderAmount, contactNumber));
     }
   }
 
-  void _decideSubscriptionOrWallet(bool isSuccess, bool isFailed, bool isCancel) {
-    if(isSuccess || isFailed || isCancel) {
-      if(Get.currentRoute.contains(RouteHelper.payment)) {
+  void _decideSubscriptionOrWallet(
+      bool isSuccess, bool isFailed, bool isCancel) {
+    if (isSuccess || isFailed || isCancel) {
+      if (Get.currentRoute.contains(RouteHelper.payment)) {
         Get.back();
       }
-      if(subscriptionUrl != null && subscriptionUrl!.isNotEmpty && addFundUrl == '' && addFundUrl!.isEmpty) {
-        Get.toNamed(RouteHelper.getSubscriptionSuccessRoute(isSuccess ? 'success' : isFailed ? 'fail' : 'cancel'));
+      if (subscriptionUrl != null &&
+          subscriptionUrl!.isNotEmpty &&
+          addFundUrl == '' &&
+          addFundUrl!.isEmpty) {
+        Get.toNamed(RouteHelper.getSubscriptionSuccessRoute(isSuccess
+            ? 'success'
+            : isFailed
+                ? 'fail'
+                : 'cancel'));
       } else {
         Get.back();
-        Get.toNamed(RouteHelper.getWalletRoute(fundStatus: isSuccess ? 'success' : isFailed ? 'fail' : 'cancel', /*token: UniqueKey().toString()*/));
+        Get.toNamed(RouteHelper.getWalletRoute(
+          fundStatus: isSuccess
+              ? 'success'
+              : isFailed
+                  ? 'fail'
+                  : 'cancel', /*token: UniqueKey().toString()*/
+        ));
       }
     }
   }
-
 }

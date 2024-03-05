@@ -1,17 +1,19 @@
-import 'package:stackfood_multivendor/api/api_client.dart';
-import 'package:stackfood_multivendor/features/interest/domain/repositories/interest_repository_interface.dart';
-import 'package:stackfood_multivendor/util/app_constants.dart';
+import 'package:swift_tech_resto/api/api_client.dart';
+import 'package:swift_tech_resto/features/interest/domain/repositories/interest_repository_interface.dart';
+import 'package:swift_tech_resto/util/app_constants.dart';
 import 'package:get/get_connect/http/src/response/response.dart';
 
-class InterestRepository implements InterestRepositoryInterface{
+class InterestRepository implements InterestRepositoryInterface {
   final ApiClient apiClient;
   InterestRepository({required this.apiClient});
 
   @override
   Future<bool> saveUserInterests(List<int?> interests) async {
-    Response response = await apiClient.postData(AppConstants.interestUri, {"interest": interests});
+    Response response = await apiClient
+        .postData(AppConstants.interestUri, {"interest": interests});
     return response.statusCode == 200;
   }
+
   @override
   Future add(value) {
     throw UnimplementedError();
@@ -36,5 +38,4 @@ class InterestRepository implements InterestRepositoryInterface{
   Future update(Map<String, dynamic> body, int? id) {
     throw UnimplementedError();
   }
-
 }

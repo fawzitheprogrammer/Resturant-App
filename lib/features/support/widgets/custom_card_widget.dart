@@ -1,6 +1,7 @@
-import 'package:stackfood_multivendor/helper/responsive_helper.dart';
-import 'package:stackfood_multivendor/util/dimensions.dart';
+import 'package:swift_tech_resto/helper/responsive_helper.dart';
+import 'package:swift_tech_resto/util/dimensions.dart';
 import 'package:flutter/material.dart';
+
 class CustomCardWidget extends StatelessWidget {
   final Widget child;
   const CustomCardWidget({super.key, required this.child});
@@ -18,9 +19,9 @@ class CustomCardWidget extends StatelessWidget {
               Theme.of(context).primaryColor.withOpacity(0.5),
               Theme.of(context).primaryColor,
             ],
-            begin: Alignment.topCenter, end: Alignment.bottomCenter,
-          )
-      ),
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          )),
       padding: const EdgeInsets.all(1),
       child: Container(
         height: ResponsiveHelper.isDesktop(context) ? 260 : null,

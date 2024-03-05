@@ -1,4 +1,4 @@
-import 'package:stackfood_multivendor/common/models/product_model.dart';
+import 'package:swift_tech_resto/common/models/product_model.dart';
 
 class OnlineCartModel {
   int? id;
@@ -17,18 +17,18 @@ class OnlineCartModel {
 
   OnlineCartModel(
       {this.id,
-        this.userId,
-        this.itemId,
-        this.isGuest,
-        this.addOnIds,
-        this.addOnQtys,
-        this.itemType,
-        this.price,
-        this.quantity,
-        this.variation,
-        this.createdAt,
-        this.updatedAt,
-        this.product});
+      this.userId,
+      this.itemId,
+      this.isGuest,
+      this.addOnIds,
+      this.addOnQtys,
+      this.itemType,
+      this.price,
+      this.quantity,
+      this.variation,
+      this.createdAt,
+      this.updatedAt,
+      this.product});
 
   OnlineCartModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];

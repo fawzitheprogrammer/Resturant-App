@@ -1,8 +1,8 @@
-import 'package:stackfood_multivendor/features/wallet/domain/models/wallet_filter_body_model.dart';
-import 'package:stackfood_multivendor/features/wallet/domain/models/wallet_model.dart';
-import 'package:stackfood_multivendor/features/wallet/domain/models/fund_bonus_model.dart';
-import 'package:stackfood_multivendor/features/wallet/domain/services/wallet_service_interface.dart';
-import 'package:stackfood_multivendor/util/app_constants.dart';
+import 'package:swift_tech_resto/features/wallet/domain/models/wallet_filter_body_model.dart';
+import 'package:swift_tech_resto/features/wallet/domain/models/wallet_model.dart';
+import 'package:swift_tech_resto/features/wallet/domain/models/fund_bonus_model.dart';
+import 'package:swift_tech_resto/features/wallet/domain/services/wallet_service_interface.dart';
+import 'package:swift_tech_resto/util/app_constants.dart';
 import 'package:get/get.dart';
 
 class WalletController extends GetxController implements GetxService {
@@ -41,31 +41,31 @@ class WalletController extends GetxController implements GetxService {
   List<WalletFilterBodyModel> _walletFilterList = [];
   List<WalletFilterBodyModel> get walletFilterList => _walletFilterList;
 
-
   void setWalletFilerType(String type, {bool isUpdate = true}) {
     _type = type;
-    if(isUpdate) {
+    if (isUpdate) {
       update();
     }
   }
 
-  void insertFilterList(){
+  void insertFilterList() {
     _walletFilterList = [];
-    for(int i=0; i < AppConstants.walletTransactionSortingList.length; i++){
-      _walletFilterList.add(WalletFilterBodyModel.fromJson(AppConstants.walletTransactionSortingList[i]));
+    for (int i = 0; i < AppConstants.walletTransactionSortingList.length; i++) {
+      _walletFilterList.add(WalletFilterBodyModel.fromJson(
+          AppConstants.walletTransactionSortingList[i]));
     }
   }
 
-  void changeDigitalPaymentName(String name, {bool isUpdate = true}){
+  void changeDigitalPaymentName(String name, {bool isUpdate = true}) {
     _digitalPaymentName = name;
-    if(isUpdate) {
+    if (isUpdate) {
       update();
     }
   }
 
-  void isTextFieldEmpty(String value, {bool isUpdate = true}){
+  void isTextFieldEmpty(String value, {bool isUpdate = true}) {
     _amountEmpty = value.isNotEmpty;
-    if(isUpdate) {
+    if (isUpdate) {
       update();
     }
   }
@@ -73,24 +73,26 @@ class WalletController extends GetxController implements GetxService {
   void setOffset(int offset) {
     _offset = offset;
   }
+
   void showBottomLoader() {
     _isLoading = true;
     update();
   }
 
-  Future<void> getWalletTransactionList(String offset, bool reload, String walletType) async {
-    if(offset == '1' || reload) {
+  Future<void> getWalletTransactionList(
+      String offset, bool reload, String walletType) async {
+    if (offset == '1' || reload) {
       _offsetList = [];
       _offset = 1;
       _transactionList = null;
-      if(reload) {
+      if (reload) {
         update();
       }
-
     }
     if (!_offsetList.contains(offset)) {
       _offsetList.add(offset);
-      WalletModel? walletModel = await walletServiceInterface.getWalletTransactionList(offset, walletType);
+      WalletModel? walletModel = await walletServiceInterface
+          .getWalletTransactionList(offset, walletType);
       if (walletModel != null) {
         if (offset == '1') {
           _transactionList = [];
@@ -102,7 +104,7 @@ class WalletController extends GetxController implements GetxService {
         update();
       }
     } else {
-      if(isLoading) {
+      if (isLoading) {
         _isLoading = false;
         update();
       }
@@ -119,7 +121,7 @@ class WalletController extends GetxController implements GetxService {
 
   Future<void> getWalletBonusList({bool isUpdate = true}) async {
     _isLoading = true;
-    if(isUpdate) {
+    if (isUpdate) {
       update();
     }
     _fundBonusList = await walletServiceInterface.getWalletBonusList();
@@ -129,17 +131,16 @@ class WalletController extends GetxController implements GetxService {
 
   void setCurrentIndex(int index, bool notify) {
     _currentIndex = index;
-    if(notify) {
+    if (notify) {
       update();
     }
   }
 
-  void setWalletAccessToken(String accessToken){
+  void setWalletAccessToken(String accessToken) {
     walletServiceInterface.setWalletAccessToken(accessToken);
   }
 
-  String getWalletAccessToken (){
+  String getWalletAccessToken() {
     return walletServiceInterface.getWalletAccessToken();
   }
-
 }

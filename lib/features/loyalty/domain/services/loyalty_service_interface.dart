@@ -1,4 +1,4 @@
-import 'package:stackfood_multivendor/features/wallet/domain/models/wallet_model.dart';
+import 'package:swift_tech_resto/features/wallet/domain/models/wallet_model.dart';
 import 'package:get/get_connect/http/src/response/response.dart';
 
 abstract class LoyaltyServiceInterface {

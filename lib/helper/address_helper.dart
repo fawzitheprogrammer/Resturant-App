@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:stackfood_multivendor/api/api_client.dart';
+import 'package:swift_tech_resto/api/api_client.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -18,14 +18,16 @@ class AddressHelper {
       address.latitude,
       address.longitude,
     );
-    return await sharedPreferences.setString(AppConstants.userAddress, userAddress);
+    return await sharedPreferences.setString(
+        AppConstants.userAddress, userAddress);
   }
 
   static AddressModel? getAddressFromSharedPref() {
     SharedPreferences sharedPreferences = Get.find<SharedPreferences>();
     AddressModel? addressModel;
     try {
-      addressModel = AddressModel.fromJson(jsonDecode(sharedPreferences.getString(AppConstants.userAddress)!));
+      addressModel = AddressModel.fromJson(
+          jsonDecode(sharedPreferences.getString(AppConstants.userAddress)!));
     } catch (e) {
       debugPrint('Catch exception : $e');
     }
@@ -37,5 +39,4 @@ class AddressHelper {
     sharedPreferences.remove(AppConstants.userAddress);
     return true;
   }
-
 }

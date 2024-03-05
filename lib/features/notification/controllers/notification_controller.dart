@@ -1,5 +1,5 @@
-import 'package:stackfood_multivendor/features/notification/domain/models/notification_model.dart';
-import 'package:stackfood_multivendor/features/notification/domain/service/notification_service_interface.dart';
+import 'package:swift_tech_resto/features/notification/domain/models/notification_model.dart';
+import 'package:swift_tech_resto/features/notification/domain/service/notification_service_interface.dart';
 import 'package:get/get.dart';
 
 class NotificationController extends GetxController implements GetxService {
@@ -13,10 +13,11 @@ class NotificationController extends GetxController implements GetxService {
   bool get hasNotification => _hasNotification;
 
   Future<int> getNotificationList(bool reload) async {
-    if(_notificationList == null || reload) {
+    if (_notificationList == null || reload) {
       _notificationList = await notificationServiceInterface.getList();
-      if(_notificationList != null) {
-        _hasNotification = _notificationList!.length != getSeenNotificationCount();
+      if (_notificationList != null) {
+        _hasNotification =
+            _notificationList!.length != getSeenNotificationCount();
       }
       update();
     }
@@ -46,5 +47,4 @@ class NotificationController extends GetxController implements GetxService {
   List<int>? getSeenNotificationIdList() {
     return notificationServiceInterface.getNotificationIdList();
   }
-
 }

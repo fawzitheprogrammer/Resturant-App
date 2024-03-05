@@ -1,4 +1,4 @@
-import 'package:stackfood_multivendor/features/location/domain/models/zone_response_model.dart';
+import 'package:swift_tech_resto/features/location/domain/models/zone_response_model.dart';
 
 class AddressModel {
   int? id;
@@ -55,7 +55,7 @@ class AddressModel {
         zoneData!.add(ZoneData.fromJson(v));
       });
     }
-    if(json['contact_person_email'] != null) {
+    if (json['contact_person_email'] != null) {
       email = json['contact_person_email'];
     }
   }
@@ -78,7 +78,7 @@ class AddressModel {
     if (zoneData != null) {
       data['zone_data'] = zoneData!.map((v) => v.toJson()).toList();
     }
-    if(email != null) {
+    if (email != null) {
       data['contact_person_email'] = email;
     }
     return data;

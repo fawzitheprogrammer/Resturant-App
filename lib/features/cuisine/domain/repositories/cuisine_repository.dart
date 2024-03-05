@@ -1,8 +1,8 @@
-import 'package:stackfood_multivendor/api/api_client.dart';
-import 'package:stackfood_multivendor/features/cuisine/domain/models/cuisine_model.dart';
-import 'package:stackfood_multivendor/features/cuisine/domain/models/cuisine_restaurants_model.dart';
-import 'package:stackfood_multivendor/features/cuisine/domain/repositories/cuisine_repository_interface.dart';
-import 'package:stackfood_multivendor/util/app_constants.dart';
+import 'package:swift_tech_resto/api/api_client.dart';
+import 'package:swift_tech_resto/features/cuisine/domain/models/cuisine_model.dart';
+import 'package:swift_tech_resto/features/cuisine/domain/models/cuisine_restaurants_model.dart';
+import 'package:swift_tech_resto/features/cuisine/domain/repositories/cuisine_repository_interface.dart';
+import 'package:swift_tech_resto/util/app_constants.dart';
 import 'package:get/get_connect/connect.dart';
 
 class CuisineRepository implements CuisineRepositoryInterface {
@@ -35,10 +35,12 @@ class CuisineRepository implements CuisineRepositoryInterface {
   }
 
   @override
-  Future<CuisineRestaurantModel?> getRestaurantList(int offset, int cuisineId) async {
+  Future<CuisineRestaurantModel?> getRestaurantList(
+      int offset, int cuisineId) async {
     CuisineRestaurantModel? cuisineRestaurantsModel;
-    Response response = await apiClient.getData('${AppConstants.cuisineRestaurantUri}?cuisine_id=$cuisineId&offset=$offset&limit=10');
-    if(response.statusCode == 200) {
+    Response response = await apiClient.getData(
+        '${AppConstants.cuisineRestaurantUri}?cuisine_id=$cuisineId&offset=$offset&limit=10');
+    if (response.statusCode == 200) {
       cuisineRestaurantsModel = CuisineRestaurantModel.fromJson(response.body);
     }
     return cuisineRestaurantsModel;
@@ -48,5 +50,4 @@ class CuisineRepository implements CuisineRepositoryInterface {
   Future update(Map<String, dynamic> body, int? id) {
     throw UnimplementedError();
   }
-
 }

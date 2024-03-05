@@ -1,8 +1,8 @@
-import 'package:stackfood_multivendor/common/models/response_model.dart';
-import 'package:stackfood_multivendor/api/api_client.dart';
-import 'package:stackfood_multivendor/features/profile/domain/models/userinfo_model.dart';
-import 'package:stackfood_multivendor/features/profile/domain/repositories/profile_repository_interface.dart';
-import 'package:stackfood_multivendor/util/app_constants.dart';
+import 'package:swift_tech_resto/common/models/response_model.dart';
+import 'package:swift_tech_resto/api/api_client.dart';
+import 'package:swift_tech_resto/features/profile/domain/models/userinfo_model.dart';
+import 'package:swift_tech_resto/features/profile/domain/repositories/profile_repository_interface.dart';
+import 'package:swift_tech_resto/util/app_constants.dart';
 import 'package:get/get_connect/http/src/response/response.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -11,13 +11,18 @@ class ProfileRepository implements ProfileRepositoryInterface {
   ProfileRepository({required this.apiClient});
 
   @override
-  Future<ResponseModel> updateProfile(UserInfoModel userInfoModel, XFile? data, String token) async {
+  Future<ResponseModel> updateProfile(
+      UserInfoModel userInfoModel, XFile? data, String token) async {
     ResponseModel responseModel;
     Map<String, String> body = {};
     body.addAll(<String, String>{
-      'f_name': userInfoModel.fName!, 'l_name': userInfoModel.lName!, 'email': userInfoModel.email!
+      'f_name': userInfoModel.fName!,
+      'l_name': userInfoModel.lName!,
+      'email': userInfoModel.email!
     });
-    Response response = await apiClient.postMultipartData(AppConstants.updateProfileUri, body, [MultipartBody('image', data)], [], handleError: false);
+    Response response = await apiClient.postMultipartData(
+        AppConstants.updateProfileUri, body, [MultipartBody('image', data)], [],
+        handleError: false);
     if (response.statusCode == 200) {
       responseModel = ResponseModel(true, response.bodyString);
     } else {
@@ -29,8 +34,15 @@ class ProfileRepository implements ProfileRepositoryInterface {
   @override
   Future<ResponseModel> changePassword(UserInfoModel userInfoModel) async {
     ResponseModel responseModel;
-    Response response = await apiClient.postData(AppConstants.updateProfileUri, {'f_name': userInfoModel.fName, 'l_name': userInfoModel.lName,
-      'email': userInfoModel.email, 'password': userInfoModel.password}, handleError: false);
+    Response response = await apiClient.postData(
+        AppConstants.updateProfileUri,
+        {
+          'f_name': userInfoModel.fName,
+          'l_name': userInfoModel.lName,
+          'email': userInfoModel.email,
+          'password': userInfoModel.password
+        },
+        handleError: false);
     if (response.statusCode == 200) {
       String? message = response.body["message"];
       responseModel = ResponseModel(true, message);
@@ -48,7 +60,8 @@ class ProfileRepository implements ProfileRepositoryInterface {
 
   @override
   Future<Response> delete(int? id) async {
-    return await apiClient.postData(AppConstants.customerRemoveUri, {"_method": "delete"});
+    return await apiClient
+        .postData(AppConstants.customerRemoveUri, {"_method": "delete"});
   }
 
   @override
@@ -72,6 +85,4 @@ class ProfileRepository implements ProfileRepositoryInterface {
     // TODO: implement update
     throw UnimplementedError();
   }
-
-  
 }

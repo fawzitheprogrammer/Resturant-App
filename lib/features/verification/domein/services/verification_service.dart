@@ -1,14 +1,16 @@
-import 'package:stackfood_multivendor/common/models/response_model.dart';
-import 'package:stackfood_multivendor/features/auth/domain/reposotories/auth_repo_interface.dart';
-import 'package:stackfood_multivendor/features/verification/domein/reposotories/verification_repo_interface.dart';
-import 'package:stackfood_multivendor/features/verification/domein/services/verification_service_interface.dart';
+import 'package:swift_tech_resto/common/models/response_model.dart';
+import 'package:swift_tech_resto/features/auth/domain/reposotories/auth_repo_interface.dart';
+import 'package:swift_tech_resto/features/verification/domein/reposotories/verification_repo_interface.dart';
+import 'package:swift_tech_resto/features/verification/domein/services/verification_service_interface.dart';
 import 'package:get/get_connect/http/src/response/response.dart';
 
 class VerificationService implements VerificationServiceInterface {
   final VerificationRepoInterface verificationRepoInterface;
   final AuthRepoInterface authRepoInterface;
 
-  VerificationService({required this.verificationRepoInterface, required this.authRepoInterface});
+  VerificationService(
+      {required this.verificationRepoInterface,
+      required this.authRepoInterface});
 
   @override
   Future<ResponseModel> forgetPassword(String? phone) async {
@@ -16,13 +18,16 @@ class VerificationService implements VerificationServiceInterface {
   }
 
   @override
-  Future<ResponseModel> verifyToken(String? phone, String verificationCode) async {
+  Future<ResponseModel> verifyToken(
+      String? phone, String verificationCode) async {
     return await verificationRepoInterface.verifyToken(phone, verificationCode);
   }
 
   @override
-  Future<ResponseModel> resetPassword(String? resetToken, String number, String password, String confirmPassword) async {
-    return await verificationRepoInterface.resetPassword(resetToken, number, password, confirmPassword);
+  Future<ResponseModel> resetPassword(String? resetToken, String number,
+      String password, String confirmPassword) async {
+    return await verificationRepoInterface.resetPassword(
+        resetToken, number, password, confirmPassword);
   }
 
   @override
@@ -31,8 +36,10 @@ class VerificationService implements VerificationServiceInterface {
   }
 
   @override
-  Future<ResponseModel> verifyEmail(String email, String token, String verificationCode) async {
-    Response response = await verificationRepoInterface.verifyEmail(email, verificationCode);
+  Future<ResponseModel> verifyEmail(
+      String email, String token, String verificationCode) async {
+    Response response =
+        await verificationRepoInterface.verifyEmail(email, verificationCode);
     ResponseModel responseModel;
     if (response.statusCode == 200) {
       authRepoInterface.saveUserToken(token);
@@ -46,8 +53,10 @@ class VerificationService implements VerificationServiceInterface {
   }
 
   @override
-  Future<ResponseModel> verifyPhone(String? phone, String? token, String verificationCode) async {
-    Response response = await verificationRepoInterface.verifyPhone(phone, verificationCode);
+  Future<ResponseModel> verifyPhone(
+      String? phone, String? token, String verificationCode) async {
+    Response response =
+        await verificationRepoInterface.verifyPhone(phone, verificationCode);
     ResponseModel responseModel;
     if (response.statusCode == 200) {
       authRepoInterface.saveUserToken(token!);
@@ -59,5 +68,4 @@ class VerificationService implements VerificationServiceInterface {
     }
     return responseModel;
   }
-
 }

@@ -1,10 +1,10 @@
-import 'package:stackfood_multivendor/common/models/response_model.dart';
-import 'package:stackfood_multivendor/features/auth/domain/models/social_log_in_body_model.dart';
-import 'package:stackfood_multivendor/interface/repository_interface.dart';
+import 'package:swift_tech_resto/common/models/response_model.dart';
+import 'package:swift_tech_resto/features/auth/domain/models/social_log_in_body_model.dart';
+import 'package:swift_tech_resto/interface/repository_interface.dart';
 import 'package:get/get_connect/http/src/response/response.dart';
 
-abstract class AuthRepoInterface<SignUpModel> extends RepositoryInterface<SignUpModel>{
-
+abstract class AuthRepoInterface<SignUpModel>
+    extends RepositoryInterface<SignUpModel> {
   Future<bool> saveUserToken(String token, {bool alreadyInApp = false});
   Future<Response> updateToken({String notificationDeviceToken = ''});
   Future<bool> clearGuestId();
@@ -14,13 +14,15 @@ abstract class AuthRepoInterface<SignUpModel> extends RepositoryInterface<SignUp
   String getGuestId();
   Future<Response> registration(SignUpModel signUpModel);
   Future<Response> login({String? phone, String? password});
-  Future<void> saveUserNumberAndPassword(String number, String password, String countryCode);
+  Future<void> saveUserNumberAndPassword(
+      String number, String password, String countryCode);
   Future<bool> clearUserNumberAndPassword();
   Future<ResponseModel> guestLogin();
   Future<bool> saveGuestId(String id);
   bool isGuestLoggedIn();
   Future<Response> loginWithSocialMedia(SocialLogInBodyModel socialLogInModel);
-  Future<Response> registerWithSocialMedia(SocialLogInBodyModel socialLogInModel);
+  Future<Response> registerWithSocialMedia(
+      SocialLogInBodyModel socialLogInModel);
   Future<bool> saveDmTipIndex(String index);
   String getDmTipIndex();
   bool isLoggedIn();

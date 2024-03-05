@@ -1,7 +1,7 @@
-import 'package:stackfood_multivendor/common/models/product_model.dart';
-import 'package:stackfood_multivendor/common/models/restaurant_model.dart';
-import 'package:stackfood_multivendor/features/favourite/domain/services/favourite_service_interface.dart';
-import 'package:stackfood_multivendor/common/widgets/custom_snackbar_widget.dart';
+import 'package:swift_tech_resto/common/models/product_model.dart';
+import 'package:swift_tech_resto/common/models/restaurant_model.dart';
+import 'package:swift_tech_resto/features/favourite/domain/services/favourite_service_interface.dart';
+import 'package:swift_tech_resto/common/widgets/custom_snackbar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -21,13 +21,15 @@ class FavouriteController extends GetxController implements GetxService {
   List<int?> _wishRestIdList = [];
   List<int?> get wishRestIdList => _wishRestIdList;
 
-  void addToFavouriteList(Product? product, Restaurant? restaurant, bool isRestaurant) async {
-    Response response = await favouriteServiceInterface.addFavouriteList(isRestaurant ? restaurant!.id : product!.id, isRestaurant);
+  void addToFavouriteList(
+      Product? product, Restaurant? restaurant, bool isRestaurant) async {
+    Response response = await favouriteServiceInterface.addFavouriteList(
+        isRestaurant ? restaurant!.id : product!.id, isRestaurant);
     if (response.statusCode == 200) {
-      if(isRestaurant) {
+      if (isRestaurant) {
         _wishRestIdList.add(restaurant!.id);
         _wishRestList!.add(restaurant);
-      }else {
+      } else {
         _wishProductList!.add(product);
         _wishProductIdList.add(product!.id);
       }
@@ -37,14 +39,15 @@ class FavouriteController extends GetxController implements GetxService {
   }
 
   void removeFromFavouriteList(int? id, bool isRestaurant) async {
-    Response response = await favouriteServiceInterface.removeFavouriteList(id, isRestaurant);
+    Response response =
+        await favouriteServiceInterface.removeFavouriteList(id, isRestaurant);
     if (response.statusCode == 200) {
       int idIndex = -1;
-      if(isRestaurant) {
+      if (isRestaurant) {
         idIndex = _wishRestIdList.indexOf(id);
         _wishRestIdList.removeAt(idIndex);
         _wishRestList!.removeAt(idIndex);
-      }else {
+      } else {
         idIndex = _wishProductIdList.indexOf(id);
         _wishProductIdList.removeAt(idIndex);
         _wishProductList!.removeAt(idIndex);
@@ -55,18 +58,18 @@ class FavouriteController extends GetxController implements GetxService {
   }
 
   Future<void> getFavouriteList({bool fromFavScreen = false}) async {
-    if(fromFavScreen){
+    if (fromFavScreen) {
       _wishProductList = null;
       _wishRestList = null;
       _wishRestIdList = [];
-    }else {
+    } else {
       _wishProductList = [];
       _wishRestList = [];
       _wishRestIdList = [];
     }
     Response response = await favouriteServiceInterface.getFavouriteList();
     if (response.statusCode == 200) {
-      if(fromFavScreen){
+      if (fromFavScreen) {
         _wishProductList = [];
         _wishRestList = [];
         _wishRestIdList = [];
@@ -83,9 +86,9 @@ class FavouriteController extends GetxController implements GetxService {
       // _wishRestIdList.addAll(favouriteServiceInterface.prepareRestaurantsIds(_wishRestList));
       response.body['restaurant'].forEach((res) async {
         Restaurant? restaurant;
-        try{
+        try {
           restaurant = Restaurant.fromJson(res);
-        }catch(e){
+        } catch (e) {
           debugPrint('exception create in restaurant list create : $e');
         }
         _wishRestList!.add(restaurant);

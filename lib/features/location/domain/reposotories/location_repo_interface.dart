@@ -1,5 +1,5 @@
-import 'package:stackfood_multivendor/features/location/domain/models/zone_response_model.dart';
-import 'package:stackfood_multivendor/interface/repository_interface.dart';
+import 'package:swift_tech_resto/features/location/domain/models/zone_response_model.dart';
+import 'package:swift_tech_resto/interface/repository_interface.dart';
 import 'package:get/get_connect/http/src/response/response.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 

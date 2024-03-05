@@ -1,10 +1,9 @@
-import 'package:stackfood_multivendor/features/auth/controllers/auth_controller.dart';
-import 'package:stackfood_multivendor/features/checkout/controllers/checkout_controller.dart';
-import 'package:stackfood_multivendor/util/dimensions.dart';
-import 'package:stackfood_multivendor/util/styles.dart';
+import 'package:swift_tech_resto/features/auth/controllers/auth_controller.dart';
+import 'package:swift_tech_resto/features/checkout/controllers/checkout_controller.dart';
+import 'package:swift_tech_resto/util/dimensions.dart';
+import 'package:swift_tech_resto/util/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 
 class DeliveryOptionButton extends StatelessWidget {
   final String value;
@@ -12,7 +11,13 @@ class DeliveryOptionButton extends StatelessWidget {
   final double? charge;
   final bool? isFree;
   final double total;
-  const DeliveryOptionButton({super.key, required this.value, required this.title, required this.charge, required this.isFree, required this.total});
+  const DeliveryOptionButton(
+      {super.key,
+      required this.value,
+      required this.title,
+      required this.charge,
+      required this.isFree,
+      required this.total});
 
   @override
   Widget build(BuildContext context) {
@@ -24,21 +29,26 @@ class DeliveryOptionButton extends StatelessWidget {
             checkoutController.setOrderType(value);
             checkoutController.setInstruction(-1);
 
-            if(checkoutController.orderType == 'take_away') {
+            if (checkoutController.orderType == 'take_away') {
               checkoutController.addTips(0);
-              if(checkoutController.isPartialPay || checkoutController.paymentMethodIndex == 1) {
+              if (checkoutController.isPartialPay ||
+                  checkoutController.paymentMethodIndex == 1) {
                 double tips = 0;
-                try{
+                try {
                   tips = double.parse(checkoutController.tipController.text);
-                } catch(_) {}
-                checkoutController.checkBalanceStatus(total, discount: charge! + tips);
+                } catch (_) {}
+                checkoutController.checkBalanceStatus(total,
+                    discount: charge! + tips);
               }
-            }else{
+            } else {
               checkoutController.updateTips(
-                Get.find<AuthController>().getDmTipIndex().isNotEmpty ? int.parse(Get.find<AuthController>().getDmTipIndex()) : 0, notify: false,
+                Get.find<AuthController>().getDmTipIndex().isNotEmpty
+                    ? int.parse(Get.find<AuthController>().getDmTipIndex())
+                    : 0,
+                notify: false,
               );
 
-              if(checkoutController.isPartialPay){
+              if (checkoutController.isPartialPay) {
                 checkoutController.changePartialPayment();
               } else {
                 checkoutController.setPaymentMethod(-1);
@@ -50,7 +60,8 @@ class DeliveryOptionButton extends StatelessWidget {
               color: select ? Theme.of(context).cardColor : Colors.transparent,
               borderRadius: BorderRadius.circular(Dimensions.radiusSmall),
             ),
-            padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeSmall, vertical: 2),
+            padding: const EdgeInsets.symmetric(
+                horizontal: Dimensions.paddingSizeSmall, vertical: 2),
             child: Row(
               children: [
                 Radio(
@@ -61,18 +72,22 @@ class DeliveryOptionButton extends StatelessWidget {
                     checkoutController.setOrderType(value!);
                   },
                   activeColor: Theme.of(context).primaryColor,
-                  visualDensity: const VisualDensity(horizontal: -3, vertical: -3),
+                  visualDensity:
+                      const VisualDensity(horizontal: -3, vertical: -3),
                 ),
                 const SizedBox(width: Dimensions.paddingSizeSmall),
 
-                Text(title, style: robotoMedium.copyWith(color: select ? Theme.of(context).primaryColor : Theme.of(context).textTheme.bodyMedium!.color)),
+                Text(title,
+                    style: robotoMedium.copyWith(
+                        color: select
+                            ? Theme.of(context).primaryColor
+                            : Theme.of(context).textTheme.bodyMedium!.color)),
                 const SizedBox(width: 5),
 
                 // Text(
                 //   '(${(value == 'take_away' || isFree!) ? 'free'.tr : charge != -1 ? PriceConverter.convertPrice(charge) : 'calculating'.tr})',
                 //   style: robotoMedium,
                 // ),
-
               ],
             ),
           ),

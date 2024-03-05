@@ -1,6 +1,6 @@
-import 'package:stackfood_multivendor/features/product/domain/models/basic_campaign_model.dart';
-import 'package:stackfood_multivendor/common/models/product_model.dart';
-import 'package:stackfood_multivendor/features/product/domain/services/campaign_service_interface.dart';
+import 'package:swift_tech_resto/features/product/domain/models/basic_campaign_model.dart';
+import 'package:swift_tech_resto/common/models/product_model.dart';
+import 'package:swift_tech_resto/features/product/domain/services/campaign_service_interface.dart';
 import 'package:get/get.dart';
 
 class CampaignController extends GetxController implements GetxService {
@@ -21,29 +21,30 @@ class CampaignController extends GetxController implements GetxService {
 
   void setCurrentIndex(int index, bool notify) {
     _currentIndex = index;
-    if(notify) {
+    if (notify) {
       update();
     }
   }
 
   Future<void> getBasicCampaignList(bool reload) async {
-    if(_basicCampaignList == null || reload) {
-      _basicCampaignList = await campaignServiceInterface.getBasicCampaignList();
+    if (_basicCampaignList == null || reload) {
+      _basicCampaignList =
+          await campaignServiceInterface.getBasicCampaignList();
       update();
     }
   }
 
   Future<void> getBasicCampaignDetails(int? campaignID) async {
     _campaign = null;
-    _campaign = await campaignServiceInterface.getCampaignDetails(campaignID.toString());
+    _campaign = await campaignServiceInterface
+        .getCampaignDetails(campaignID.toString());
     update();
   }
 
   Future<void> getItemCampaignList(bool reload) async {
-    if(_itemCampaignList == null || reload) {
+    if (_itemCampaignList == null || reload) {
       _itemCampaignList = await campaignServiceInterface.getItemCampaignList();
       update();
     }
   }
-
 }

@@ -1,10 +1,10 @@
-import 'package:stackfood_multivendor/common/models/response_model.dart';
-import 'package:stackfood_multivendor/features/cart/controllers/cart_controller.dart';
-import 'package:stackfood_multivendor/features/profile/controllers/profile_controller.dart';
-import 'package:stackfood_multivendor/features/splash/controllers/splash_controller.dart';
-import 'package:stackfood_multivendor/features/auth/domain/models/signup_body_model.dart';
-import 'package:stackfood_multivendor/features/auth/domain/models/social_log_in_body_model.dart';
-import 'package:stackfood_multivendor/features/auth/domain/services/auth_service_interface.dart';
+import 'package:swift_tech_resto/common/models/response_model.dart';
+import 'package:swift_tech_resto/features/cart/controllers/cart_controller.dart';
+import 'package:swift_tech_resto/features/profile/controllers/profile_controller.dart';
+import 'package:swift_tech_resto/features/splash/controllers/splash_controller.dart';
+import 'package:swift_tech_resto/features/auth/domain/models/signup_body_model.dart';
+import 'package:swift_tech_resto/features/auth/domain/models/social_log_in_body_model.dart';
+import 'package:swift_tech_resto/features/auth/domain/services/auth_service_interface.dart';
 import 'package:get/get.dart';
 
 class AuthController extends GetxController implements GetxService {
@@ -28,11 +28,17 @@ class AuthController extends GetxController implements GetxService {
   bool _notification = true;
   bool get notification => _notification;
 
-  Future<ResponseModel> login(String? phone, String password, {bool alreadyInApp = false}) async {
+  Future<ResponseModel> login(String? phone, String password,
+      {bool alreadyInApp = false}) async {
     _isLoading = true;
     update();
-    ResponseModel responseModel = await authServiceInterface.login(phone: phone, password: password,customerVerification: Get.find<SplashController>().configModel!.customerVerification!, alreadyInApp: alreadyInApp);
-    if(responseModel.isSuccess) {
+    ResponseModel responseModel = await authServiceInterface.login(
+        phone: phone,
+        password: password,
+        customerVerification:
+            Get.find<SplashController>().configModel!.customerVerification!,
+        alreadyInApp: alreadyInApp);
+    if (responseModel.isSuccess) {
       Get.find<ProfileController>().getUserInfo();
       Get.find<CartController>().getCartDataOnline();
     }
@@ -44,14 +50,18 @@ class AuthController extends GetxController implements GetxService {
   Future<ResponseModel> registration(SignUpBodyModel signUpModel) async {
     _isLoading = true;
     update();
-    ResponseModel responseModel = await authServiceInterface.registration(signUpModel, Get.find<SplashController>().configModel!.customerVerification!);
+    ResponseModel responseModel = await authServiceInterface.registration(
+        signUpModel,
+        Get.find<SplashController>().configModel!.customerVerification!);
     _isLoading = false;
     update();
     return responseModel;
   }
 
-  void saveUserNumberAndPassword(String number, String password, String countryCode) {
-    authServiceInterface.saveUserNumberAndPassword(number, password, countryCode);
+  void saveUserNumberAndPassword(
+      String number, String password, String countryCode) {
+    authServiceInterface.saveUserNumberAndPassword(
+        number, password, countryCode);
   }
 
   Future<bool> clearUserNumberAndPassword() async {
@@ -89,18 +99,24 @@ class AuthController extends GetxController implements GetxService {
     return responseModel;
   }
 
-  Future<void> loginWithSocialMedia(SocialLogInBodyModel socialLogInBody) async {
+  Future<void> loginWithSocialMedia(
+      SocialLogInBodyModel socialLogInBody) async {
     _isLoading = true;
     update();
-    await authServiceInterface.loginWithSocialMedia(socialLogInBody, isCustomerVerificationOn: Get.find<SplashController>().configModel!.customerVerification!);
+    await authServiceInterface.loginWithSocialMedia(socialLogInBody,
+        isCustomerVerificationOn:
+            Get.find<SplashController>().configModel!.customerVerification!);
     _isLoading = false;
     update();
   }
 
-  Future<void> registerWithSocialMedia(SocialLogInBodyModel socialLogInModel) async {
+  Future<void> registerWithSocialMedia(
+      SocialLogInBodyModel socialLogInModel) async {
     _isLoading = true;
     update();
-    await authServiceInterface.registerWithSocialMedia(socialLogInModel, isCustomerVerificationOn: Get.find<SplashController>().configModel!.customerVerification!);
+    await authServiceInterface.registerWithSocialMedia(socialLogInModel,
+        isCustomerVerificationOn:
+            Get.find<SplashController>().configModel!.customerVerification!);
     _isLoading = false;
     update();
   }
@@ -118,10 +134,11 @@ class AuthController extends GetxController implements GetxService {
   }
 
   bool isGuestLoggedIn() {
-    return authServiceInterface.isGuestLoggedIn() && !authServiceInterface.isLoggedIn();
+    return authServiceInterface.isGuestLoggedIn() &&
+        !authServiceInterface.isLoggedIn();
   }
 
-  void saveDmTipIndex(String i){
+  void saveDmTipIndex(String i) {
     authServiceInterface.saveDmTipIndex(i);
   }
 
@@ -155,5 +172,4 @@ class AuthController extends GetxController implements GetxService {
   String getGuestNumber() {
     return authServiceInterface.getGuestNumber();
   }
-
 }

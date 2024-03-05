@@ -1,4 +1,4 @@
-import 'package:stackfood_multivendor/features/splash/domain/services/splash_service_interface.dart';
+import 'package:swift_tech_resto/features/splash/domain/services/splash_service_interface.dart';
 import 'package:get/get.dart';
 
 class ThemeController extends GetxController implements GetxService {

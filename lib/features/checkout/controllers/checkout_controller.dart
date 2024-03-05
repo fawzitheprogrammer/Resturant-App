@@ -1,31 +1,31 @@
 import 'package:country_code_picker/country_code_picker.dart';
-import 'package:stackfood_multivendor/common/models/restaurant_model.dart';
-import 'package:stackfood_multivendor/common/widgets/custom_snackbar_widget.dart';
-import 'package:stackfood_multivendor/features/order/domain/models/order_model.dart';
-import 'package:stackfood_multivendor/features/address/controllers/address_controller.dart';
-import 'package:stackfood_multivendor/features/address/domain/models/address_model.dart';
-import 'package:stackfood_multivendor/features/address/widgets/address_card_widget.dart';
-import 'package:stackfood_multivendor/features/auth/controllers/auth_controller.dart';
-import 'package:stackfood_multivendor/features/cart/controllers/cart_controller.dart';
-import 'package:stackfood_multivendor/features/checkout/domain/models/offline_method_model.dart';
-import 'package:stackfood_multivendor/features/checkout/domain/models/place_order_body_model.dart';
-import 'package:stackfood_multivendor/features/checkout/domain/models/timeslote_model.dart';
-import 'package:stackfood_multivendor/features/checkout/domain/services/checkout_service_interface.dart';
-import 'package:stackfood_multivendor/features/checkout/widgets/order_successfull_dialog_widget.dart';
-import 'package:stackfood_multivendor/features/checkout/widgets/partial_pay_dialog.dart';
-import 'package:stackfood_multivendor/features/coupon/controllers/coupon_controller.dart';
-import 'package:stackfood_multivendor/features/language/controllers/localization_controller.dart';
-import 'package:stackfood_multivendor/features/loyalty/controllers/loyalty_controller.dart';
-import 'package:stackfood_multivendor/features/profile/controllers/profile_controller.dart';
-import 'package:stackfood_multivendor/features/restaurant/controllers/restaurant_controller.dart';
-import 'package:stackfood_multivendor/features/splash/controllers/splash_controller.dart';
-import 'package:stackfood_multivendor/helper/address_helper.dart';
-import 'package:stackfood_multivendor/helper/responsive_helper.dart';
-import 'package:stackfood_multivendor/helper/route_helper.dart';
-import 'package:stackfood_multivendor/util/app_constants.dart';
-import 'package:stackfood_multivendor/util/dimensions.dart';
-import 'package:stackfood_multivendor/util/styles.dart';
-import 'package:stackfood_multivendor/common/widgets/custom_dropdown_widget.dart';
+import 'package:swift_tech_resto/common/models/restaurant_model.dart';
+import 'package:swift_tech_resto/common/widgets/custom_snackbar_widget.dart';
+import 'package:swift_tech_resto/features/order/domain/models/order_model.dart';
+import 'package:swift_tech_resto/features/address/controllers/address_controller.dart';
+import 'package:swift_tech_resto/features/address/domain/models/address_model.dart';
+import 'package:swift_tech_resto/features/address/widgets/address_card_widget.dart';
+import 'package:swift_tech_resto/features/auth/controllers/auth_controller.dart';
+import 'package:swift_tech_resto/features/cart/controllers/cart_controller.dart';
+import 'package:swift_tech_resto/features/checkout/domain/models/offline_method_model.dart';
+import 'package:swift_tech_resto/features/checkout/domain/models/place_order_body_model.dart';
+import 'package:swift_tech_resto/features/checkout/domain/models/timeslote_model.dart';
+import 'package:swift_tech_resto/features/checkout/domain/services/checkout_service_interface.dart';
+import 'package:swift_tech_resto/features/checkout/widgets/order_successfull_dialog_widget.dart';
+import 'package:swift_tech_resto/features/checkout/widgets/partial_pay_dialog.dart';
+import 'package:swift_tech_resto/features/coupon/controllers/coupon_controller.dart';
+import 'package:swift_tech_resto/features/language/controllers/localization_controller.dart';
+import 'package:swift_tech_resto/features/loyalty/controllers/loyalty_controller.dart';
+import 'package:swift_tech_resto/features/profile/controllers/profile_controller.dart';
+import 'package:swift_tech_resto/features/restaurant/controllers/restaurant_controller.dart';
+import 'package:swift_tech_resto/features/splash/controllers/splash_controller.dart';
+import 'package:swift_tech_resto/helper/address_helper.dart';
+import 'package:swift_tech_resto/helper/responsive_helper.dart';
+import 'package:swift_tech_resto/helper/route_helper.dart';
+import 'package:swift_tech_resto/util/app_constants.dart';
+import 'package:swift_tech_resto/util/dimensions.dart';
+import 'package:swift_tech_resto/util/styles.dart';
+import 'package:swift_tech_resto/common/widgets/custom_dropdown_widget.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -148,8 +148,13 @@ class CheckoutController extends GetxController implements GetxService {
   String? _digitalPaymentName;
   String? get digitalPaymentName => _digitalPaymentName;
 
-  String? countryDialCode = Get.find<AuthController>().getUserCountryCode().isNotEmpty ? Get.find<AuthController>().getUserCountryCode()
-      : CountryCode.fromCountryCode(Get.find<SplashController>().configModel!.country!).dialCode ?? Get.find<LocalizationController>().locale.countryCode;
+  String? countryDialCode =
+      Get.find<AuthController>().getUserCountryCode().isNotEmpty
+          ? Get.find<AuthController>().getUserCountryCode()
+          : CountryCode.fromCountryCode(
+                      Get.find<SplashController>().configModel!.country!)
+                  .dialCode ??
+              Get.find<LocalizationController>().locale.countryCode;
 
   int _selectedInstruction = -1;
   int get selectedInstruction => _selectedInstruction;
@@ -166,24 +171,25 @@ class CheckoutController extends GetxController implements GetxService {
   bool _isLoadingUpdate = false;
   bool get isLoadingUpdate => _isLoadingUpdate;
 
-  void showTipsField(){
+  void showTipsField() {
     _canShowTipsField = !_canShowTipsField;
     update();
   }
 
-  void showHideTimeSlot(){
+  void showHideTimeSlot() {
     _canShowTimeSlot = !_canShowTimeSlot;
     update();
   }
 
-  void setInstruction(int index){
-    _selectedInstruction = checkoutServiceInterface.selectInstruction(index, _selectedInstruction);
+  void setInstruction(int index) {
+    _selectedInstruction =
+        checkoutServiceInterface.selectInstruction(index, _selectedInstruction);
     update();
   }
 
-  void setAddressIndex(int index, {bool canUpdate = true} ) {
+  void setAddressIndex(int index, {bool canUpdate = true}) {
     _addressIndex = index;
-    if(canUpdate) {
+    if (canUpdate) {
       update();
     }
   }
@@ -193,7 +199,7 @@ class CheckoutController extends GetxController implements GetxService {
     update();
   }
 
-  void changeDigitalPaymentName(String name){
+  void changeDigitalPaymentName(String name) {
     _digitalPaymentName = name;
     update();
   }
@@ -220,28 +226,31 @@ class CheckoutController extends GetxController implements GetxService {
     update();
   }
 
-  void expandedUpdate(bool status){
+  void expandedUpdate(bool status) {
     _isExpanded = status;
     update();
   }
 
   void setPaymentMethod(int index, {bool isUpdate = true}) {
     _paymentMethodIndex = index;
-    if(isUpdate) {
+    if (isUpdate) {
       update();
     }
   }
 
-  void selectOfflineBank(int index){
+  void selectOfflineBank(int index) {
     _selectedOfflineBankIndex = index;
     update();
   }
 
   void changesMethod() {
-    List<MethodInformations>? methodInformation = offlineMethodList![selectedOfflineBankIndex].methodInformations!;
+    List<MethodInformations>? methodInformation =
+        offlineMethodList![selectedOfflineBankIndex].methodInformations!;
 
-    informationControllerList = checkoutServiceInterface.generateTextControllerList(methodInformation);
-    informationFocusList = checkoutServiceInterface.generateFocusList(methodInformation);
+    informationControllerList =
+        checkoutServiceInterface.generateTextControllerList(methodInformation);
+    informationFocusList =
+        checkoutServiceInterface.generateFocusList(methodInformation);
 
     update();
   }
@@ -251,13 +260,14 @@ class CheckoutController extends GetxController implements GetxService {
     return _extraCharge;
   }
 
-  void setTotalAmount(double amount){
+  void setTotalAmount(double amount) {
     _viewTotalPrice = amount;
   }
 
   Future<void> setRestaurantDetails({int? restaurantId}) async {
-    if(Get.find<RestaurantController>().restaurant == null) {
-      await Get.find<RestaurantController>().getRestaurantDetails(Restaurant(id: restaurantId));
+    if (Get.find<RestaurantController>().restaurant == null) {
+      await Get.find<RestaurantController>()
+          .getRestaurantDetails(Restaurant(id: restaurantId));
     }
     _restaurant = Get.find<RestaurantController>().restaurant;
     Future.delayed(const Duration(milliseconds: 600), () => update());
@@ -266,13 +276,17 @@ class CheckoutController extends GetxController implements GetxService {
   Future<void> initCheckoutData(int? restaurantID) async {
     Get.find<CouponController>().removeCouponData(false);
     clearPrevData();
-    await Get.find<RestaurantController>().getRestaurantDetails(Restaurant(id: restaurantID));
+    await Get.find<RestaurantController>()
+        .getRestaurantDetails(Restaurant(id: restaurantID));
     initializeTimeSlot(Get.find<RestaurantController>().restaurant!);
     insertAddresses(Get.context!, null);
   }
 
-  bool isRestaurantClosed(DateTime dateTime, bool active, List<Schedules>? schedules, {int? customDateDuration}) {
-    return Get.find<RestaurantController>().isRestaurantClosed(dateTime, active, schedules);
+  bool isRestaurantClosed(
+      DateTime dateTime, bool active, List<Schedules>? schedules,
+      {int? customDateDuration}) {
+    return Get.find<RestaurantController>()
+        .isRestaurantClosed(dateTime, active, schedules);
   }
 
   Future<void> getDmTipMostTapped() async {
@@ -280,18 +294,21 @@ class CheckoutController extends GetxController implements GetxService {
     update();
   }
 
-  void setPreferenceTimeForView(String time, bool instanceOrder, {bool isUpdate = true}){
-    _preferableTime = checkoutServiceInterface.setPreferenceTimeForView(time, instanceOrder);
-    if(isUpdate) {
+  void setPreferenceTimeForView(String time, bool instanceOrder,
+      {bool isUpdate = true}) {
+    _preferableTime =
+        checkoutServiceInterface.setPreferenceTimeForView(time, instanceOrder);
+    if (isUpdate) {
       update();
     }
   }
 
-  void setCustomDate(DateTime? date, bool instanceOrder, {bool canUpdate = true}) {
+  void setCustomDate(DateTime? date, bool instanceOrder,
+      {bool canUpdate = true}) {
     _selectedCustomDate = date;
     _selectedTimeSlot = checkoutServiceInterface.selectTimeSlot(instanceOrder);
 
-    if(canUpdate) {
+    if (canUpdate) {
       update();
     }
   }
@@ -301,25 +318,26 @@ class CheckoutController extends GetxController implements GetxService {
     update();
   }
 
-  void changePartialPayment({bool isUpdate = true}){
+  void changePartialPayment({bool isUpdate = true}) {
     _isPartialPay = !_isPartialPay;
-    if(isUpdate) {
+    if (isUpdate) {
       update();
     }
   }
 
   void stopLoader({bool isUpdate = true}) {
     _isLoading = false;
-    if(isUpdate) {
+    if (isUpdate) {
       update();
     }
   }
 
   void updateTimeSlot(int? index, bool instanceOrder, {bool notify = true}) {
-    if(!instanceOrder) {
-      if(index == 0) {
-        if(notify) {
-          showCustomSnackBar('instance_order_is_not_active'.tr, showToaster: true);
+    if (!instanceOrder) {
+      if (index == 0) {
+        if (notify) {
+          showCustomSnackBar('instance_order_is_not_active'.tr,
+              showToaster: true);
         }
       } else {
         _selectedTimeSlot = index;
@@ -327,7 +345,7 @@ class CheckoutController extends GetxController implements GetxService {
     } else {
       _selectedTimeSlot = index;
     }
-    if(notify) {
+    if (notify) {
       update();
     }
   }
@@ -336,21 +354,21 @@ class CheckoutController extends GetxController implements GetxService {
     _selectedTips = index;
     _tips = checkoutServiceInterface.updateTips(index, _selectedTips);
 
-    if(notify) {
+    if (notify) {
       update();
     }
   }
 
   Future<void> addTips(double tips, {bool notify = true}) async {
     _tips = tips;
-    if(notify) {
+    if (notify) {
       update();
     }
   }
 
   void setOrderType(String type, {bool notify = true}) {
     _orderType = type;
-    if(notify) {
+    if (notify) {
       update();
     }
   }
@@ -369,7 +387,14 @@ class CheckoutController extends GetxController implements GetxService {
   void setSubscriptionType(String? type, int index) {
     _subscriptionType = type;
     _selectedDays = [];
-    for(int index=0; index < (type == 'weekly' ? 7 : type == 'monthly' ? 31 : 1); index++) {
+    for (int index = 0;
+        index <
+            (type == 'weekly'
+                ? 7
+                : type == 'monthly'
+                    ? 31
+                    : 1);
+        index++) {
       _selectedDays.add(null);
     }
     _subscriptionTypeIndex = index;
@@ -377,159 +402,202 @@ class CheckoutController extends GetxController implements GetxService {
   }
 
   void addDay(int index, TimeOfDay? time) {
-    if(time != null) {
-      _selectedDays[index] = DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day, time.hour, time.minute);
-    }else {
+    if (time != null) {
+      _selectedDays[index] = DateTime(DateTime.now().year, DateTime.now().month,
+          DateTime.now().day, time.hour, time.minute);
+    } else {
       _selectedDays[index] = null;
     }
     update();
   }
 
-  Future<bool> checkBalanceStatus(double totalPrice, {double discount = 0, double extraCharge = 0}) async {
+  Future<bool> checkBalanceStatus(double totalPrice,
+      {double discount = 0, double extraCharge = 0}) async {
     totalPrice = (totalPrice - discount) + extraCharge;
-    if(isPartialPay){
+    if (isPartialPay) {
       changePartialPayment();
     }
     setPaymentMethod(-1);
-    debugPrint('--total : $totalPrice , compare balance : ${Get.find<ProfileController>().userInfoModel!.walletBalance! < totalPrice}');
-    if((Get.find<ProfileController>().userInfoModel!.walletBalance! < totalPrice) && (Get.find<ProfileController>().userInfoModel!.walletBalance! != 0.0)){
-      Get.dialog(PartialPayDialog(isPartialPay: true, totalPrice: totalPrice), useSafeArea: false,);
-    }else{
-      Get.dialog(PartialPayDialog(isPartialPay: false, totalPrice: totalPrice), useSafeArea: false,);
+    debugPrint(
+        '--total : $totalPrice , compare balance : ${Get.find<ProfileController>().userInfoModel!.walletBalance! < totalPrice}');
+    if ((Get.find<ProfileController>().userInfoModel!.walletBalance! <
+            totalPrice) &&
+        (Get.find<ProfileController>().userInfoModel!.walletBalance! != 0.0)) {
+      Get.dialog(
+        PartialPayDialog(isPartialPay: true, totalPrice: totalPrice),
+        useSafeArea: false,
+      );
+    } else {
+      Get.dialog(
+        PartialPayDialog(isPartialPay: false, totalPrice: totalPrice),
+        useSafeArea: false,
+      );
     }
 
     update();
     return true;
   }
 
-  void insertAddresses(BuildContext context, AddressModel? addressModel, {bool notify = false}) {
+  void insertAddresses(BuildContext context, AddressModel? addressModel,
+      {bool notify = false}) {
     _addressList = [];
     _address = [];
 
-    _addressList.add(
-        DropdownItem<int>(value: -1, child: SizedBox(
-          width: context.width > Dimensions.webMaxWidth ? Dimensions.webMaxWidth-50 : context.width-50,
+    _addressList.add(DropdownItem<int>(
+        value: -1,
+        child: SizedBox(
+          width: context.width > Dimensions.webMaxWidth
+              ? Dimensions.webMaxWidth - 50
+              : context.width - 50,
           child: Padding(
             padding: const EdgeInsets.all(5.0),
             child: Row(children: [
               const Expanded(child: SizedBox()),
               Text(
                 'add_new_address'.tr,
-                style: robotoMedium.copyWith(color: Theme.of(context).primaryColor),
+                style: robotoMedium.copyWith(
+                    color: Theme.of(context).primaryColor),
               ),
               const SizedBox(width: Dimensions.paddingSizeSmall),
-
-              Icon(Icons.add_circle_outline_sharp, size: 20, color: Theme.of(context).primaryColor)
+              Icon(Icons.add_circle_outline_sharp,
+                  size: 20, color: Theme.of(context).primaryColor)
             ]),
           ),
-        ))
-    );
+        )));
 
     _address.add(AddressHelper.getAddressFromSharedPref()!);
-    _addressList.add(
-        DropdownItem<int>(value: 0, child: SizedBox(
-          width: context.width > Dimensions.webMaxWidth ? Dimensions.webMaxWidth-50 : context.width-50,
+    _addressList.add(DropdownItem<int>(
+        value: 0,
+        child: SizedBox(
+          width: context.width > Dimensions.webMaxWidth
+              ? Dimensions.webMaxWidth - 50
+              : context.width - 50,
           child: AddressCardWidget(
             address: AddressHelper.getAddressFromSharedPref(),
-            fromAddress: false, fromCheckout: true,
+            fromAddress: false,
+            fromCheckout: true,
           ),
-        ))
-    );
+        )));
 
-    if(Get.find<RestaurantController>().restaurant != null) {
-      if(Get.find<AddressController>().addressList != null) {
+    if (Get.find<RestaurantController>().restaurant != null) {
+      if (Get.find<AddressController>().addressList != null) {
         int i = 0;
-        for(int index=0; index<Get.find<AddressController>().addressList!.length; index++) {
-          if(Get.find<AddressController>().addressList![index].zoneIds!.contains(Get.find<RestaurantController>().restaurant!.zoneId)) {
-
+        for (int index = 0;
+            index < Get.find<AddressController>().addressList!.length;
+            index++) {
+          if (Get.find<AddressController>()
+              .addressList![index]
+              .zoneIds!
+              .contains(Get.find<RestaurantController>().restaurant!.zoneId)) {
             _address.add(Get.find<AddressController>().addressList![index]);
-            _addressList.add(DropdownItem<int>(value: i + 1, child: SizedBox(
-              width: context.width > Dimensions.webMaxWidth ? Dimensions.webMaxWidth-50 : context.width-50,
-              child: AddressCardWidget(
-                address: Get.find<AddressController>().addressList![index],
-                fromAddress: false, fromCheckout: true,
-              ),
-            )));
+            _addressList.add(DropdownItem<int>(
+                value: i + 1,
+                child: SizedBox(
+                  width: context.width > Dimensions.webMaxWidth
+                      ? Dimensions.webMaxWidth - 50
+                      : context.width - 50,
+                  child: AddressCardWidget(
+                    address: Get.find<AddressController>().addressList![index],
+                    fromAddress: false,
+                    fromCheckout: true,
+                  ),
+                )));
             i++;
           }
         }
-
       }
 
-      if(addressModel != null) {
+      if (addressModel != null) {
         _address.add(addressModel);
-        _addressList.add(DropdownItem<int>(value: _address.length- 1, child: SizedBox(
-          width: context.width > Dimensions.webMaxWidth ? Dimensions.webMaxWidth-50 : context.width-50,
-          child: AddressCardWidget(
-            address: addressModel,
-            fromAddress: false, fromCheckout: true,
-          ),
-        )));
-        setAddressIndex(_address.length- 1);
+        _addressList.add(DropdownItem<int>(
+            value: _address.length - 1,
+            child: SizedBox(
+              width: context.width > Dimensions.webMaxWidth
+                  ? Dimensions.webMaxWidth - 50
+                  : context.width - 50,
+              child: AddressCardWidget(
+                address: addressModel,
+                fromAddress: false,
+                fromCheckout: true,
+              ),
+            )));
+        setAddressIndex(_address.length - 1);
       }
 
-      _addressList.add(
-          DropdownItem<int>(value: -2, child: SizedBox(
-            width: context.width > Dimensions.webMaxWidth ? Dimensions.webMaxWidth-50 : context.width-50,
+      _addressList.add(DropdownItem<int>(
+          value: -2,
+          child: SizedBox(
+            width: context.width > Dimensions.webMaxWidth
+                ? Dimensions.webMaxWidth - 50
+                : context.width - 50,
             child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: Dimensions.paddingSizeSmall),
+              padding: const EdgeInsets.symmetric(
+                  vertical: Dimensions.paddingSizeSmall),
               child: Row(children: [
                 const Expanded(child: SizedBox()),
-
-                Icon(Icons.my_location_sharp, size: 20, color: Theme.of(context).primaryColor),
+                Icon(Icons.my_location_sharp,
+                    size: 20, color: Theme.of(context).primaryColor),
                 const SizedBox(width: Dimensions.paddingSizeSmall),
-
                 Text(
                   'use_my_current_location'.tr,
-                  style: robotoMedium.copyWith(color: Theme.of(context).primaryColor),
+                  style: robotoMedium.copyWith(
+                      color: Theme.of(context).primaryColor),
                 ),
                 const Expanded(child: SizedBox()),
-
               ]),
             ),
-          ))
-      );
+          )));
     }
-    if(notify) {
+    if (notify) {
       update();
     }
   }
 
   Future<void> initializeTimeSlot(Restaurant restaurant) async {
-    _timeSlots = await checkoutServiceInterface.initializeTimeSlot(restaurant, Get.find<SplashController>().configModel!.scheduleOrderSlotDuration);
-    _allTimeSlots = await checkoutServiceInterface.initializeTimeSlot(restaurant, Get.find<SplashController>().configModel!.scheduleOrderSlotDuration);
+    _timeSlots = await checkoutServiceInterface.initializeTimeSlot(restaurant,
+        Get.find<SplashController>().configModel!.scheduleOrderSlotDuration);
+    _allTimeSlots = await checkoutServiceInterface.initializeTimeSlot(
+        restaurant,
+        Get.find<SplashController>().configModel!.scheduleOrderSlotDuration);
 
     _validateSlot(_allTimeSlots!, DateTime.now(), notify: false);
   }
 
-  void updateDateSlot(int index, DateTime date, bool instanceOrder, {bool fromCustomDate = false}) {
-    if(!fromCustomDate) {
+  void updateDateSlot(int index, DateTime date, bool instanceOrder,
+      {bool fromCustomDate = false}) {
+    if (!fromCustomDate) {
       _selectedDateSlot = index;
     }
-    if(instanceOrder) {
+    if (instanceOrder) {
       _selectedTimeSlot = 0;
     } else {
       _selectedTimeSlot = 1;
     }
-    if(_allTimeSlots != null) {
+    if (_allTimeSlots != null) {
       _validateSlot(_allTimeSlots!, date);
     }
     update();
   }
 
-  void _validateSlot(List<TimeSlotModel> slots, DateTime date, {bool notify = true}) {
+  void _validateSlot(List<TimeSlotModel> slots, DateTime date,
+      {bool notify = true}) {
     _timeSlots = checkoutServiceInterface.validateTimeSlot(slots, date);
     _slotIndexList = checkoutServiceInterface.validateSlotIndexes(slots, date);
 
-    if(notify) {
+    if (notify) {
       update();
     }
   }
 
-  Future<double?> getDistanceInKM(LatLng originLatLng, LatLng destinationLatLng, {bool isDuration = false, bool isRiding = false, bool fromDashboard = false}) async {
-    _distance = await checkoutServiceInterface.getDistanceInKM(originLatLng, destinationLatLng, isDuration: isDuration);
+  Future<double?> getDistanceInKM(LatLng originLatLng, LatLng destinationLatLng,
+      {bool isDuration = false,
+      bool isRiding = false,
+      bool fromDashboard = false}) async {
+    _distance = await checkoutServiceInterface.getDistanceInKM(
+        originLatLng, destinationLatLng,
+        isDuration: isDuration);
 
-    if(!fromDashboard) {
+    if (!fromDashboard) {
       await getExtraCharge(_distance);
     }
 
@@ -537,19 +605,39 @@ class CheckoutController extends GetxController implements GetxService {
     return _distance;
   }
 
-  Future<String> placeOrder(PlaceOrderBodyModel placeOrderBody, int? zoneID, double amount, double? maximumCodOrderAmount, bool fromCart,
-      bool isCashOnDeliveryActive, {bool isOfflinePay = false}) async {
+  Future<String> placeOrder(
+      PlaceOrderBodyModel placeOrderBody,
+      int? zoneID,
+      double amount,
+      double? maximumCodOrderAmount,
+      bool fromCart,
+      bool isCashOnDeliveryActive,
+      {bool isOfflinePay = false}) async {
     _isLoading = true;
     update();
     String orderID = '';
-    Response response = await checkoutServiceInterface.placeOrder(placeOrderBody);
+    Response response =
+        await checkoutServiceInterface.placeOrder(placeOrderBody);
     _isLoading = false;
     if (response.statusCode == 200) {
       String? message = response.body['message'];
       orderID = response.body['order_id'].toString();
-      checkoutServiceInterface.sendNotificationRequest(orderID, Get.find<AuthController>().isLoggedIn() ? null : Get.find<AuthController>().getGuestId());
-      if(!isOfflinePay) {
-        _callback(true, message, orderID, zoneID, amount, maximumCodOrderAmount, fromCart, isCashOnDeliveryActive, placeOrderBody.contactPersonNumber!);
+      checkoutServiceInterface.sendNotificationRequest(
+          orderID,
+          Get.find<AuthController>().isLoggedIn()
+              ? null
+              : Get.find<AuthController>().getGuestId());
+      if (!isOfflinePay) {
+        _callback(
+            true,
+            message,
+            orderID,
+            zoneID,
+            amount,
+            maximumCodOrderAmount,
+            fromCart,
+            isCashOnDeliveryActive,
+            placeOrderBody.contactPersonNumber!);
       } else {
         Get.find<CartController>().getCartDataOnline();
       }
@@ -557,9 +645,18 @@ class CheckoutController extends GetxController implements GetxService {
         print('-------- Order placed successfully $orderID ----------');
       }
     } else {
-      if(!isOfflinePay){
-        _callback(false, response.statusText, '-1', zoneID, amount, maximumCodOrderAmount, fromCart, isCashOnDeliveryActive, placeOrderBody.contactPersonNumber!);
-      }else{
+      if (!isOfflinePay) {
+        _callback(
+            false,
+            response.statusText,
+            '-1',
+            zoneID,
+            amount,
+            maximumCodOrderAmount,
+            fromCart,
+            isCashOnDeliveryActive,
+            placeOrderBody.contactPersonNumber!);
+      } else {
         showCustomSnackBar(response.statusText);
       }
     }
@@ -567,45 +664,72 @@ class CheckoutController extends GetxController implements GetxService {
     return orderID;
   }
 
-  void _callback(bool isSuccess, String? message, String orderID, int? zoneID, double amount,
-      double? maximumCodOrderAmount, bool fromCart, bool isCashOnDeliveryActive, String? contactNumber) async {
-    if(isSuccess) {
+  void _callback(
+      bool isSuccess,
+      String? message,
+      String orderID,
+      int? zoneID,
+      double amount,
+      double? maximumCodOrderAmount,
+      bool fromCart,
+      bool isCashOnDeliveryActive,
+      String? contactNumber) async {
+    if (isSuccess) {
       // Get.find<OrderController>().getRunningOrders(1, notify: false);
-      if(fromCart) {
+      if (fromCart) {
         Get.find<CartController>().clearCartList();
       }
       _setGuestAddress(null);
       stopLoader();
-      if(paymentMethodIndex == 0 || paymentMethodIndex == 1) {
-        double total = ((amount / 100) * Get.find<SplashController>().configModel!.loyaltyPointItemPurchasePoint!);
-        Get.find<LoyaltyController>().saveEarningPoint(total.toStringAsFixed(0));
-        if(ResponsiveHelper.isDesktop(Get.context)) {
+      if (paymentMethodIndex == 0 || paymentMethodIndex == 1) {
+        double total = ((amount / 100) *
+            Get.find<SplashController>()
+                .configModel!
+                .loyaltyPointItemPurchasePoint!);
+        Get.find<LoyaltyController>()
+            .saveEarningPoint(total.toStringAsFixed(0));
+        if (ResponsiveHelper.isDesktop(Get.context)) {
           Get.offNamed(RouteHelper.getInitialRoute());
-          Future.delayed(const Duration(seconds: 2) , () => Get.dialog(Center(child: SizedBox(height: 350, width : 500, child: OrderSuccessfulDialogWidget(orderID: orderID, contactNumber: contactNumber)))));
+          Future.delayed(
+              const Duration(seconds: 2),
+              () => Get.dialog(Center(
+                  child: SizedBox(
+                      height: 350,
+                      width: 500,
+                      child: OrderSuccessfulDialogWidget(
+                          orderID: orderID, contactNumber: contactNumber)))));
         } else {
-          Get.offNamed(RouteHelper.getOrderSuccessRoute(orderID, 'success', amount, contactNumber));
+          Get.offNamed(RouteHelper.getOrderSuccessRoute(
+              orderID, 'success', amount, contactNumber));
         }
-
-      }else {
-        if(GetPlatform.isWeb) {
+      } else {
+        if (GetPlatform.isWeb) {
           await Get.find<AuthController>().saveGuestNumber(contactNumber ?? '');
           String? hostname = html.window.location.hostname;
           String protocol = html.window.location.protocol;
-          String selectedUrl = '${AppConstants.baseUrl}/payment-mobile?order_id=$orderID&customer_id=${Get.find<ProfileController>().userInfoModel?.id ?? Get.find<AuthController>().getGuestId()}'
+          String selectedUrl =
+              '${AppConstants.baseUrl}/payment-mobile?order_id=$orderID&customer_id=${Get.find<ProfileController>().userInfoModel?.id ?? Get.find<AuthController>().getGuestId()}'
               '&payment_method=$digitalPaymentName&payment_platform=web&&callback=$protocol//$hostname${RouteHelper.orderSuccess}?id=$orderID&amount=$amount&status=';
-          html.window.open(selectedUrl,"_self");
-        } else{
-          Get.offNamed(RouteHelper.getPaymentRoute(
-            OrderModel(id: int.parse(orderID), userId: Get.find<ProfileController>().userInfoModel?.id ?? 0, orderAmount: amount, restaurant: Get.find<RestaurantController>().restaurant),
-            digitalPaymentName, guestId: Get.find<AuthController>().getGuestId(), contactNumber: contactNumber,
-          ),
+          html.window.open(selectedUrl, "_self");
+        } else {
+          Get.offNamed(
+            RouteHelper.getPaymentRoute(
+              OrderModel(
+                  id: int.parse(orderID),
+                  userId: Get.find<ProfileController>().userInfoModel?.id ?? 0,
+                  orderAmount: amount,
+                  restaurant: Get.find<RestaurantController>().restaurant),
+              digitalPaymentName,
+              guestId: Get.find<AuthController>().getGuestId(),
+              contactNumber: contactNumber,
+            ),
           );
         }
       }
       clearPrevData();
       updateTips(0);
       Get.find<CouponController>().removeCouponData(false);
-    }else {
+    } else {
       showCustomSnackBar(message);
     }
   }

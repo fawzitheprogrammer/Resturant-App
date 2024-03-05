@@ -1,11 +1,11 @@
-import 'package:stackfood_multivendor/features/loyalty/domain/repositories/loyalty_repository_interface.dart';
-import 'package:stackfood_multivendor/features/loyalty/domain/services/loyalty_service_interface.dart';
-import 'package:stackfood_multivendor/features/wallet/domain/models/wallet_model.dart';
+import 'package:swift_tech_resto/features/loyalty/domain/repositories/loyalty_repository_interface.dart';
+import 'package:swift_tech_resto/features/loyalty/domain/services/loyalty_service_interface.dart';
+import 'package:swift_tech_resto/features/wallet/domain/models/wallet_model.dart';
 import 'package:get/get_connect.dart';
 
 class LoyaltyService implements LoyaltyServiceInterface {
-final LoyaltyRepositoryInterface loyaltyRepositoryInterface;
-LoyaltyService({required this.loyaltyRepositoryInterface});
+  final LoyaltyRepositoryInterface loyaltyRepositoryInterface;
+  LoyaltyService({required this.loyaltyRepositoryInterface});
 
   @override
   Future<WalletModel?> getLoyaltyTransactionList(String offset) async {
@@ -26,5 +26,4 @@ LoyaltyService({required this.loyaltyRepositoryInterface});
   String getEarningPint() {
     return loyaltyRepositoryInterface.getEarningPint();
   }
-
 }

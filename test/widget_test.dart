@@ -8,12 +8,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:stackfood_multivendor/main.dart';
+import 'package:swift_tech_resto/main.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp(languages: null, body: null, linkBody: null));
+    await tester
+        .pumpWidget(const MyApp(languages: null, body: null, linkBody: null));
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);

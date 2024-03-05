@@ -1,17 +1,27 @@
-import 'package:stackfood_multivendor/helper/responsive_helper.dart';
+import 'package:swift_tech_resto/helper/responsive_helper.dart';
 import 'package:flutter/material.dart';
 
 class WebConstrainedBox extends StatelessWidget {
   final int dataLength;
   final int minLength;
   final double minHeight;
-  final Widget child ;
-  const WebConstrainedBox({super.key, required this.dataLength, this.minLength = 5, this.minHeight = 0.6, required this.child});
+  final Widget child;
+  const WebConstrainedBox(
+      {super.key,
+      required this.dataLength,
+      this.minLength = 5,
+      this.minHeight = 0.6,
+      required this.child});
 
   @override
   Widget build(BuildContext context) {
     return ConstrainedBox(
-      constraints: BoxConstraints(minHeight: ResponsiveHelper.isDesktop(context) ? dataLength < minLength ? MediaQuery.of(context).size.height * minHeight: 0.0 : 0.0),
+      constraints: BoxConstraints(
+          minHeight: ResponsiveHelper.isDesktop(context)
+              ? dataLength < minLength
+                  ? MediaQuery.of(context).size.height * minHeight
+                  : 0.0
+              : 0.0),
       child: child,
     );
   }

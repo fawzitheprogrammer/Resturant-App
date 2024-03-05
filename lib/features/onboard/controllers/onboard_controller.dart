@@ -1,5 +1,5 @@
-import 'package:stackfood_multivendor/features/onboard/domain/models/onboarding_model.dart';
-import 'package:stackfood_multivendor/features/onboard/domain/service/onboard_service_interface.dart';
+import 'package:swift_tech_resto/features/onboard/domain/models/onboarding_model.dart';
+import 'package:swift_tech_resto/features/onboard/domain/service/onboard_service_interface.dart';
 import 'package:get/get.dart';
 
 class OnBoardingController extends GetxController implements GetxService {
@@ -21,5 +21,4 @@ class OnBoardingController extends GetxController implements GetxService {
     _onBoardingList = await onboardServiceInterface.getOnBoardingList();
     update();
   }
-
 }

@@ -1,4 +1,4 @@
-import 'package:stackfood_multivendor/common/models/product_model.dart';
+import 'package:swift_tech_resto/common/models/product_model.dart';
 
 class OrderDetailsModel {
   int? id;
@@ -20,41 +20,43 @@ class OrderDetailsModel {
   double? totalAddOnPrice;
   int? zoneId;
 
-  OrderDetailsModel(
-      {this.id,
-        this.foodId,
-        this.orderId,
-        this.price,
-        this.foodDetails,
-        this.variation,
-        this.oldVariation,
-        this.addOns,
-        this.discountOnFood,
-        this.discountType,
-        this.quantity,
-        this.taxAmount,
-        this.variant,
-        this.createdAt,
-        this.updatedAt,
-        this.itemCampaignId,
-        this.totalAddOnPrice,
-        this.zoneId,
-      });
+  OrderDetailsModel({
+    this.id,
+    this.foodId,
+    this.orderId,
+    this.price,
+    this.foodDetails,
+    this.variation,
+    this.oldVariation,
+    this.addOns,
+    this.discountOnFood,
+    this.discountType,
+    this.quantity,
+    this.taxAmount,
+    this.variant,
+    this.createdAt,
+    this.updatedAt,
+    this.itemCampaignId,
+    this.totalAddOnPrice,
+    this.zoneId,
+  });
 
   OrderDetailsModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     foodId = json['food_id'];
     orderId = json['order_id'];
     price = json['price'].toDouble();
-    foodDetails = json['food_details'] != null ? Product.fromJson(json['food_details']) : null;
+    foodDetails = json['food_details'] != null
+        ? Product.fromJson(json['food_details'])
+        : null;
     variation = [];
     oldVariation = [];
     if (json['variation'] != null && json['variation'].isNotEmpty) {
-      if(json['variation'][0]['values'] != null) {
+      if (json['variation'][0]['values'] != null) {
         json['variation'].forEach((v) {
           variation!.add(Variation.fromJson(v));
         });
-      }else {
+      } else {
         json['variation'].forEach((v) {
           oldVariation!.add(OldVariation.fromJson(v));
         });

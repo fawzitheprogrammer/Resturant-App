@@ -1,12 +1,12 @@
-// import 'package:stackfood_multivendor/features/restaurant/controllers/restaurant_controller.dart';
-// import 'package:stackfood_multivendor/features/splash/controllers/splash_controller.dart';
-// import 'package:stackfood_multivendor/data/model/body/dateMonthBody.dart';
-// import 'package:stackfood_multivendor/features/cart/domain/models/cart_model.dart';
-// import 'package:stackfood_multivendor/common/models/product_model.dart';
-// import 'package:stackfood_multivendor/features/location/domain/models/zone_response_model.dart';
-// import 'package:stackfood_multivendor/helper/address_helper.dart';
-// import 'package:stackfood_multivendor/helper/date_converter.dart';
-// import 'package:stackfood_multivendor/helper/price_converter.dart';
+// import 'package:swift_tech_resto/features/restaurant/controllers/restaurant_controller.dart';
+// import 'package:swift_tech_resto/features/splash/controllers/splash_controller.dart';
+// import 'package:swift_tech_resto/data/model/body/dateMonthBody.dart';
+// import 'package:swift_tech_resto/features/cart/domain/models/cart_model.dart';
+// import 'package:swift_tech_resto/common/models/product_model.dart';
+// import 'package:swift_tech_resto/features/location/domain/models/zone_response_model.dart';
+// import 'package:swift_tech_resto/helper/address_helper.dart';
+// import 'package:swift_tech_resto/helper/date_converter.dart';
+// import 'package:swift_tech_resto/helper/price_converter.dart';
 // import 'package:get/get.dart';
 //
 // class CheckoutHelper {

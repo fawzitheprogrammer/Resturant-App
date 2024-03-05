@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:stackfood_multivendor/features/chat/domain/models/conversation_model.dart';
+import 'package:swift_tech_resto/features/chat/domain/models/conversation_model.dart';
 
 class MessageModel {
   int? totalSize;
@@ -10,14 +10,22 @@ class MessageModel {
   Conversation? conversation;
   List<Message>? messages;
 
-  MessageModel({this.totalSize, this.limit, this.offset, this.status, this.conversation, this.messages});
+  MessageModel(
+      {this.totalSize,
+      this.limit,
+      this.offset,
+      this.status,
+      this.conversation,
+      this.messages});
 
   MessageModel.fromJson(Map<String, dynamic> json) {
     totalSize = json['total_size'];
     limit = json['limit'];
     offset = json['offset'];
     status = json['status'];
-    conversation = json['conversation'] != null ? Conversation.fromJson(json['conversation']) : null;
+    conversation = json['conversation'] != null
+        ? Conversation.fromJson(json['conversation'])
+        : null;
     if (json['messages'] != null) {
       messages = <Message>[];
       json['messages'].forEach((v) {
@@ -54,20 +62,22 @@ class Message {
 
   Message(
       {this.id,
-        this.conversationId,
-        this.senderId,
-        this.message,
-        this.files,
-        this.isSeen,
-        this.createdAt,
-        this.updatedAt});
+      this.conversationId,
+      this.senderId,
+      this.message,
+      this.files,
+      this.isSeen,
+      this.createdAt,
+      this.updatedAt});
 
   Message.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     conversationId = json['conversation_id'];
     senderId = json['sender_id'];
     message = json['message'];
-    files = (json['file'] != 'null' && json['file'] != null) ? jsonDecode(json['file']).cast<String>() : [];
+    files = (json['file'] != 'null' && json['file'] != null)
+        ? jsonDecode(json['file']).cast<String>()
+        : [];
     isSeen = json['is_seen'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];

@@ -1,9 +1,12 @@
-import 'package:stackfood_multivendor/util/dimensions.dart';
+import 'package:swift_tech_resto/util/dimensions.dart';
 import 'package:flutter/material.dart';
 
 class IconWithTextRowWidget extends StatelessWidget {
   const IconWithTextRowWidget({
-    super.key, required this.icon, required this.text, required this.style,
+    super.key,
+    required this.icon,
+    required this.text,
+    required this.style,
   });
 
   final IconData icon;
@@ -23,11 +26,12 @@ class IconWithTextRowWidget extends StatelessWidget {
   }
 }
 
-
-
 class ImageWithTextRowWidget extends StatelessWidget {
   const ImageWithTextRowWidget({
-    super.key, required this.widget, required this.text, required this.style,
+    super.key,
+    required this.widget,
+    required this.text,
+    required this.style,
   });
 
   final Widget widget;

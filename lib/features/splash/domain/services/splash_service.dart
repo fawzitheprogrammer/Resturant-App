@@ -1,7 +1,7 @@
-import 'package:stackfood_multivendor/features/splash/domain/models/config_model.dart';
-import 'package:stackfood_multivendor/features/splash/domain/repositories/splash_repository_interface.dart';
-import 'package:stackfood_multivendor/features/splash/domain/services/splash_service_interface.dart';
-import 'package:stackfood_multivendor/common/widgets/custom_snackbar_widget.dart';
+import 'package:swift_tech_resto/features/splash/domain/models/config_model.dart';
+import 'package:swift_tech_resto/features/splash/domain/repositories/splash_repository_interface.dart';
+import 'package:swift_tech_resto/features/splash/domain/services/splash_service_interface.dart';
+import 'package:swift_tech_resto/common/widgets/custom_snackbar_widget.dart';
 import 'package:get/get.dart';
 
 class SplashService implements SplashServiceInterface {
@@ -14,9 +14,9 @@ class SplashService implements SplashServiceInterface {
   }
 
   @override
-  ConfigModel? prepareConfigData(Response response){
+  ConfigModel? prepareConfigData(Response response) {
     ConfigModel? configModel;
-    if(response.statusCode == 200) {
+    if (response.statusCode == 200) {
       configModel = ConfigModel.fromJson(response.body);
     }
     return configModel;
@@ -58,7 +58,7 @@ class SplashService implements SplashServiceInterface {
   }
 
   @override
-  Future<bool> subscribeMail(String email) async{
+  Future<bool> subscribeMail(String email) async {
     bool isSuccess = false;
     Response response = await splashRepositoryInterface.subscribeEmail(email);
     if (response.statusCode == 200) {
@@ -77,5 +77,4 @@ class SplashService implements SplashServiceInterface {
   Future<bool> loadCurrentTheme() async {
     return await splashRepositoryInterface.getCurrentThemeSharedPref();
   }
-
 }

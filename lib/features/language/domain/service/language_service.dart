@@ -1,7 +1,7 @@
-import 'package:stackfood_multivendor/features/address/domain/models/address_model.dart';
-import 'package:stackfood_multivendor/features/language/domain/models/language_model.dart';
-import 'package:stackfood_multivendor/features/language/domain/repository/language_repository_interface.dart';
-import 'package:stackfood_multivendor/features/language/domain/service/language_service_interface.dart';
+import 'package:swift_tech_resto/features/address/domain/models/address_model.dart';
+import 'package:swift_tech_resto/features/language/domain/models/language_model.dart';
+import 'package:swift_tech_resto/features/language/domain/repository/language_repository_interface.dart';
+import 'package:swift_tech_resto/features/language/domain/service/language_service_interface.dart';
 import 'package:flutter/material.dart';
 
 class LanguageService implements LanguageServiceInterface {
@@ -11,17 +11,18 @@ class LanguageService implements LanguageServiceInterface {
   @override
   bool setLTR(Locale locale) {
     bool isLtr = true;
-    if(locale.languageCode == 'ar') {
+    if (locale.languageCode == 'ar') {
       isLtr = false;
-    }else {
+    } else {
       isLtr = true;
     }
     return isLtr;
   }
-  
+
   @override
   updateHeader(Locale locale) {
-    AddressModel? addressModel = languageRepositoryInterface.getAddressFormSharedPref();
+    AddressModel? addressModel =
+        languageRepositoryInterface.getAddressFormSharedPref();
     languageRepositoryInterface.updateHeader(addressModel, locale);
   }
 
@@ -33,8 +34,8 @@ class LanguageService implements LanguageServiceInterface {
   @override
   setSelectedLanguageIndex(List<LanguageModel> languages, Locale locale) {
     int selectedLanguageIndex = 0;
-    for(int index = 0; index<languages.length; index++) {
-      if(languages[index].languageCode == locale.languageCode) {
+    for (int index = 0; index < languages.length; index++) {
+      if (languages[index].languageCode == locale.languageCode) {
         selectedLanguageIndex = index;
         break;
       }
@@ -46,5 +47,4 @@ class LanguageService implements LanguageServiceInterface {
   void saveLanguage(Locale locale) {
     languageRepositoryInterface.saveLanguage(locale);
   }
-
 }

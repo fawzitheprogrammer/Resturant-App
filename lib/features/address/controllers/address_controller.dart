@@ -1,7 +1,7 @@
-import 'package:stackfood_multivendor/features/checkout/controllers/checkout_controller.dart';
-import 'package:stackfood_multivendor/common/models/response_model.dart';
-import 'package:stackfood_multivendor/features/address/domain/models/address_model.dart';
-import 'package:stackfood_multivendor/features/address/domain/services/address_service_interface.dart';
+import 'package:swift_tech_resto/features/checkout/controllers/checkout_controller.dart';
+import 'package:swift_tech_resto/common/models/response_model.dart';
+import 'package:swift_tech_resto/features/address/domain/models/address_model.dart';
+import 'package:swift_tech_resto/features/address/domain/services/address_service_interface.dart';
 import 'package:get/get.dart';
 
 class AddressController extends GetxController implements GetxService {
@@ -38,10 +38,12 @@ class AddressController extends GetxController implements GetxService {
     update();
   }
 
-  Future<ResponseModel> addAddress(AddressModel addressModel, bool fromCheckout, int? restaurantZoneId) async {
+  Future<ResponseModel> addAddress(AddressModel addressModel, bool fromCheckout,
+      int? restaurantZoneId) async {
     _isLoading = true;
     update();
-    ResponseModel responseModel = await addressServiceInterface.add(addressModel, fromCheckout, restaurantZoneId);
+    ResponseModel responseModel = await addressServiceInterface.add(
+        addressModel, fromCheckout, restaurantZoneId);
     _isLoading = false;
     update();
     return responseModel;
@@ -54,15 +56,18 @@ class AddressController extends GetxController implements GetxService {
 
   void filterAddresses(String queryText) {
     if (_addressList != null) {
-      _addressList = addressServiceInterface.filterAddresses(_addressList!, queryText);
+      _addressList =
+          addressServiceInterface.filterAddresses(_addressList!, queryText);
       update();
     }
   }
 
-  Future<ResponseModel> updateAddress(AddressModel addressModel, int? addressId) async {
+  Future<ResponseModel> updateAddress(
+      AddressModel addressModel, int? addressId) async {
     _isLoading = true;
     update();
-    ResponseModel responseModel = await addressServiceInterface.update(addressModel.toJson(), addressId!);
+    ResponseModel responseModel =
+        await addressServiceInterface.update(addressModel.toJson(), addressId!);
     if (responseModel.isSuccess) {
       Get.find<AddressController>().getAddressList();
     }

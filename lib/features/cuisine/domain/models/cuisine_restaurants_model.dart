@@ -1,4 +1,4 @@
-import 'package:stackfood_multivendor/common/models/restaurant_model.dart';
+import 'package:swift_tech_resto/common/models/restaurant_model.dart';
 
 class CuisineRestaurantModel {
   int? totalSize;
@@ -6,7 +6,8 @@ class CuisineRestaurantModel {
   String? offset;
   List<Restaurant>? restaurants;
 
-  CuisineRestaurantModel({this.totalSize, this.limit, this.offset, this.restaurants});
+  CuisineRestaurantModel(
+      {this.totalSize, this.limit, this.offset, this.restaurants});
 
   CuisineRestaurantModel.fromJson(Map<String, dynamic> json) {
     totalSize = json['total_size'];

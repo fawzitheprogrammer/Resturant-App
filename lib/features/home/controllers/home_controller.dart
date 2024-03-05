@@ -1,6 +1,6 @@
-import 'package:stackfood_multivendor/features/home/domain/models/banner_model.dart';
-import 'package:stackfood_multivendor/features/home/domain/services/home_service_interface.dart';
-import 'package:stackfood_multivendor/helper/responsive_helper.dart';
+import 'package:swift_tech_resto/features/home/domain/models/banner_model.dart';
+import 'package:swift_tech_resto/features/home/domain/services/home_service_interface.dart';
+import 'package:swift_tech_resto/helper/responsive_helper.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController implements GetxService {
@@ -17,7 +17,7 @@ class HomeController extends GetxController implements GetxService {
   int get currentIndex => _currentIndex;
 
   Future<void> getBannerList(bool reload) async {
-    if(_bannerImageList == null || reload) {
+    if (_bannerImageList == null || reload) {
       BannerModel? responseBanner = await homeServiceInterface.getBannerList();
       if (responseBanner != null) {
         _bannerImageList = [];
@@ -28,13 +28,14 @@ class HomeController extends GetxController implements GetxService {
         }
         for (var banner in responseBanner.banners!) {
           _bannerImageList!.add(banner.image);
-          if(banner.food != null) {
+          if (banner.food != null) {
             _bannerDataList!.add(banner.food);
-          }else {
+          } else {
             _bannerDataList!.add(banner.restaurant);
           }
         }
-        if(ResponsiveHelper.isDesktop(Get.context) && _bannerImageList!.length % 2 != 0){
+        if (ResponsiveHelper.isDesktop(Get.context) &&
+            _bannerImageList!.length % 2 != 0) {
           _bannerImageList!.add(_bannerImageList![0]);
           _bannerDataList!.add(_bannerDataList![0]);
         }
@@ -45,9 +46,8 @@ class HomeController extends GetxController implements GetxService {
 
   void setCurrentIndex(int index, bool notify) {
     _currentIndex = index;
-    if(notify) {
+    if (notify) {
       update();
     }
   }
-
 }

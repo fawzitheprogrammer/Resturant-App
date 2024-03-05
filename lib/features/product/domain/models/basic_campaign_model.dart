@@ -1,4 +1,4 @@
-import 'package:stackfood_multivendor/common/models/restaurant_model.dart';
+import 'package:swift_tech_resto/common/models/restaurant_model.dart';
 
 class BasicCampaignModel {
   int? id;
@@ -13,14 +13,14 @@ class BasicCampaignModel {
 
   BasicCampaignModel(
       {this.id,
-        this.title,
-        this.image,
-        this.description,
-        this.availableDateStarts,
-        this.availableDateEnds,
-        this.startTime,
-        this.endTime,
-        this.restaurants});
+      this.title,
+      this.image,
+      this.description,
+      this.availableDateStarts,
+      this.availableDateEnds,
+      this.startTime,
+      this.endTime,
+      this.restaurants});
 
   BasicCampaignModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];

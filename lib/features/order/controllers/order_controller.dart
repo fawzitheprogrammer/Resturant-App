@@ -1,24 +1,24 @@
 import 'dart:async';
 
-import 'package:stackfood_multivendor/common/models/product_model.dart';
-import 'package:stackfood_multivendor/common/models/response_model.dart';
-import 'package:stackfood_multivendor/common/widgets/custom_snackbar_widget.dart';
-import 'package:stackfood_multivendor/features/auth/controllers/auth_controller.dart';
-import 'package:stackfood_multivendor/features/cart/controllers/cart_controller.dart';
-import 'package:stackfood_multivendor/features/cart/domain/models/cart_model.dart';
-import 'package:stackfood_multivendor/features/checkout/domain/models/place_order_body_model.dart';
-import 'package:stackfood_multivendor/features/loyalty/controllers/loyalty_controller.dart';
-import 'package:stackfood_multivendor/features/order/domain/models/delivery_log_model.dart';
-import 'package:stackfood_multivendor/features/order/domain/models/order_cancellation_body.dart';
-import 'package:stackfood_multivendor/features/order/domain/models/order_details_model.dart';
-import 'package:stackfood_multivendor/features/order/domain/models/order_model.dart';
-import 'package:stackfood_multivendor/features/order/domain/models/pause_log_model.dart';
-import 'package:stackfood_multivendor/features/order/domain/models/subscription_schedule_model.dart';
-import 'package:stackfood_multivendor/features/order/domain/services/order_service_interface.dart';
-import 'package:stackfood_multivendor/helper/address_helper.dart';
-import 'package:stackfood_multivendor/helper/auth_helper.dart';
-import 'package:stackfood_multivendor/helper/date_converter.dart';
-import 'package:stackfood_multivendor/helper/route_helper.dart';
+import 'package:swift_tech_resto/common/models/product_model.dart';
+import 'package:swift_tech_resto/common/models/response_model.dart';
+import 'package:swift_tech_resto/common/widgets/custom_snackbar_widget.dart';
+import 'package:swift_tech_resto/features/auth/controllers/auth_controller.dart';
+import 'package:swift_tech_resto/features/cart/controllers/cart_controller.dart';
+import 'package:swift_tech_resto/features/cart/domain/models/cart_model.dart';
+import 'package:swift_tech_resto/features/checkout/domain/models/place_order_body_model.dart';
+import 'package:swift_tech_resto/features/loyalty/controllers/loyalty_controller.dart';
+import 'package:swift_tech_resto/features/order/domain/models/delivery_log_model.dart';
+import 'package:swift_tech_resto/features/order/domain/models/order_cancellation_body.dart';
+import 'package:swift_tech_resto/features/order/domain/models/order_details_model.dart';
+import 'package:swift_tech_resto/features/order/domain/models/order_model.dart';
+import 'package:swift_tech_resto/features/order/domain/models/pause_log_model.dart';
+import 'package:swift_tech_resto/features/order/domain/models/subscription_schedule_model.dart';
+import 'package:swift_tech_resto/features/order/domain/services/order_service_interface.dart';
+import 'package:swift_tech_resto/helper/address_helper.dart';
+import 'package:swift_tech_resto/helper/auth_helper.dart';
+import 'package:swift_tech_resto/helper/date_converter.dart';
+import 'package:swift_tech_resto/helper/route_helper.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -38,7 +38,8 @@ class OrderController extends GetxController implements GetxService {
   List<OrderModel>? get runningOrderList => _runningOrderList;
 
   List<OrderModel>? _runningSubscriptionOrderList;
-  List<OrderModel>? get runningSubscriptionOrderList => _runningSubscriptionOrderList;
+  List<OrderModel>? get runningSubscriptionOrderList =>
+      _runningSubscriptionOrderList;
 
   List<OrderModel>? _historyOrderList;
   List<OrderModel>? get historyOrderList => _historyOrderList;
@@ -124,17 +125,19 @@ class OrderController extends GetxController implements GetxService {
   bool get showOneOrder => _showOneOrder;
 
   Future<void> getRunningOrders(int offset, {bool notify = true}) async {
-    if(offset == 1) {
+    if (offset == 1) {
       _runningOffsetList = [];
       _runningOffset = 1;
       _runningOrderList = null;
-      if(notify) {
+      if (notify) {
         update();
       }
     }
     if (!_runningOffsetList.contains(offset)) {
       _runningOffsetList.add(offset);
-      PaginatedOrderModel? paginatedOrderModel = await orderServiceInterface.getRunningOrderList(offset, AuthHelper.isLoggedIn() ? null : AuthHelper.getGuestId());
+      PaginatedOrderModel? paginatedOrderModel =
+          await orderServiceInterface.getRunningOrderList(
+              offset, AuthHelper.isLoggedIn() ? null : AuthHelper.getGuestId());
       if (paginatedOrderModel != null) {
         if (offset == 1) {
           _runningOrderList = [];
@@ -146,25 +149,27 @@ class OrderController extends GetxController implements GetxService {
         update();
       }
     } else {
-      if(_runningPaginate) {
+      if (_runningPaginate) {
         _runningPaginate = false;
         update();
       }
     }
   }
 
-  Future<void> getRunningSubscriptionOrders(int offset, {bool notify = true}) async {
-    if(offset == 1) {
+  Future<void> getRunningSubscriptionOrders(int offset,
+      {bool notify = true}) async {
+    if (offset == 1) {
       _runningSubscriptionOffsetList = [];
       _runningSubscriptionOffset = 1;
       _runningSubscriptionOrderList = null;
-      if(notify) {
+      if (notify) {
         update();
       }
     }
     if (!_runningSubscriptionOffsetList.contains(offset)) {
       _runningSubscriptionOffsetList.add(offset);
-      PaginatedOrderModel? paginatedOrderModel = await orderServiceInterface.getRunningSubscriptionOrderList(offset);
+      PaginatedOrderModel? paginatedOrderModel =
+          await orderServiceInterface.getRunningSubscriptionOrderList(offset);
       if (paginatedOrderModel != null) {
         if (offset == 1) {
           _runningSubscriptionOrderList = [];
@@ -175,7 +180,7 @@ class OrderController extends GetxController implements GetxService {
         update();
       }
     } else {
-      if(_runningSubscriptionPaginate) {
+      if (_runningSubscriptionPaginate) {
         _runningSubscriptionPaginate = false;
         update();
       }
@@ -183,17 +188,18 @@ class OrderController extends GetxController implements GetxService {
   }
 
   Future<void> getHistoryOrders(int offset, {bool notify = true}) async {
-    if(offset == 1) {
+    if (offset == 1) {
       _historyOffsetList = [];
       _historyOrderList = null;
-      if(notify) {
+      if (notify) {
         update();
       }
     }
     _historyOffset = offset;
     if (!_historyOffsetList.contains(offset)) {
       _historyOffsetList.add(offset);
-      PaginatedOrderModel? paginatedOrderModel = await orderServiceInterface.getHistoryOrderList(offset);
+      PaginatedOrderModel? paginatedOrderModel =
+          await orderServiceInterface.getHistoryOrderList(offset);
       if (paginatedOrderModel != null) {
         if (offset == 1) {
           _historyOrderList = [];
@@ -204,7 +210,7 @@ class OrderController extends GetxController implements GetxService {
         update();
       }
     } else {
-      if(_historyPaginate) {
+      if (_historyPaginate) {
         _historyPaginate = false;
         update();
       }
@@ -212,9 +218,9 @@ class OrderController extends GetxController implements GetxService {
   }
 
   void setOffset(int offset, bool isRunning, bool isSubscription) {
-    if(isRunning) {
+    if (isRunning) {
       _runningOffset = offset;
-    } else if(isSubscription) {
+    } else if (isSubscription) {
       _runningSubscriptionOffset = offset;
     } else {
       _historyOffset = offset;
@@ -222,9 +228,9 @@ class OrderController extends GetxController implements GetxService {
   }
 
   void showBottomLoader(bool isRunning, bool isSubscription) {
-    if(isRunning) {
+    if (isRunning) {
       _runningPaginate = true;
-    } else if(isSubscription) {
+    } else if (isSubscription) {
       _runningSubscriptionPaginate = true;
     } else {
       _historyPaginate = true;
@@ -232,26 +238,33 @@ class OrderController extends GetxController implements GetxService {
     update();
   }
 
-  void callTrackOrderApi({required OrderModel orderModel, required String orderId, String? contactNumber}){
-    if(orderModel.orderStatus != 'delivered' && orderModel.orderStatus != 'failed' && orderModel.orderStatus != 'canceled') {
+  void callTrackOrderApi(
+      {required OrderModel orderModel,
+      required String orderId,
+      String? contactNumber}) {
+    if (orderModel.orderStatus != 'delivered' &&
+        orderModel.orderStatus != 'failed' &&
+        orderModel.orderStatus != 'canceled') {
       timerTrackOrder(orderId.toString(), contactNumber: contactNumber);
       _timer?.cancel();
       _timer = Timer.periodic(const Duration(seconds: 10), (timer) {
-        if(Get.currentRoute.contains(RouteHelper.orderDetails)){
+        if (Get.currentRoute.contains(RouteHelper.orderDetails)) {
           timerTrackOrder(orderId.toString(), contactNumber: contactNumber);
         } else {
           _timer?.cancel();
         }
       });
-    }else{
+    } else {
       timerTrackOrder(orderId.toString(), contactNumber: contactNumber);
     }
   }
 
   Future<bool> timerTrackOrder(String orderID, {String? contactNumber}) async {
     _showCancelled = false;
-    OrderModel? orderModel = await orderServiceInterface.trackOrder(orderID, AuthHelper.isLoggedIn() ? null : AuthHelper.getGuestId(), contactNumber: contactNumber);
-    if(orderModel != null) {
+    OrderModel? orderModel = await orderServiceInterface.trackOrder(
+        orderID, AuthHelper.isLoggedIn() ? null : AuthHelper.getGuestId(),
+        contactNumber: contactNumber);
+    if (orderModel != null) {
       _trackModel = orderModel;
     }
     update();
@@ -262,17 +275,21 @@ class OrderController extends GetxController implements GetxService {
     _timer?.cancel();
   }
 
-  Future<ResponseModel> trackOrder(String? orderID, OrderModel? orderModel, bool fromTracking, {String? contactNumber, bool? fromGuestInput = false}) async {
+  Future<ResponseModel> trackOrder(
+      String? orderID, OrderModel? orderModel, bool fromTracking,
+      {String? contactNumber, bool? fromGuestInput = false}) async {
     _trackModel = null;
-    if(!fromTracking) {
+    if (!fromTracking) {
       _orderDetails = null;
     }
     _showCancelled = false;
     ResponseModel responseModel;
-    if(orderModel == null) {
+    if (orderModel == null) {
       _isLoading = true;
 
-      OrderModel? responseOrderModel = await orderServiceInterface.trackOrder(orderID, AuthHelper.isLoggedIn() ? null : AuthHelper.getGuestId(), contactNumber: contactNumber);
+      OrderModel? responseOrderModel = await orderServiceInterface.trackOrder(
+          orderID, AuthHelper.isLoggedIn() ? null : AuthHelper.getGuestId(),
+          contactNumber: contactNumber);
       if (responseOrderModel != null) {
         _trackModel = responseOrderModel;
         responseModel = ResponseModel(true, 'Successful');
@@ -281,7 +298,7 @@ class OrderController extends GetxController implements GetxService {
       }
       _isLoading = false;
       update();
-    }else {
+    } else {
       _trackModel = orderModel;
       responseModel = ResponseModel(true, 'Successful');
     }
@@ -289,14 +306,15 @@ class OrderController extends GetxController implements GetxService {
   }
 
   Future<void> getDeliveryLogs(int? subscriptionID, int offset) async {
-    if(offset == 1) {
+    if (offset == 1) {
       _deliverLogs = null;
     }
-    PaginatedDeliveryLogModel? deliveryLogModel = await orderServiceInterface.getSubscriptionDeliveryLog(subscriptionID, offset);
+    PaginatedDeliveryLogModel? deliveryLogModel = await orderServiceInterface
+        .getSubscriptionDeliveryLog(subscriptionID, offset);
     if (deliveryLogModel != null) {
       if (offset == 1) {
         _deliverLogs = deliveryLogModel;
-      }else {
+      } else {
         _deliverLogs!.data!.addAll(deliveryLogModel.data!);
         _deliverLogs!.offset = deliveryLogModel.offset;
         _deliverLogs!.totalSize = deliveryLogModel.totalSize;
@@ -306,14 +324,15 @@ class OrderController extends GetxController implements GetxService {
   }
 
   Future<void> getPauseLogs(int? subscriptionID, int offset) async {
-    if(offset == 1) {
+    if (offset == 1) {
       _pauseLogs = null;
     }
-    PaginatedPauseLogModel? pauseLogModel = await orderServiceInterface.getSubscriptionPauseLog(subscriptionID, offset);
+    PaginatedPauseLogModel? pauseLogModel = await orderServiceInterface
+        .getSubscriptionPauseLog(subscriptionID, offset);
     if (pauseLogModel != null) {
       if (offset == 1) {
         _pauseLogs = pauseLogModel;
-      }else {
+      } else {
         _pauseLogs!.data!.addAll(pauseLogModel.data!);
         _pauseLogs!.offset = pauseLogModel.offset;
         _pauseLogs!.totalSize = pauseLogModel.totalSize;
@@ -327,21 +346,37 @@ class OrderController extends GetxController implements GetxService {
     update();
   }
 
-  Future<bool> updateSubscriptionStatus(int? subscriptionID, DateTime? startDate, DateTime? endDate, String status, String note, String? reason) async {
+  Future<bool> updateSubscriptionStatus(
+      int? subscriptionID,
+      DateTime? startDate,
+      DateTime? endDate,
+      String status,
+      String note,
+      String? reason) async {
     _subscriveLoading = true;
     update();
 
-    ResponseModel responseModel = await orderServiceInterface.updateSubscriptionStatus(
-      subscriptionID, startDate != null ? DateConverter.dateToDateAndTime(startDate) : null,
-      endDate != null ? DateConverter.dateToDateAndTime(endDate) : null, status, note, reason,
+    ResponseModel responseModel =
+        await orderServiceInterface.updateSubscriptionStatus(
+      subscriptionID,
+      startDate != null ? DateConverter.dateToDateAndTime(startDate) : null,
+      endDate != null ? DateConverter.dateToDateAndTime(endDate) : null,
+      status,
+      note,
+      reason,
     );
     if (responseModel.isSuccess) {
       Get.back();
-      if(status == 'canceled' || startDate!.isAtSameMomentAs(DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day))) {
+      if (status == 'canceled' ||
+          startDate!.isAtSameMomentAs(DateTime(
+              DateTime.now().year, DateTime.now().month, DateTime.now().day))) {
         _trackModel!.subscription!.status = status;
       }
       showCustomSnackBar(
-        status == 'paused' ? 'subscription_paused_successfully'.tr : 'subscription_cancelled_successfully'.tr, isError: false,
+        status == 'paused'
+            ? 'subscription_paused_successfully'.tr
+            : 'subscription_cancelled_successfully'.tr,
+        isError: false,
       );
     }
     _subscriveLoading = false;
@@ -349,8 +384,9 @@ class OrderController extends GetxController implements GetxService {
     return responseModel.isSuccess;
   }
 
-  Future<void> getOrderCancelReasons()async {
-    List<CancellationData>? reasons = await orderServiceInterface.getCancelReasons();
+  Future<void> getOrderCancelReasons() async {
+    List<CancellationData>? reasons =
+        await orderServiceInterface.getCancelReasons();
     if (reasons != null) {
       _orderCancelReasons = [];
       _orderCancelReasons!.addAll(reasons);
@@ -362,7 +398,8 @@ class OrderController extends GetxController implements GetxService {
     _isLoading = true;
     _showCancelled = false;
 
-    Response response = await orderServiceInterface.getOrderDetails(orderID, AuthHelper.isLoggedIn() ? null : AuthHelper.getGuestId());
+    Response response = await orderServiceInterface.getOrderDetails(
+        orderID, AuthHelper.isLoggedIn() ? null : AuthHelper.getGuestId());
     if (response.statusCode == 200) {
       _orderDetails = orderServiceInterface.processOrderDetails(response);
       _schedules = orderServiceInterface.processSchedules(response);
@@ -372,17 +409,21 @@ class OrderController extends GetxController implements GetxService {
     return _orderDetails;
   }
 
-  Future<bool> switchToCOD(String? orderID, String? contactNumber, {double? points}) async {
+  Future<bool> switchToCOD(String? orderID, String? contactNumber,
+      {double? points}) async {
     _isLoading = true;
     update();
-    ResponseModel responseModel = await orderServiceInterface.switchToCOD(orderID);
+    ResponseModel responseModel =
+        await orderServiceInterface.switchToCOD(orderID);
     if (responseModel.isSuccess) {
-      if(points != null) {
-        Get.find<LoyaltyController>().saveEarningPoint(points.toStringAsFixed(0));
+      if (points != null) {
+        Get.find<LoyaltyController>()
+            .saveEarningPoint(points.toStringAsFixed(0));
       }
-      if(Get.find<AuthController>().isGuestLoggedIn()) {
-        Get.offNamed(RouteHelper.getOrderSuccessRoute(orderID!, 'success', 0, contactNumber));
-      }else {
+      if (Get.find<AuthController>().isGuestLoggedIn()) {
+        Get.offNamed(RouteHelper.getOrderSuccessRoute(
+            orderID!, 'success', 0, contactNumber));
+      } else {
         await Get.offAllNamed(RouteHelper.getInitialRoute());
       }
       showCustomSnackBar(responseModel.message, isError: false);
@@ -392,57 +433,60 @@ class OrderController extends GetxController implements GetxService {
     return responseModel.isSuccess;
   }
 
-  void selectReason(int index,{bool isUpdate = true}){
+  void selectReason(int index, {bool isUpdate = true}) {
     _selectedReasonIndex = index;
-    if(isUpdate) {
+    if (isUpdate) {
       update();
     }
   }
 
-  void setOrderCancelReason(String? reason){
+  void setOrderCancelReason(String? reason) {
     _cancelReason = reason;
     update();
   }
 
-  void expandedUpdate(bool status){
+  void expandedUpdate(bool status) {
     _isExpanded = status;
     update();
   }
 
-  Future<void> getRefundReasons()async {
+  Future<void> getRefundReasons() async {
     _refundReasons = null;
     _refundReasons = await orderServiceInterface.getRefundReasons();
     update();
   }
 
   void pickRefundImage(bool isRemove) async {
-    if(isRemove) {
+    if (isRemove) {
       _refundImage = null;
-    }else {
+    } else {
       _refundImage = await ImagePicker().pickImage(source: ImageSource.gallery);
       update();
     }
   }
 
-  void showRunningOrders(){
+  void showRunningOrders() {
     _showBottomSheet = !_showBottomSheet;
     update();
   }
 
-  void showOrders(){
+  void showOrders() {
     _showOneOrder = !_showOneOrder;
     update();
   }
 
-  Future<void> submitRefundRequest(String note, String? orderId)async {
-    if(_selectedReasonIndex == 0){
+  Future<void> submitRefundRequest(String note, String? orderId) async {
+    if (_selectedReasonIndex == 0) {
       showCustomSnackBar('please_select_reason'.tr);
-    }else{
+    } else {
       _isLoading = true;
       update();
-      Map<String, String> body = orderServiceInterface.prepareReasonData(note, orderId, _refundReasons![selectedReasonIndex]!);
+      Map<String, String> body = orderServiceInterface.prepareReasonData(
+          note, orderId, _refundReasons![selectedReasonIndex]!);
 
-      ResponseModel responseModel = await orderServiceInterface.submitRefundRequest(body, _refundImage, AuthHelper.isLoggedIn() ? null : AuthHelper.getGuestId());
+      ResponseModel responseModel =
+          await orderServiceInterface.submitRefundRequest(body, _refundImage,
+              AuthHelper.isLoggedIn() ? null : AuthHelper.getGuestId());
       if (responseModel.isSuccess) {
         showCustomSnackBar(responseModel.message, isError: false);
         Get.offAllNamed(RouteHelper.getInitialRoute());
@@ -455,11 +499,13 @@ class OrderController extends GetxController implements GetxService {
   Future<bool> cancelOrder(int? orderID, String? cancelReason) async {
     _isLoading = true;
     update();
-    ResponseModel responseModel = await orderServiceInterface.cancelOrder(orderID.toString(), cancelReason);
+    ResponseModel responseModel = await orderServiceInterface.cancelOrder(
+        orderID.toString(), cancelReason);
     _isLoading = false;
     Get.back();
     if (responseModel.isSuccess) {
-      OrderModel? orderModel = orderServiceInterface.findOrder(_runningOrderList, orderID);
+      OrderModel? orderModel =
+          orderServiceInterface.findOrder(_runningOrderList, orderID);
       _runningOrderList!.remove(orderModel);
       _showCancelled = true;
       showCustomSnackBar(responseModel.message, isError: false);
@@ -468,41 +514,45 @@ class OrderController extends GetxController implements GetxService {
     return responseModel.isSuccess;
   }
 
-  Future<void> reOrder(List<OrderDetailsModel> orderedFoods, int? restaurantZoneId) async {
+  Future<void> reOrder(
+      List<OrderDetailsModel> orderedFoods, int? restaurantZoneId) async {
     _isLoading = true;
     update();
 
     List<int?> foodIds = orderServiceInterface.prepareFoodIds(orderedFoods);
-    List<Product>? responseFoods = await orderServiceInterface.getFoodsFromFoodIds(foodIds);
+    List<Product>? responseFoods =
+        await orderServiceInterface.getFoodsFromFoodIds(foodIds);
     if (responseFoods != null) {
       _canReorder = true;
       List<Product> foods = responseFoods;
 
-      List<OnlineCart> onlineCartList = orderServiceInterface.prepareOnlineCartList(restaurantZoneId, orderedFoods, foods);
-      List<CartModel> offlineCartList = orderServiceInterface.prepareOfflineCartList(restaurantZoneId, orderedFoods, foods);
+      List<OnlineCart> onlineCartList = orderServiceInterface
+          .prepareOnlineCartList(restaurantZoneId, orderedFoods, foods);
+      List<CartModel> offlineCartList = orderServiceInterface
+          .prepareOfflineCartList(restaurantZoneId, orderedFoods, foods);
 
-      _canReorder = AddressHelper.getAddressFromSharedPref()!.zoneIds!.contains(restaurantZoneId);
+      _canReorder = AddressHelper.getAddressFromSharedPref()!
+          .zoneIds!
+          .contains(restaurantZoneId);
       _reorderMessage = !_canReorder ? 'you_are_not_in_the_order_zone' : '';
 
-      if(_canReorder) {
-        _canReorder = await orderServiceInterface.checkProductVariationHasChanged(offlineCartList);
-        _reorderMessage = !_canReorder ? 'this_ordered_products_are_updated_so_can_not_reorder_this_order' : '';
+      if (_canReorder) {
+        _canReorder = await orderServiceInterface
+            .checkProductVariationHasChanged(offlineCartList);
+        _reorderMessage = !_canReorder
+            ? 'this_ordered_products_are_updated_so_can_not_reorder_this_order'
+            : '';
       }
 
       _isLoading = false;
       update();
 
-      if(_canReorder) {
+      if (_canReorder) {
         await Get.find<CartController>().reorderAddToCart(onlineCartList);
         Get.toNamed(RouteHelper.getCartRoute(fromReorder: true));
-      }else{
+      } else {
         showCustomSnackBar(_reorderMessage.tr);
       }
-
     }
-
   }
-
-
-
 }

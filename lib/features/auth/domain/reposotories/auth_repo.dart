@@ -1,13 +1,13 @@
 import 'dart:convert';
 
-import 'package:stackfood_multivendor/common/models/response_model.dart';
-import 'package:stackfood_multivendor/api/api_client.dart';
-import 'package:stackfood_multivendor/features/address/domain/models/address_model.dart';
-import 'package:stackfood_multivendor/features/auth/domain/models/signup_body_model.dart';
-import 'package:stackfood_multivendor/features/auth/domain/models/social_log_in_body_model.dart';
-import 'package:stackfood_multivendor/features/auth/domain/reposotories/auth_repo_interface.dart';
-import 'package:stackfood_multivendor/helper/address_helper.dart';
-import 'package:stackfood_multivendor/util/app_constants.dart';
+import 'package:swift_tech_resto/common/models/response_model.dart';
+import 'package:swift_tech_resto/api/api_client.dart';
+import 'package:swift_tech_resto/features/address/domain/models/address_model.dart';
+import 'package:swift_tech_resto/features/auth/domain/models/signup_body_model.dart';
+import 'package:swift_tech_resto/features/auth/domain/models/social_log_in_body_model.dart';
+import 'package:swift_tech_resto/features/auth/domain/reposotories/auth_repo_interface.dart';
+import 'package:swift_tech_resto/helper/address_helper.dart';
+import 'package:swift_tech_resto/util/app_constants.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -16,19 +16,25 @@ import 'package:shared_preferences/shared_preferences.dart';
 class AuthRepo implements AuthRepoInterface<SignUpBodyModel> {
   final ApiClient apiClient;
   final SharedPreferences sharedPreferences;
-  AuthRepo({ required this.sharedPreferences, required this.apiClient});
+  AuthRepo({required this.sharedPreferences, required this.apiClient});
 
   @override
   Future<bool> saveUserToken(String token, {bool alreadyInApp = false}) async {
     apiClient.token = token;
-    if(alreadyInApp && sharedPreferences.getString(AppConstants.userAddress) != null){
-      AddressModel? addressModel = AddressModel.fromJson(jsonDecode(sharedPreferences.getString(AppConstants.userAddress)!));
+    if (alreadyInApp &&
+        sharedPreferences.getString(AppConstants.userAddress) != null) {
+      AddressModel? addressModel = AddressModel.fromJson(
+          jsonDecode(sharedPreferences.getString(AppConstants.userAddress)!));
       apiClient.updateHeader(
-        token, addressModel.zoneIds, sharedPreferences.getString(AppConstants.languageCode),
-        addressModel.latitude, addressModel.longitude,
+        token,
+        addressModel.zoneIds,
+        sharedPreferences.getString(AppConstants.languageCode),
+        addressModel.latitude,
+        addressModel.longitude,
       );
-    }else{
-      apiClient.updateHeader(token, null, sharedPreferences.getString(AppConstants.languageCode), null, null);
+    } else {
+      apiClient.updateHeader(token, null,
+          sharedPreferences.getString(AppConstants.languageCode), null, null);
     }
 
     return await sharedPreferences.setString(AppConstants.token, token);
@@ -37,32 +43,44 @@ class AuthRepo implements AuthRepoInterface<SignUpBodyModel> {
   @override
   Future<Response> updateToken({String notificationDeviceToken = ''}) async {
     String? deviceToken;
-    if(notificationDeviceToken.isEmpty){
+    if (notificationDeviceToken.isEmpty) {
       if (GetPlatform.isIOS && !GetPlatform.isWeb) {
-        FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(alert: true, badge: true, sound: true);
-        NotificationSettings settings = await FirebaseMessaging.instance.requestPermission(
-          alert: true, announcement: false, badge: true, carPlay: false,
-          criticalAlert: false, provisional: false, sound: true,
+        FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
+            alert: true, badge: true, sound: true);
+        NotificationSettings settings =
+            await FirebaseMessaging.instance.requestPermission(
+          alert: true,
+          announcement: false,
+          badge: true,
+          carPlay: false,
+          criticalAlert: false,
+          provisional: false,
+          sound: true,
         );
-        if(settings.authorizationStatus == AuthorizationStatus.authorized) {
+        if (settings.authorizationStatus == AuthorizationStatus.authorized) {
           deviceToken = await _saveDeviceToken();
         }
-      }else {
+      } else {
         deviceToken = await _saveDeviceToken();
       }
-      if(!GetPlatform.isWeb) {
+      if (!GetPlatform.isWeb) {
         FirebaseMessaging.instance.subscribeToTopic(AppConstants.topic);
       }
     }
-    return await apiClient.postData(AppConstants.tokenUri, {"_method": "put", "cm_firebase_token": notificationDeviceToken.isNotEmpty ? notificationDeviceToken : deviceToken});
+    return await apiClient.postData(AppConstants.tokenUri, {
+      "_method": "put",
+      "cm_firebase_token": notificationDeviceToken.isNotEmpty
+          ? notificationDeviceToken
+          : deviceToken
+    });
   }
 
   Future<String?> _saveDeviceToken() async {
     String? deviceToken = '@';
-    if(!GetPlatform.isWeb) {
+    if (!GetPlatform.isWeb) {
       try {
         deviceToken = (await FirebaseMessaging.instance.getToken())!;
-      }catch(_) {}
+      } catch (_) {}
     }
     if (deviceToken != null) {
       debugPrint('--------Device Token---------- $deviceToken');
@@ -72,7 +90,9 @@ class AuthRepo implements AuthRepoInterface<SignUpBodyModel> {
 
   @override
   Future<Response> registration(SignUpBodyModel signUpModel) async {
-    return await apiClient.postData(AppConstants.registerUri, signUpModel.toJson(), handleError: false);
+    return await apiClient.postData(
+        AppConstants.registerUri, signUpModel.toJson(),
+        handleError: false);
   }
 
   @override
@@ -82,16 +102,17 @@ class AuthRepo implements AuthRepoInterface<SignUpBodyModel> {
       "phone": phone!,
       "password": password!,
     };
-    if(guestId.isNotEmpty) {
+    if (guestId.isNotEmpty) {
       data.addAll({"guest_id": guestId});
     }
-    return await apiClient.postData(AppConstants.loginUri, data, handleError: false);
-
+    return await apiClient.postData(AppConstants.loginUri, data,
+        handleError: false);
   }
 
   @override
   Future<ResponseModel> guestLogin() async {
-    Response response = await apiClient.postData(AppConstants.guestLoginUri, {}, handleError: false);
+    Response response = await apiClient.postData(AppConstants.guestLoginUri, {},
+        handleError: false);
     if (response.statusCode == 200) {
       saveGuestId(response.body['guest_id'].toString());
       return ResponseModel(true, '${response.body['guest_id']}');
@@ -116,11 +137,13 @@ class AuthRepo implements AuthRepoInterface<SignUpBodyModel> {
   }
 
   @override
-  Future<void> saveUserNumberAndPassword(String number, String password, String countryCode) async {
+  Future<void> saveUserNumberAndPassword(
+      String number, String password, String countryCode) async {
     try {
       await sharedPreferences.setString(AppConstants.userPassword, password);
       await sharedPreferences.setString(AppConstants.userNumber, number);
-      await sharedPreferences.setString(AppConstants.userCountryCode, countryCode);
+      await sharedPreferences.setString(
+          AppConstants.userCountryCode, countryCode);
     } catch (e) {
       rethrow;
     }
@@ -154,13 +177,17 @@ class AuthRepo implements AuthRepoInterface<SignUpBodyModel> {
   }
 
   @override
-  Future<Response> loginWithSocialMedia(SocialLogInBodyModel socialLogInModel) async {
-    return await apiClient.postData(AppConstants.socialLoginUri, socialLogInModel.toJson());
+  Future<Response> loginWithSocialMedia(
+      SocialLogInBodyModel socialLogInModel) async {
+    return await apiClient.postData(
+        AppConstants.socialLoginUri, socialLogInModel.toJson());
   }
 
   @override
-  Future<Response> registerWithSocialMedia(SocialLogInBodyModel socialLogInModel) async {
-    return await apiClient.postData(AppConstants.socialRegisterUri, socialLogInModel.toJson());
+  Future<Response> registerWithSocialMedia(
+      SocialLogInBodyModel socialLogInModel) async {
+    return await apiClient.postData(
+        AppConstants.socialRegisterUri, socialLogInModel.toJson());
   }
 
   @override
@@ -173,6 +200,7 @@ class AuthRepo implements AuthRepoInterface<SignUpBodyModel> {
   Future<bool> saveDmTipIndex(String index) async {
     return await sharedPreferences.setString(AppConstants.dmTipIndex, index);
   }
+
   ///TODO: This methods need to remove from here.
   @override
   String getDmTipIndex() {
@@ -181,16 +209,17 @@ class AuthRepo implements AuthRepoInterface<SignUpBodyModel> {
 
   @override
   bool clearSharedData() {
-    if(!GetPlatform.isWeb) {
+    if (!GetPlatform.isWeb) {
       FirebaseMessaging.instance.unsubscribeFromTopic(AppConstants.topic);
-      apiClient.postData(AppConstants.tokenUri, {"_method": "put", "cm_firebase_token": '@'});
+      apiClient.postData(
+          AppConstants.tokenUri, {"_method": "put", "cm_firebase_token": '@'});
     }
     sharedPreferences.remove(AppConstants.token);
     sharedPreferences.remove(AppConstants.guestId);
     sharedPreferences.setStringList(AppConstants.cartList, []);
     sharedPreferences.remove(AppConstants.userAddress);
     apiClient.token = null;
-    apiClient.updateHeader(null, null, null,null, null);
+    apiClient.updateHeader(null, null, null, null, null);
     return true;
   }
 
@@ -201,14 +230,15 @@ class AuthRepo implements AuthRepoInterface<SignUpBodyModel> {
 
   @override
   void setNotificationActive(bool isActive) {
-    if(isActive) {
+    if (isActive) {
       updateToken();
-    }else {
-      if(!GetPlatform.isWeb) {
+    } else {
+      if (!GetPlatform.isWeb) {
         updateToken(notificationDeviceToken: '@');
         FirebaseMessaging.instance.unsubscribeFromTopic(AppConstants.topic);
-        if(isLoggedIn()) {
-          FirebaseMessaging.instance.unsubscribeFromTopic('zone_${AddressHelper.getAddressFromSharedPref()!.zoneId}_customer');
+        if (isLoggedIn()) {
+          FirebaseMessaging.instance.unsubscribeFromTopic(
+              'zone_${AddressHelper.getAddressFromSharedPref()!.zoneId}_customer');
         }
       }
     }
@@ -254,5 +284,4 @@ class AuthRepo implements AuthRepoInterface<SignUpBodyModel> {
   Future update(Map<String, dynamic> body, int? id) {
     throw UnimplementedError();
   }
-
 }

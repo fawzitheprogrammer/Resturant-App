@@ -1,9 +1,9 @@
-import 'package:stackfood_multivendor/common/models/product_model.dart';
-import 'package:stackfood_multivendor/common/models/restaurant_model.dart';
-import 'package:stackfood_multivendor/api/api_client.dart';
-import 'package:stackfood_multivendor/features/category/domain/models/category_model.dart';
-import 'package:stackfood_multivendor/features/category/domain/reposotories/category_repository_interface.dart';
-import 'package:stackfood_multivendor/util/app_constants.dart';
+import 'package:swift_tech_resto/common/models/product_model.dart';
+import 'package:swift_tech_resto/common/models/restaurant_model.dart';
+import 'package:swift_tech_resto/api/api_client.dart';
+import 'package:swift_tech_resto/features/category/domain/models/category_model.dart';
+import 'package:swift_tech_resto/features/category/domain/reposotories/category_repository_interface.dart';
+import 'package:swift_tech_resto/util/app_constants.dart';
 import 'package:get/get.dart';
 
 class CategoryRepository implements CategoryRepositoryInterface {
@@ -42,19 +42,24 @@ class CategoryRepository implements CategoryRepositoryInterface {
   @override
   Future<List<CategoryModel>?> getSubCategoryList(String? parentID) async {
     List<CategoryModel>? subCategoryList;
-    Response response = await apiClient.getData('${AppConstants.subCategoryUri}$parentID');
+    Response response =
+        await apiClient.getData('${AppConstants.subCategoryUri}$parentID');
     if (response.statusCode == 200) {
-      subCategoryList= [];
-      subCategoryList.add(CategoryModel(id: int.parse(parentID!), name: 'all'.tr));
-      response.body.forEach((category) => subCategoryList!.add(CategoryModel.fromJson(category)));
+      subCategoryList = [];
+      subCategoryList
+          .add(CategoryModel(id: int.parse(parentID!), name: 'all'.tr));
+      response.body.forEach(
+          (category) => subCategoryList!.add(CategoryModel.fromJson(category)));
     }
     return subCategoryList;
   }
 
   @override
-  Future<ProductModel?> getCategoryProductList(String? categoryID, int offset, String type) async {
+  Future<ProductModel?> getCategoryProductList(
+      String? categoryID, int offset, String type) async {
     ProductModel? productModel;
-    Response response = await apiClient.getData('${AppConstants.categoryProductUri}$categoryID?limit=10&offset=$offset&type=$type');
+    Response response = await apiClient.getData(
+        '${AppConstants.categoryProductUri}$categoryID?limit=10&offset=$offset&type=$type');
     if (response.statusCode == 200) {
       productModel = ProductModel.fromJson(response.body);
     }
@@ -62,9 +67,11 @@ class CategoryRepository implements CategoryRepositoryInterface {
   }
 
   @override
-  Future<RestaurantModel?> getCategoryRestaurantList(String? categoryID, int offset, String type) async {
+  Future<RestaurantModel?> getCategoryRestaurantList(
+      String? categoryID, int offset, String type) async {
     RestaurantModel? restaurantModel;
-    Response response = await apiClient.getData('${AppConstants.categoryRestaurantUri}$categoryID?limit=10&offset=$offset&type=$type');
+    Response response = await apiClient.getData(
+        '${AppConstants.categoryRestaurantUri}$categoryID?limit=10&offset=$offset&type=$type');
     if (response.statusCode == 200) {
       restaurantModel = RestaurantModel.fromJson(response.body);
     }
@@ -89,7 +96,8 @@ class CategoryRepository implements CategoryRepositoryInterface {
   // }
 
   @override
-  Future<Response> getSearchData(String? query, String? categoryID, bool isRestaurant, String type) async {
+  Future<Response> getSearchData(
+      String? query, String? categoryID, bool isRestaurant, String type) async {
     return await apiClient.getData(
       '${AppConstants.searchUri}${isRestaurant ? 'restaurants' : 'products'}/search?name=$query&category_id=$categoryID&type=$type&offset=1&limit=50',
     );

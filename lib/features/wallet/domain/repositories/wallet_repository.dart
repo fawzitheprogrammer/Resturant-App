@@ -1,27 +1,29 @@
-import 'package:stackfood_multivendor/api/api_client.dart';
-import 'package:stackfood_multivendor/features/wallet/domain/models/fund_bonus_model.dart';
-import 'package:stackfood_multivendor/features/wallet/domain/models/wallet_model.dart';
-import 'package:stackfood_multivendor/features/wallet/domain/repositories/wallet_repository_interface.dart';
-import 'package:stackfood_multivendor/helper/route_helper.dart';
-import 'package:stackfood_multivendor/util/app_constants.dart';
+import 'package:swift_tech_resto/api/api_client.dart';
+import 'package:swift_tech_resto/features/wallet/domain/models/fund_bonus_model.dart';
+import 'package:swift_tech_resto/features/wallet/domain/models/wallet_model.dart';
+import 'package:swift_tech_resto/features/wallet/domain/repositories/wallet_repository_interface.dart';
+import 'package:swift_tech_resto/helper/route_helper.dart';
+import 'package:swift_tech_resto/util/app_constants.dart';
 import 'package:get/get_connect/connect.dart';
 import 'package:get/get_utils/src/platform/platform.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:universal_html/html.dart' as html;
 
-class WalletRepository implements WalletRepositoryInterface{
+class WalletRepository implements WalletRepositoryInterface {
   final ApiClient apiClient;
   final SharedPreferences sharedPreferences;
-  WalletRepository( {required this.apiClient, required this.sharedPreferences});
+  WalletRepository({required this.apiClient, required this.sharedPreferences});
 
   @override
   Future<WalletModel?> getList({int? offset, String? sortingType}) async {
     return await _getWalletTransactionList(offset!, sortingType!);
   }
 
-  Future<WalletModel?> _getWalletTransactionList(int offset, String sortingType) async {
+  Future<WalletModel?> _getWalletTransactionList(
+      int offset, String sortingType) async {
     WalletModel? walletModel;
-    Response response = await apiClient.getData('${AppConstants.walletTransactionUri}?offset=$offset&limit=10&type=$sortingType');
+    Response response = await apiClient.getData(
+        '${AppConstants.walletTransactionUri}?offset=$offset&limit=10&type=$sortingType');
     if (response.statusCode == 200) {
       walletModel = WalletModel.fromJson(response.body);
     }
@@ -33,14 +35,12 @@ class WalletRepository implements WalletRepositoryInterface{
     String? hostname = html.window.location.hostname;
     String protocol = html.window.location.protocol;
 
-    return await apiClient.postData(AppConstants.addFundUri,
-        {
-          "amount": amount,
-          "payment_method": paymentMethod,
-          "payment_platform": GetPlatform.isWeb ? 'web' : '',
-          "callback": '$protocol//$hostname${RouteHelper.wallet}',
-        }
-    );
+    return await apiClient.postData(AppConstants.addFundUri, {
+      "amount": amount,
+      "payment_method": paymentMethod,
+      "payment_platform": GetPlatform.isWeb ? 'web' : '',
+      "callback": '$protocol//$hostname${RouteHelper.wallet}',
+    });
   }
 
   @override
@@ -49,7 +49,7 @@ class WalletRepository implements WalletRepositoryInterface{
     Response response = await apiClient.getData(AppConstants.walletBonusUri);
     if (response.statusCode == 200) {
       fundBonusList = [];
-      response.body.forEach((value){
+      response.body.forEach((value) {
         fundBonusList!.add(FundBonusModel.fromJson(value));
       });
     }
@@ -62,7 +62,7 @@ class WalletRepository implements WalletRepositoryInterface{
   }
 
   @override
-  String getWalletAccessToken(){
+  String getWalletAccessToken() {
     return sharedPreferences.getString(AppConstants.walletAccessToken) ?? "";
   }
 
@@ -85,5 +85,4 @@ class WalletRepository implements WalletRepositoryInterface{
   Future update(Map<String, dynamic> body, int? id) {
     throw UnimplementedError();
   }
-
 }

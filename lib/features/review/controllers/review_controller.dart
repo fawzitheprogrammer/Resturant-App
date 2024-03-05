@@ -1,9 +1,9 @@
-import 'package:stackfood_multivendor/common/models/product_model.dart';
-import 'package:stackfood_multivendor/common/models/response_model.dart';
-import 'package:stackfood_multivendor/common/models/review_model.dart';
-import 'package:stackfood_multivendor/features/order/domain/models/order_details_model.dart';
-import 'package:stackfood_multivendor/features/product/domain/models/review_body_model.dart';
-import 'package:stackfood_multivendor/features/review/domain/services/review_service_interface.dart';
+import 'package:swift_tech_resto/common/models/product_model.dart';
+import 'package:swift_tech_resto/common/models/response_model.dart';
+import 'package:swift_tech_resto/common/models/review_model.dart';
+import 'package:swift_tech_resto/features/order/domain/models/order_details_model.dart';
+import 'package:swift_tech_resto/features/product/domain/models/review_body_model.dart';
+import 'package:swift_tech_resto/features/review/domain/services/review_service_interface.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -68,26 +68,30 @@ class ReviewController extends GetxController implements GetxService {
     update();
   }
 
-  Future<void> getReviewedProductList(bool reload, String type, bool notify) async {
+  Future<void> getReviewedProductList(
+      bool reload, String type, bool notify) async {
     _reviewedType = type;
-    if(reload) {
+    if (reload) {
       _reviewedProductList = null;
     }
-    if(notify) {
+    if (notify) {
       update();
     }
-    if(_reviewedProductList == null || reload) {
-      _reviewedProductList = await reviewServiceInterface.getReviewedProductList(type: type);
+    if (_reviewedProductList == null || reload) {
+      _reviewedProductList =
+          await reviewServiceInterface.getReviewedProductList(type: type);
       update();
     }
   }
 
-  Future<ResponseModel> submitReview(int index, ReviewBodyModel reviewBody) async {
+  Future<ResponseModel> submitReview(
+      int index, ReviewBodyModel reviewBody) async {
     _loadingList[index] = true;
     update();
 
-    ResponseModel responseModel = await reviewServiceInterface.submitProductReview(reviewBody);
-    if(responseModel.isSuccess) {
+    ResponseModel responseModel =
+        await reviewServiceInterface.submitProductReview(reviewBody);
+    if (responseModel.isSuccess) {
       _submitList[index] = true;
       update();
     }
@@ -96,12 +100,14 @@ class ReviewController extends GetxController implements GetxService {
     return responseModel;
   }
 
-  Future<ResponseModel> submitDeliveryManReview(ReviewBodyModel reviewBody) async {
+  Future<ResponseModel> submitDeliveryManReview(
+      ReviewBodyModel reviewBody) async {
     _isLoading = true;
     update();
 
-    ResponseModel responseModel = await reviewServiceInterface.submitDeliverymanReview(reviewBody);
-    if(responseModel.isSuccess) {
+    ResponseModel responseModel =
+        await reviewServiceInterface.submitDeliverymanReview(reviewBody);
+    if (responseModel.isSuccess) {
       _deliveryManRating = 0;
       update();
     }
@@ -111,9 +117,9 @@ class ReviewController extends GetxController implements GetxService {
   }
 
   Future<void> getRestaurantReviewList(String? restaurantID) async {
-    _restaurantReviewList = await reviewServiceInterface.getRestaurantReviewList(restaurantID);
+    _restaurantReviewList =
+        await reviewServiceInterface.getRestaurantReviewList(restaurantID);
 
     update();
   }
-
 }

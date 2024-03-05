@@ -1,6 +1,6 @@
-import 'package:stackfood_multivendor/features/product/domain/models/basic_campaign_model.dart';
-import 'package:stackfood_multivendor/common/models/product_model.dart';
-import 'package:stackfood_multivendor/common/models/restaurant_model.dart';
+import 'package:swift_tech_resto/features/product/domain/models/basic_campaign_model.dart';
+import 'package:swift_tech_resto/common/models/product_model.dart';
+import 'package:swift_tech_resto/common/models/restaurant_model.dart';
 
 class BannerModel {
   List<BasicCampaignModel>? campaigns;
@@ -51,7 +51,9 @@ class Banner {
     title = json['title'];
     type = json['type'];
     image = json['image'];
-    restaurant = json['restaurant'] != null ? Restaurant.fromJson(json['restaurant']) : null;
+    restaurant = json['restaurant'] != null
+        ? Restaurant.fromJson(json['restaurant'])
+        : null;
     food = json['food'] != null ? Product.fromJson(json['food']) : null;
   }
 

@@ -1,8 +1,7 @@
-import 'package:stackfood_multivendor/util/dimensions.dart';
+import 'package:swift_tech_resto/util/dimensions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
-
 
 class ChattingShimmerWidget extends StatelessWidget {
   const ChattingShimmerWidget({super.key});
@@ -15,215 +14,271 @@ class ChattingShimmerWidget extends StatelessWidget {
       child: SizedBox(
         height: Get.height * 0.80,
         child: SingleChildScrollView(
-          child: Column(children:[
-
-            Container(margin: const EdgeInsets.symmetric(horizontal: 20,vertical: 5),
+          child: Column(children: [
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
               height: 65,
               child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
-
-                Container(height: 50, width: 50,
-                  decoration: BoxDecoration(color: Colors.grey[300], borderRadius: const BorderRadius.all(Radius.circular(100))),
+                Container(
+                  height: 50,
+                  width: 50,
+                  decoration: BoxDecoration(
+                      color: Colors.grey[300],
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(100))),
                 ),
                 const SizedBox(width: Dimensions.paddingSizeDefault),
-
-                Container(height: 40, width: 200,
+                Container(
+                  height: 40,
+                  width: 200,
                   decoration: BoxDecoration(
                     color: Colors.grey[300],
-                    borderRadius: const BorderRadius.only(topRight: Radius.circular(Dimensions.radiusDefault),topLeft: Radius.circular(Dimensions.radiusDefault), bottomRight: Radius.circular(Dimensions.radiusDefault)),
+                    borderRadius: const BorderRadius.only(
+                        topRight: Radius.circular(Dimensions.radiusDefault),
+                        topLeft: Radius.circular(Dimensions.radiusDefault),
+                        bottomRight: Radius.circular(Dimensions.radiusDefault)),
                   ),
                 ),
-
               ]),
             ),
-
             Container(
-              margin: const EdgeInsets.symmetric(horizontal: 20,vertical: 5),
+              margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
               height: 50,
-              child: Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-
-                Container(height: 40, width: 200,
-                  decoration: BoxDecoration(
-                    color: Colors.grey[300],
-                    borderRadius: const BorderRadius.only(topRight: Radius.circular(Dimensions.radiusDefault),topLeft: Radius.circular(Dimensions.radiusDefault), bottomLeft: Radius.circular(Dimensions.radiusDefault)
-                    )
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Container(
+                    height: 40,
+                    width: 200,
+                    decoration: BoxDecoration(
+                        color: Colors.grey[300],
+                        borderRadius: const BorderRadius.only(
+                            topRight: Radius.circular(Dimensions.radiusDefault),
+                            topLeft: Radius.circular(Dimensions.radiusDefault),
+                            bottomLeft:
+                                Radius.circular(Dimensions.radiusDefault))),
                   ),
-                ),
-                const SizedBox(width: Dimensions.paddingSizeDefault),
-
-                Container(
-                  height: 50, width: 50,
-                  decoration: BoxDecoration(color: Colors.grey[300], borderRadius: const BorderRadius.all(Radius.circular(100))),
-                ),
-
-              ],),
+                  const SizedBox(width: Dimensions.paddingSizeDefault),
+                  Container(
+                    height: 50,
+                    width: 50,
+                    decoration: BoxDecoration(
+                        color: Colors.grey[300],
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(100))),
+                  ),
+                ],
+              ),
             ),
-
             Container(
-              margin: const EdgeInsets.symmetric(horizontal: 20,vertical: 5),
-              child: Row(mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.end, children: [
-
-                Container(
-                  height: 50, width: 50,
-                  decoration: BoxDecoration(color: Colors.grey[300],
-                    borderRadius: const BorderRadius.all(Radius.circular(100)),
-                  ),
-                ),
-                const SizedBox(width: Dimensions.paddingSizeDefault),
-
-                Container(
-                  height: 80,
-                  width: 250,
-                  decoration: BoxDecoration(
-                    color: Colors.grey[300],
-                    borderRadius: const BorderRadius.only(topRight: Radius.circular(Dimensions.radiusDefault),topLeft: Radius.circular(Dimensions.radiusDefault), bottomRight: Radius.circular(Dimensions.radiusDefault),
+              margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Container(
+                      height: 50,
+                      width: 50,
+                      decoration: BoxDecoration(
+                        color: Colors.grey[300],
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(100)),
+                      ),
                     ),
-                  ),
-                ),
-
-              ]),
+                    const SizedBox(width: Dimensions.paddingSizeDefault),
+                    Container(
+                      height: 80,
+                      width: 250,
+                      decoration: BoxDecoration(
+                        color: Colors.grey[300],
+                        borderRadius: const BorderRadius.only(
+                          topRight: Radius.circular(Dimensions.radiusDefault),
+                          topLeft: Radius.circular(Dimensions.radiusDefault),
+                          bottomRight:
+                              Radius.circular(Dimensions.radiusDefault),
+                        ),
+                      ),
+                    ),
+                  ]),
             ),
-
             Container(
-              margin: const EdgeInsets.symmetric(horizontal: 20,vertical: 5),
-              child: Row(mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.end, children: [
-
-                Container(
-                  height: 50, width: 50,
-                  decoration: BoxDecoration(color: Colors.grey[300],
-                    borderRadius: const BorderRadius.all(Radius.circular(100)),),
-                ),
-                const SizedBox(width: Dimensions.paddingSizeDefault),
-
-                Container(height: 120, width: 120,
-                  decoration: BoxDecoration(
-                    color: Colors.grey[300],
-                    borderRadius: const BorderRadius.only(topRight: Radius.circular(Dimensions.radiusDefault),topLeft: Radius.circular(Dimensions.radiusDefault), bottomRight: Radius.circular(Dimensions.radiusDefault),bottomLeft: Radius.circular(Dimensions.radiusDefault)),
-                  ),),
-
-              ])
-            ),
-
+                margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Container(
+                        height: 50,
+                        width: 50,
+                        decoration: BoxDecoration(
+                          color: Colors.grey[300],
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(100)),
+                        ),
+                      ),
+                      const SizedBox(width: Dimensions.paddingSizeDefault),
+                      Container(
+                        height: 120,
+                        width: 120,
+                        decoration: BoxDecoration(
+                          color: Colors.grey[300],
+                          borderRadius: const BorderRadius.only(
+                              topRight:
+                                  Radius.circular(Dimensions.radiusDefault),
+                              topLeft:
+                                  Radius.circular(Dimensions.radiusDefault),
+                              bottomRight:
+                                  Radius.circular(Dimensions.radiusDefault),
+                              bottomLeft:
+                                  Radius.circular(Dimensions.radiusDefault)),
+                        ),
+                      ),
+                    ])),
             Container(
-              margin: const EdgeInsets.symmetric(horizontal: 20,vertical: 5),
+              margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
               height: 65,
               child: Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-
                 Container(
                   height: 40,
                   width: 200,
                   decoration: BoxDecoration(
                     color: Colors.grey[300],
-                    borderRadius: const BorderRadius.only(topRight: Radius.circular(Dimensions.radiusDefault),topLeft: Radius.circular(Dimensions.radiusDefault), bottomLeft: Radius.circular(Dimensions.radiusDefault)),
-                  ),),
+                    borderRadius: const BorderRadius.only(
+                        topRight: Radius.circular(Dimensions.radiusDefault),
+                        topLeft: Radius.circular(Dimensions.radiusDefault),
+                        bottomLeft: Radius.circular(Dimensions.radiusDefault)),
+                  ),
+                ),
                 const SizedBox(width: Dimensions.paddingSizeDefault),
-
                 Container(
-                  height: 50, width: 50,
-                  decoration: BoxDecoration(color: Colors.grey[300],
+                  height: 50,
+                  width: 50,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[300],
                     borderRadius: const BorderRadius.all(Radius.circular(100)),
                   ),
                 ),
-
               ]),
             ),
-
             Container(
-              margin: const EdgeInsets.symmetric(horizontal: 20,vertical: 5),
-              child: Row(mainAxisAlignment: MainAxisAlignment.end, crossAxisAlignment: CrossAxisAlignment.end, children: [
-
-                Container(height: 80, width: 250,
-                  decoration: BoxDecoration(
-                    color: Colors.grey[300],
-                    borderRadius: const BorderRadius.only(topRight: Radius.circular(Dimensions.radiusDefault),topLeft: Radius.circular(Dimensions.radiusDefault), bottomLeft: Radius.circular(Dimensions.radiusDefault))
-                  ),
-                ),
-                const SizedBox(width: Dimensions.paddingSizeDefault),
-
-                Container(
-                  height: 50, width: 50,
-                  decoration: BoxDecoration(color: Colors.grey[300],  borderRadius: const BorderRadius.all(Radius.circular(100))),
-                ),
-
-              ]),
+              margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Container(
+                      height: 80,
+                      width: 250,
+                      decoration: BoxDecoration(
+                          color: Colors.grey[300],
+                          borderRadius: const BorderRadius.only(
+                              topRight:
+                                  Radius.circular(Dimensions.radiusDefault),
+                              topLeft:
+                                  Radius.circular(Dimensions.radiusDefault),
+                              bottomLeft:
+                                  Radius.circular(Dimensions.radiusDefault))),
+                    ),
+                    const SizedBox(width: Dimensions.paddingSizeDefault),
+                    Container(
+                      height: 50,
+                      width: 50,
+                      decoration: BoxDecoration(
+                          color: Colors.grey[300],
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(100))),
+                    ),
+                  ]),
             ),
-
             Container(
-              margin: const EdgeInsets.symmetric(horizontal: 20,vertical: 5),
+              margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
               height: 50,
               child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
-
                 Container(
-                  height: 50, width: 50,
-                  decoration: BoxDecoration(color: Colors.grey[300],  borderRadius: const BorderRadius.all(Radius.circular(100))),
+                  height: 50,
+                  width: 50,
+                  decoration: BoxDecoration(
+                      color: Colors.grey[300],
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(100))),
                 ),
                 const SizedBox(width: Dimensions.paddingSizeDefault),
-
                 Container(
                   height: 40,
                   width: 200,
                   decoration: BoxDecoration(
                     color: Colors.grey[300],
-                    borderRadius: const BorderRadius.only(topRight: Radius.circular(Dimensions.radiusDefault),topLeft: Radius.circular(Dimensions.radiusDefault), bottomRight: Radius.circular(Dimensions.radiusDefault)),
+                    borderRadius: const BorderRadius.only(
+                        topRight: Radius.circular(Dimensions.radiusDefault),
+                        topLeft: Radius.circular(Dimensions.radiusDefault),
+                        bottomRight: Radius.circular(Dimensions.radiusDefault)),
                   ),
                 ),
-
               ]),
             ),
-
             Container(
-              margin: const EdgeInsets.symmetric(horizontal: 20,vertical: 5),
+              margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
               height: 50,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-
                   Container(
-                    height: 50, width: 50,
-                    decoration: BoxDecoration(color: Colors.grey[300],  borderRadius: const BorderRadius.all(Radius.circular(100))),
+                    height: 50,
+                    width: 50,
+                    decoration: BoxDecoration(
+                        color: Colors.grey[300],
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(100))),
                   ),
                   const SizedBox(width: Dimensions.paddingSizeDefault),
-
                   Container(
                     height: 40,
                     width: 200,
                     decoration: BoxDecoration(
                       color: Colors.grey[300],
-                      borderRadius: const BorderRadius.only(topRight: Radius.circular(Dimensions.radiusDefault),topLeft: Radius.circular(Dimensions.radiusDefault), bottomRight: Radius.circular(Dimensions.radiusDefault)),
+                      borderRadius: const BorderRadius.only(
+                          topRight: Radius.circular(Dimensions.radiusDefault),
+                          topLeft: Radius.circular(Dimensions.radiusDefault),
+                          bottomRight:
+                              Radius.circular(Dimensions.radiusDefault)),
                     ),
                   ),
-
                 ],
               ),
             ),
-
             Container(
-              margin: const EdgeInsets.symmetric(horizontal: 20,vertical: 5),
+              margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-
                   Container(
                     height: 120,
                     width: 120,
                     decoration: BoxDecoration(
                       color: Colors.grey[300],
-                      borderRadius: const BorderRadius.only(topRight: Radius.circular(Dimensions.radiusDefault),topLeft: Radius.circular(Dimensions.radiusDefault), bottomRight: Radius.circular(Dimensions.radiusDefault),bottomLeft: Radius.circular(Dimensions.radiusDefault)),
+                      borderRadius: const BorderRadius.only(
+                          topRight: Radius.circular(Dimensions.radiusDefault),
+                          topLeft: Radius.circular(Dimensions.radiusDefault),
+                          bottomRight:
+                              Radius.circular(Dimensions.radiusDefault),
+                          bottomLeft:
+                              Radius.circular(Dimensions.radiusDefault)),
                     ),
                   ),
                   const SizedBox(width: Dimensions.paddingSizeDefault),
-
                   Container(
-                    height: 50, width: 50,
+                    height: 50,
+                    width: 50,
                     decoration: BoxDecoration(
-                      color: Colors.grey[300], borderRadius: const BorderRadius.all(Radius.circular(100)),
+                      color: Colors.grey[300],
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(100)),
                     ),
                   ),
-
                 ],
               ),
             ),
-
           ]),
         ),
       ),

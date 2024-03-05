@@ -1,8 +1,7 @@
-import 'package:stackfood_multivendor/features/auth/controllers/auth_controller.dart';
+import 'package:swift_tech_resto/features/auth/controllers/auth_controller.dart';
 import 'package:get/get.dart';
 
 class AuthHelper {
-
   static bool isGuestLoggedIn() {
     return Get.find<AuthController>().isGuestLoggedIn();
   }

@@ -1,6 +1,6 @@
-import 'package:stackfood_multivendor/features/dashboard/domain/repositories/dashboard_repo_interface.dart';
+import 'package:swift_tech_resto/features/dashboard/domain/repositories/dashboard_repo_interface.dart';
 
-class DashboardRepo implements DashboardRepoInterface{
+class DashboardRepo implements DashboardRepoInterface {
   @override
   Future add(value) {
     throw UnimplementedError();
@@ -25,5 +25,4 @@ class DashboardRepo implements DashboardRepoInterface{
   Future update(Map<String, dynamic> body, int? id) {
     throw UnimplementedError();
   }
-
 }

@@ -1,4 +1,4 @@
-import 'package:stackfood_multivendor/util/app_constants.dart';
+import 'package:swift_tech_resto/util/app_constants.dart';
 import 'package:flutter/material.dart';
 
 ThemeData light = ThemeData(

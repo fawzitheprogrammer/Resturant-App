@@ -1,7 +1,7 @@
-import 'package:stackfood_multivendor/features/notification/domain/models/notification_model.dart';
-import 'package:stackfood_multivendor/features/notification/domain/repository/notification_repository_interface.dart';
-import 'package:stackfood_multivendor/features/notification/domain/service/notification_service_interface.dart';
-import 'package:stackfood_multivendor/helper/date_converter.dart';
+import 'package:swift_tech_resto/features/notification/domain/models/notification_model.dart';
+import 'package:swift_tech_resto/features/notification/domain/repository/notification_repository_interface.dart';
+import 'package:swift_tech_resto/features/notification/domain/service/notification_service_interface.dart';
+import 'package:swift_tech_resto/helper/date_converter.dart';
 
 class NotificationService implements NotificationServiceInterface {
   final NotificationRepositoryInterface notificationRepositoryInterface;
@@ -9,10 +9,12 @@ class NotificationService implements NotificationServiceInterface {
 
   @override
   Future<List<NotificationModel>?> getList() async {
-    List<NotificationModel>? notificationList = await notificationRepositoryInterface.getList();
-    if(notificationList != null) {
+    List<NotificationModel>? notificationList =
+        await notificationRepositoryInterface.getList();
+    if (notificationList != null) {
       notificationList.sort((a, b) {
-        return DateConverter.isoStringToLocalDate(a.updatedAt!).compareTo(DateConverter.isoStringToLocalDate(b.updatedAt!));
+        return DateConverter.isoStringToLocalDate(a.updatedAt!)
+            .compareTo(DateConverter.isoStringToLocalDate(b.updatedAt!));
       });
       Iterable iterable = notificationList.reversed;
       notificationList = iterable.toList() as List<NotificationModel>?;
@@ -39,5 +41,4 @@ class NotificationService implements NotificationServiceInterface {
   void addSeenNotificationIdList(List<int> notificationList) {
     notificationRepositoryInterface.addSeenNotificationIdList(notificationList);
   }
-
 }

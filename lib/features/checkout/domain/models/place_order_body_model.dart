@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:stackfood_multivendor/common/models/product_model.dart';
+import 'package:swift_tech_resto/common/models/product_model.dart';
 
 class PlaceOrderBodyModel {
   List<OnlineCart>? _cart;
@@ -40,44 +40,44 @@ class PlaceOrderBodyModel {
   int? _isBuyNow;
   String? _guestEmail;
 
-  PlaceOrderBodyModel(
-      {required List<OnlineCart> cart,
-        required double? couponDiscountAmount,
-        required String? couponDiscountTitle,
-        required String? couponCode,
-        required double orderAmount,
-        required String orderType,
-        required String paymentMethod,
-        required int? restaurantId,
-        required double? distance,
-        required String? scheduleAt,
-        required double? discountAmount,
-        required double taxAmount,
-        required String orderNote,
-        required String? address,
-        required String? latitude,
-        required String? longitude,
-        required String contactPersonName,
-        required String? contactPersonNumber,
-        required String? addressType,
-        required String road,
-        required String house,
-        required String floor,
-        required String dmTips,
-        required String subscriptionOrder,
-        required String? subscriptionType,
-        required List<SubscriptionDays> subscriptionDays,
-        required String subscriptionQuantity,
-        required String subscriptionStartAt,
-        required String subscriptionEndAt,
-        required int cutlery,
-        required String unavailableItemNote,
-        required String deliveryInstruction,
-        required int partialPayment,
-        required int? guestId,
-        required int isBuyNow,
-        required String? guestEmail,
-      }) {
+  PlaceOrderBodyModel({
+    required List<OnlineCart> cart,
+    required double? couponDiscountAmount,
+    required String? couponDiscountTitle,
+    required String? couponCode,
+    required double orderAmount,
+    required String orderType,
+    required String paymentMethod,
+    required int? restaurantId,
+    required double? distance,
+    required String? scheduleAt,
+    required double? discountAmount,
+    required double taxAmount,
+    required String orderNote,
+    required String? address,
+    required String? latitude,
+    required String? longitude,
+    required String contactPersonName,
+    required String? contactPersonNumber,
+    required String? addressType,
+    required String road,
+    required String house,
+    required String floor,
+    required String dmTips,
+    required String subscriptionOrder,
+    required String? subscriptionType,
+    required List<SubscriptionDays> subscriptionDays,
+    required String subscriptionQuantity,
+    required String subscriptionStartAt,
+    required String subscriptionEndAt,
+    required int cutlery,
+    required String unavailableItemNote,
+    required String deliveryInstruction,
+    required int partialPayment,
+    required int? guestId,
+    required int isBuyNow,
+    required String? guestEmail,
+  }) {
     _cart = cart;
     _couponDiscountAmount = couponDiscountAmount;
     _couponDiscountTitle = couponDiscountTitle;
@@ -185,16 +185,16 @@ class PlaceOrderBodyModel {
     _subscriptionType = json['subscription_type'];
     if (json['subscription_days'] != null) {
       _subscriptionDays = [];
-        if(json['subscription_days'] is String){
-          jsonDecode(json['subscription_days']).forEach((v) {
-            _subscriptionDays!.add(SubscriptionDays.fromJson(v));
-          });
+      if (json['subscription_days'] is String) {
+        jsonDecode(json['subscription_days']).forEach((v) {
+          _subscriptionDays!.add(SubscriptionDays.fromJson(v));
+        });
       } else {
-      json['subscription_days'].forEach((v) {
-        _subscriptionDays!.add(SubscriptionDays.fromJson(v));
-      });
-    }
+        json['subscription_days'].forEach((v) {
+          _subscriptionDays!.add(SubscriptionDays.fromJson(v));
+        });
       }
+    }
     _subscriptionQuantity = json['subscription_quantity'];
     _subscriptionStartAt = json['subscription_start_at'];
     _subscriptionEndAt = json['subscription_end_at'];
@@ -202,7 +202,9 @@ class PlaceOrderBodyModel {
     _unavailableItemNote = json['unavailable_item_note'];
     _deliveryInstruction = json['delivery_instruction'];
     _partialPayment = int.parse(json['partial_payment'].toString());
-    _guestId = json['guest_id'] != null ? int.parse(json['guest_id'].toString()) : null;
+    _guestId = json['guest_id'] != null
+        ? int.parse(json['guest_id'].toString())
+        : null;
     _isBuyNow = int.parse(json['is_buy_now'].toString());
     _guestEmail = json['contact_person_email'];
   }
@@ -237,22 +239,23 @@ class PlaceOrderBodyModel {
     data['subscription_order'] = _subscriptionOrder;
     data['subscription_type'] = _subscriptionType;
     if (_subscriptionDays != null) {
-      data['subscription_days'] = jsonEncode(_subscriptionDays!.map((v) => v.toJson()).toList());
+      data['subscription_days'] =
+          jsonEncode(_subscriptionDays!.map((v) => v.toJson()).toList());
     }
     data['subscription_quantity'] = _subscriptionQuantity;
     data['subscription_start_at'] = _subscriptionStartAt;
     data['subscription_end_at'] = _subscriptionEndAt;
     data['unavailable_item_note'] = _unavailableItemNote!;
     data['delivery_instruction'] = _deliveryInstruction!;
-    if(_cutlery != null){
+    if (_cutlery != null) {
       data['cutlery'] = _cutlery.toString();
     }
     data['partial_payment'] = _partialPayment.toString();
-    if(_guestId != 0) {
+    if (_guestId != 0) {
       data['guest_id'] = _guestId.toString();
     }
     data['is_buy_now'] = _isBuyNow.toString();
-    if(_guestEmail != null) {
+    if (_guestEmail != null) {
       data['contact_person_email'] = _guestEmail!;
     }
     return data;
@@ -273,13 +276,13 @@ class Cart {
   Cart(
       int? foodId,
       int? itemCampaignId,
-        String price,
-        String variant,
-        List<OrderVariation> variation,
-        int? quantity,
-        List<int?> addOnIds,
-        List<AddOns>? addOns,
-        List<int?> addOnQtys) {
+      String price,
+      String variant,
+      List<OrderVariation> variation,
+      int? quantity,
+      List<int?> addOnIds,
+      List<AddOns>? addOns,
+      List<int?> addOnQtys) {
     _foodId = foodId;
     _itemCampaignId = itemCampaignId;
     _price = price;
@@ -350,7 +353,9 @@ class OrderVariation {
 
   OrderVariation.fromJson(Map<String, dynamic> json) {
     name = json['name'];
-    values = json['values'] != null ? OrderVariationValue.fromJson(json['values']) : null;
+    values = json['values'] != null
+        ? OrderVariationValue.fromJson(json['values'])
+        : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -432,8 +437,7 @@ class OnlineCart {
       List<AddOns>? addOns,
       List<int?> addOnQtys,
       String model,
-      {String? itemType}
-      ) {
+      {String? itemType}) {
     _cartId = cartId;
     _itemId = itemId;
     _itemCampaignId = itemCampaignId;
@@ -480,7 +484,7 @@ class OnlineCart {
     }
     _addOnQtys = json['add_on_qtys'].cast<int>();
     _model = json['model'];
-    if(json['item_type'] != null && json['item_type'] != 'null') {
+    if (json['item_type'] != null && json['item_type'] != 'null') {
       _itemType = json['item_type'];
     }
   }
@@ -491,7 +495,7 @@ class OnlineCart {
     data['cart_id'] = _cartId;
     data['item_campaign_id'] = _itemCampaignId;
     data['price'] = _price;
-    if(_variations != null) {
+    if (_variations != null) {
       data['variations'] = _variations!.map((v) => v.toJson()).toList();
     }
     data['quantity'] = _quantity;
@@ -501,7 +505,7 @@ class OnlineCart {
     }
     data['add_on_qtys'] = _addOnQtys;
     data['model'] = _model;
-    if(_itemType != null) {
+    if (_itemType != null) {
       data['item_type'] = _itemType;
     }
     return data;

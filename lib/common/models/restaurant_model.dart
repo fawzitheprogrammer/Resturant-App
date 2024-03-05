@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:stackfood_multivendor/features/wallet/domain/models/fund_bonus_model.dart';
+import 'package:swift_tech_resto/features/wallet/domain/models/fund_bonus_model.dart';
 
 class RestaurantModel {
   int? totalSize;
@@ -13,7 +13,10 @@ class RestaurantModel {
   RestaurantModel.fromJson(Map<String, dynamic> json) {
     totalSize = json['total_size'];
     limit = json['limit'].toString();
-    offset = (json['offset'] != null && json['offset'].toString().trim().isNotEmpty) ? int.parse(json['offset'].toString()) : null;
+    offset =
+        (json['offset'] != null && json['offset'].toString().trim().isNotEmpty)
+            ? int.parse(json['offset'].toString())
+            : null;
     if (json['restaurants'] != null) {
       restaurants = [];
       json['restaurants'].forEach((v) {
@@ -86,59 +89,58 @@ class Restaurant {
   bool? freeDeliveryDistanceStatus;
   double? freeDeliveryDistanceValue;
 
-
-  Restaurant(
-      {this.id,
-        this.name,
-        this.phone,
-        this.email,
-        this.logo,
-        this.latitude,
-        this.longitude,
-        this.address,
-        this.zoneId,
-        this.minimumOrder,
-        this.currency,
-        this.freeDelivery,
-        this.coverPhoto,
-        this.delivery,
-        this.takeAway,
-        this.scheduleOrder,
-        this.avgRating,
-        this.tax,
-        this.ratingCount,
-        this.selfDeliverySystem,
-        this.posSystem,
-        this.open,
-        this.active,
-        this.deliveryTime,
-        this.categoryIds,
-        this.veg,
-        this.nonVeg,
-        this.discount,
-        this.schedules,
-        this.minimumShippingCharge,
-        this.perKmShippingCharge,
-        this.maximumShippingCharge,
-        this.vendorId,
-        this.restaurantModel,
-        this.restaurantStatus,
-        this.restaurantSubscription,
-        this.cuisineNames,
-        this.cuisineIds,
-        this.orderSubscriptionActive,
-        this.cutlery,
-        this.slug,
-        this.foodsCount,
-        this.foods,
-        this.announcementActive,
-        this.announcementMessage,
-        this.instantOrder,
-        this.customerDateOrderStatus,
-        this.customerOrderDate,
-        this.freeDeliveryDistanceStatus,
-        this.freeDeliveryDistanceValue,
-      });
+  Restaurant({
+    this.id,
+    this.name,
+    this.phone,
+    this.email,
+    this.logo,
+    this.latitude,
+    this.longitude,
+    this.address,
+    this.zoneId,
+    this.minimumOrder,
+    this.currency,
+    this.freeDelivery,
+    this.coverPhoto,
+    this.delivery,
+    this.takeAway,
+    this.scheduleOrder,
+    this.avgRating,
+    this.tax,
+    this.ratingCount,
+    this.selfDeliverySystem,
+    this.posSystem,
+    this.open,
+    this.active,
+    this.deliveryTime,
+    this.categoryIds,
+    this.veg,
+    this.nonVeg,
+    this.discount,
+    this.schedules,
+    this.minimumShippingCharge,
+    this.perKmShippingCharge,
+    this.maximumShippingCharge,
+    this.vendorId,
+    this.restaurantModel,
+    this.restaurantStatus,
+    this.restaurantSubscription,
+    this.cuisineNames,
+    this.cuisineIds,
+    this.orderSubscriptionActive,
+    this.cutlery,
+    this.slug,
+    this.foodsCount,
+    this.foods,
+    this.announcementActive,
+    this.announcementMessage,
+    this.instantOrder,
+    this.customerDateOrderStatus,
+    this.customerOrderDate,
+    this.freeDeliveryDistanceStatus,
+    this.freeDeliveryDistanceValue,
+  });
 
   Restaurant.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -150,7 +152,8 @@ class Restaurant {
     longitude = json['longitude'];
     address = json['address'];
     zoneId = json['zone_id'];
-    minimumOrder = json['minimum_order'] != null ? json['minimum_order'].toDouble() : 0;
+    minimumOrder =
+        json['minimum_order'] != null ? json['minimum_order'].toDouble() : 0;
     currency = json['currency'];
     freeDelivery = json['free_delivery'];
     coverPhoto = json['cover_photo'] ?? '';
@@ -167,24 +170,32 @@ class Restaurant {
     deliveryTime = json['delivery_time'];
     veg = json['veg'];
     nonVeg = json['non_veg'];
-    categoryIds = json['category_ids'] != null ? json['category_ids'].cast<int>() : [];
-    discount = json['discount'] != null ? Discount.fromJson(json['discount']) : null;
+    categoryIds =
+        json['category_ids'] != null ? json['category_ids'].cast<int>() : [];
+    discount =
+        json['discount'] != null ? Discount.fromJson(json['discount']) : null;
     if (json['schedules'] != null) {
       schedules = <Schedules>[];
       json['schedules'].forEach((v) {
         schedules!.add(Schedules.fromJson(v));
       });
     }
-    minimumShippingCharge = json['minimum_shipping_charge'] != null ? json['minimum_shipping_charge'].toDouble() : 0.0;
-    perKmShippingCharge = json['per_km_shipping_charge'] != null ? json['per_km_shipping_charge'].toDouble() : 0.0;
+    minimumShippingCharge = json['minimum_shipping_charge'] != null
+        ? json['minimum_shipping_charge'].toDouble()
+        : 0.0;
+    perKmShippingCharge = json['per_km_shipping_charge'] != null
+        ? json['per_km_shipping_charge'].toDouble()
+        : 0.0;
     maximumShippingCharge = json['maximum_shipping_charge']?.toDouble();
     vendorId = json['vendor_id'];
     restaurantModel = json['restaurant_model'];
     restaurantStatus = json['restaurant_status'];
-    restaurantSubscription = json['restaurant_sub'] != null ? RestaurantSubscription.fromJson(json['restaurant_sub']) : null;
-    if(json['cuisine'] != null){
+    restaurantSubscription = json['restaurant_sub'] != null
+        ? RestaurantSubscription.fromJson(json['restaurant_sub'])
+        : null;
+    if (json['cuisine'] != null) {
       cuisineNames = [];
-      json['cuisine'].forEach((v){
+      json['cuisine'].forEach((v) {
         cuisineNames!.add(Cuisines.fromJson(v));
       });
     }
@@ -210,7 +221,10 @@ class Restaurant {
     customerDateOrderStatus = json['customer_date_order_sratus'];
     customerOrderDate = json['customer_order_date'];
     freeDeliveryDistanceStatus = json['free_delivery_distance_status'];
-    freeDeliveryDistanceValue = (json['free_delivery_distance_value'] != null && json['free_delivery_distance_value'] != '') ? double.parse(json['free_delivery_distance_value'].toString()) : null;
+    freeDeliveryDistanceValue = (json['free_delivery_distance_value'] != null &&
+            json['free_delivery_distance_value'] != '')
+        ? double.parse(json['free_delivery_distance_value'].toString())
+        : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -286,17 +300,17 @@ class Discount {
 
   Discount(
       {this.id,
-        this.startDate,
-        this.endDate,
-        this.startTime,
-        this.endTime,
-        this.minPurchase,
-        this.maxDiscount,
-        this.discount,
-        this.discountType,
-        this.restaurantId,
-        this.createdAt,
-        this.updatedAt});
+      this.startDate,
+      this.endDate,
+      this.startTime,
+      this.endTime,
+      this.minPurchase,
+      this.maxDiscount,
+      this.discount,
+      this.discountType,
+      this.restaurantId,
+      this.createdAt,
+      this.updatedAt});
 
   Discount.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -340,10 +354,10 @@ class Schedules {
 
   Schedules(
       {this.id,
-        this.restaurantId,
-        this.day,
-        this.openingTime,
-        this.closingTime});
+      this.restaurantId,
+      this.day,
+      this.openingTime,
+      this.closingTime});
 
   Schedules.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -383,20 +397,20 @@ class RestaurantSubscription {
 
   RestaurantSubscription(
       {this.id,
-        this.packageId,
-        this.restaurantId,
-        this.expiryDate,
-        this.maxOrder,
-        this.maxProduct,
-        this.pos,
-        this.mobileApp,
-        this.chat,
-        this.review,
-        this.selfDelivery,
-        this.status,
-        this.totalPackageRenewed,
-        this.createdAt,
-        this.updatedAt});
+      this.packageId,
+      this.restaurantId,
+      this.expiryDate,
+      this.maxOrder,
+      this.maxProduct,
+      this.pos,
+      this.mobileApp,
+      this.chat,
+      this.review,
+      this.selfDelivery,
+      this.status,
+      this.totalPackageRenewed,
+      this.createdAt,
+      this.updatedAt});
 
   RestaurantSubscription.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -445,19 +459,19 @@ class Refund {
   String? customerNote;
   String? adminNote;
 
-  Refund(
-      {this.id,
-        this.orderId,
-        this.image,
-        this.customerReason,
-        this.customerNote,
-        this.adminNote,
-      });
+  Refund({
+    this.id,
+    this.orderId,
+    this.image,
+    this.customerReason,
+    this.customerNote,
+    this.adminNote,
+  });
 
   Refund.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     orderId = json['order_id'];
-    if(json['image'] != null){
+    if (json['image'] != null) {
       image = [];
       jsonDecode(json['image']).forEach((v) => image!.add(v));
     }
@@ -477,7 +491,6 @@ class Refund {
     return data;
   }
 }
-
 
 class Foods {
   int? id;
@@ -513,35 +526,35 @@ class Foods {
 
   Foods(
       {this.id,
-        this.name,
-        this.description,
-        this.image,
-        this.categoryId,
-        this.categoryIds,
-        this.variations,
-        this.addOns,
-        this.attributes,
-        this.choiceOptions,
-        this.price,
-        this.tax,
-        this.taxType,
-        this.discount,
-        this.discountType,
-        this.availableTimeStarts,
-        this.availableTimeEnds,
-        this.veg,
-        this.status,
-        this.restaurantId,
-        this.createdAt,
-        this.updatedAt,
-        this.orderCount,
-        this.avgRating,
-        this.ratingCount,
-        this.rating,
-        this.recommended,
-        this.slug,
-        this.maximumCartQuantity,
-        this.translations});
+      this.name,
+      this.description,
+      this.image,
+      this.categoryId,
+      this.categoryIds,
+      this.variations,
+      this.addOns,
+      this.attributes,
+      this.choiceOptions,
+      this.price,
+      this.tax,
+      this.taxType,
+      this.discount,
+      this.discountType,
+      this.availableTimeStarts,
+      this.availableTimeEnds,
+      this.veg,
+      this.status,
+      this.restaurantId,
+      this.createdAt,
+      this.updatedAt,
+      this.orderCount,
+      this.avgRating,
+      this.ratingCount,
+      this.rating,
+      this.recommended,
+      this.slug,
+      this.maximumCartQuantity,
+      this.translations});
 
   Foods.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -653,12 +666,12 @@ class Cuisines {
 
   Cuisines(
       {this.id,
-        this.name,
-        this.image,
-        this.status,
-        this.slug,
-        this.createdAt,
-        this.updatedAt});
+      this.name,
+      this.image,
+      this.status,
+      this.slug,
+      this.createdAt,
+      this.updatedAt});
 
   Cuisines.fromJson(Map<String, dynamic> json) {
     id = json['id'];

@@ -1,4 +1,4 @@
-import 'package:stackfood_multivendor/common/models/product_model.dart';
+import 'package:swift_tech_resto/common/models/product_model.dart';
 
 class CartModel {
   int? _id;
@@ -77,14 +77,14 @@ class CartModel {
     }
     if (json['variations'] != null) {
       _variations = [];
-      for(int index=0; index<json['variations'].length; index++) {
+      for (int index = 0; index < json['variations'].length; index++) {
         _variations!.add([]);
-        for(int i=0; i<json['variations'][index].length; i++) {
+        for (int i = 0; i < json['variations'][index].length; i++) {
           _variations![index].add(json['variations'][index][i]);
         }
       }
     }
-    if(json['quantity_limit'] != null) {
+    if (json['quantity_limit'] != null) {
       _quantityLimit = int.parse(json['quantity_limit']);
     }
   }

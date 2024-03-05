@@ -1,4 +1,4 @@
-import 'package:stackfood_multivendor/common/models/product_model.dart';
+import 'package:swift_tech_resto/common/models/product_model.dart';
 
 class CartSuggestItemModel {
   List<Product>? items;

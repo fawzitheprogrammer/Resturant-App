@@ -1,6 +1,6 @@
-import 'package:stackfood_multivendor/features/cuisine/domain/models/cuisine_model.dart';
-import 'package:stackfood_multivendor/features/cuisine/domain/models/cuisine_restaurants_model.dart';
-import 'package:stackfood_multivendor/features/cuisine/domain/services/cuisine_service_interface.dart';
+import 'package:swift_tech_resto/features/cuisine/domain/models/cuisine_model.dart';
+import 'package:swift_tech_resto/features/cuisine/domain/models/cuisine_restaurants_model.dart';
+import 'package:swift_tech_resto/features/cuisine/domain/services/cuisine_service_interface.dart';
 import 'package:get/get.dart';
 
 class CuisineController extends GetxController implements GetxService {
@@ -14,7 +14,8 @@ class CuisineController extends GetxController implements GetxService {
   CuisineModel? get cuisineModel => _cuisineModel;
 
   CuisineRestaurantModel? _cuisineRestaurantsModel;
-  CuisineRestaurantModel?  get cuisineRestaurantsModel => _cuisineRestaurantsModel;
+  CuisineRestaurantModel? get cuisineRestaurantsModel =>
+      _cuisineRestaurantsModel;
 
   List<int>? _selectedCuisines;
   List<int>? get selectedCuisines => _selectedCuisines;
@@ -24,36 +25,40 @@ class CuisineController extends GetxController implements GetxService {
 
   void setCurrentIndex(int index, bool notify) {
     _currentIndex = index;
-    if(notify) {
+    if (notify) {
       update();
     }
   }
 
-  void initialize(){
+  void initialize() {
     _cuisineRestaurantsModel = null;
   }
 
   Future<List<int?>> getCuisineList() async {
     _selectedCuisines = [];
     _cuisineModel = await cuisineServiceInterface.getCuisineList();
-    List<int?> cuisineIds = cuisineServiceInterface.generateCuisineIds(_cuisineModel);
+    List<int?> cuisineIds =
+        cuisineServiceInterface.generateCuisineIds(_cuisineModel);
     update();
     return cuisineIds;
   }
 
-  Future<void> getCuisineRestaurantList(int cuisineId, int offset, bool reload) async {
-    if(reload) {
+  Future<void> getCuisineRestaurantList(
+      int cuisineId, int offset, bool reload) async {
+    if (reload) {
       _cuisineRestaurantsModel = null;
       update();
     }
-    CuisineRestaurantModel? restaurantModel = await cuisineServiceInterface.getRestaurantList(offset, cuisineId);
+    CuisineRestaurantModel? restaurantModel =
+        await cuisineServiceInterface.getRestaurantList(offset, cuisineId);
     if (restaurantModel != null) {
       if (offset == 1) {
         _cuisineRestaurantsModel = restaurantModel;
-      }else {
+      } else {
         _cuisineRestaurantsModel!.totalSize = restaurantModel.totalSize;
         _cuisineRestaurantsModel!.offset = restaurantModel.offset;
-        _cuisineRestaurantsModel!.restaurants!.addAll(restaurantModel.restaurants!);
+        _cuisineRestaurantsModel!.restaurants!
+            .addAll(restaurantModel.restaurants!);
       }
     }
     _isLoading = false;
@@ -61,9 +66,9 @@ class CuisineController extends GetxController implements GetxService {
   }
 
   void setSelectedCuisineIndex(int index, bool notify) {
-    if(!_selectedCuisines!.contains(index)) {
+    if (!_selectedCuisines!.contains(index)) {
       _selectedCuisines!.add(index);
-      if(notify) {
+      if (notify) {
         update();
       }
     }

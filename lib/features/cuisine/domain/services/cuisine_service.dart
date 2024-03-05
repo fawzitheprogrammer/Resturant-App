@@ -1,7 +1,7 @@
-import 'package:stackfood_multivendor/features/cuisine/domain/models/cuisine_model.dart';
-import 'package:stackfood_multivendor/features/cuisine/domain/models/cuisine_restaurants_model.dart';
-import 'package:stackfood_multivendor/features/cuisine/domain/repositories/cuisine_repository_interface.dart';
-import 'package:stackfood_multivendor/features/cuisine/domain/services/cuisine_service_interface.dart';
+import 'package:swift_tech_resto/features/cuisine/domain/models/cuisine_model.dart';
+import 'package:swift_tech_resto/features/cuisine/domain/models/cuisine_restaurants_model.dart';
+import 'package:swift_tech_resto/features/cuisine/domain/repositories/cuisine_repository_interface.dart';
+import 'package:swift_tech_resto/features/cuisine/domain/services/cuisine_service_interface.dart';
 
 class CuisineService implements CuisineServiceInterface {
   final CuisineRepositoryInterface cuisineRepositoryInterface;
@@ -15,7 +15,7 @@ class CuisineService implements CuisineServiceInterface {
   @override
   List<int?> generateCuisineIds(CuisineModel? cuisineModel) {
     List<int?> cuisineIds = [];
-    if(cuisineModel != null) {
+    if (cuisineModel != null) {
       cuisineIds.add(0);
       for (var cuisine in cuisineModel.cuisines!) {
         cuisineIds.add(cuisine.id);
@@ -25,7 +25,9 @@ class CuisineService implements CuisineServiceInterface {
   }
 
   @override
-  Future<CuisineRestaurantModel?> getRestaurantList(int offset, int cuisineId) async {
-    return await cuisineRepositoryInterface.getRestaurantList(offset, cuisineId);
+  Future<CuisineRestaurantModel?> getRestaurantList(
+      int offset, int cuisineId) async {
+    return await cuisineRepositoryInterface.getRestaurantList(
+        offset, cuisineId);
   }
 }

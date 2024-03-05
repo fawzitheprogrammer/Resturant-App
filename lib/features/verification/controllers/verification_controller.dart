@@ -1,6 +1,6 @@
-import 'package:stackfood_multivendor/common/models/response_model.dart';
-import 'package:stackfood_multivendor/features/profile/controllers/profile_controller.dart';
-import 'package:stackfood_multivendor/features/verification/domein/services/verification_service_interface.dart';
+import 'package:swift_tech_resto/common/models/response_model.dart';
+import 'package:swift_tech_resto/features/profile/controllers/profile_controller.dart';
+import 'package:swift_tech_resto/features/verification/domein/services/verification_service_interface.dart';
 import 'package:get/get.dart';
 
 class VerificationController extends GetxController implements GetxService {
@@ -17,7 +17,8 @@ class VerificationController extends GetxController implements GetxService {
   Future<ResponseModel> forgetPassword(String? phone) async {
     _isLoading = true;
     update();
-    ResponseModel responseModel = await verificationServiceInterface.forgetPassword(phone);
+    ResponseModel responseModel =
+        await verificationServiceInterface.forgetPassword(phone);
     _isLoading = false;
     update();
     return responseModel;
@@ -26,16 +27,19 @@ class VerificationController extends GetxController implements GetxService {
   Future<ResponseModel> verifyToken(String? phone) async {
     _isLoading = true;
     update();
-    ResponseModel responseModel = await verificationServiceInterface.verifyToken(phone, _verificationCode);
+    ResponseModel responseModel = await verificationServiceInterface
+        .verifyToken(phone, _verificationCode);
     _isLoading = false;
     update();
     return responseModel;
   }
 
-  Future<ResponseModel> resetPassword(String? resetToken, String number, String password, String confirmPassword) async {
+  Future<ResponseModel> resetPassword(String? resetToken, String number,
+      String password, String confirmPassword) async {
     _isLoading = true;
     update();
-    ResponseModel responseModel = await verificationServiceInterface.resetPassword(resetToken, number, password, confirmPassword);
+    ResponseModel responseModel = await verificationServiceInterface
+        .resetPassword(resetToken, number, password, confirmPassword);
     _isLoading = false;
     update();
     return responseModel;
@@ -44,7 +48,8 @@ class VerificationController extends GetxController implements GetxService {
   Future<ResponseModel> checkEmail(String email) async {
     _isLoading = true;
     update();
-    ResponseModel responseModel = await verificationServiceInterface.checkEmail(email);
+    ResponseModel responseModel =
+        await verificationServiceInterface.checkEmail(email);
     _isLoading = false;
     update();
     return responseModel;
@@ -53,8 +58,9 @@ class VerificationController extends GetxController implements GetxService {
   Future<ResponseModel> verifyEmail(String email, String token) async {
     _isLoading = true;
     update();
-    ResponseModel responseModel = await verificationServiceInterface.verifyEmail(email, token, _verificationCode);
-    if(responseModel.isSuccess) {
+    ResponseModel responseModel = await verificationServiceInterface
+        .verifyEmail(email, token, _verificationCode);
+    if (responseModel.isSuccess) {
       Get.find<ProfileController>().getUserInfo();
     }
     _isLoading = false;
@@ -65,8 +71,9 @@ class VerificationController extends GetxController implements GetxService {
   Future<ResponseModel> verifyPhone(String? phone, String? token) async {
     _isLoading = true;
     update();
-    ResponseModel responseModel = await verificationServiceInterface.verifyPhone(phone, token, _verificationCode);
-    if(responseModel.isSuccess) {
+    ResponseModel responseModel = await verificationServiceInterface
+        .verifyPhone(phone, token, _verificationCode);
+    if (responseModel.isSuccess) {
       Get.find<ProfileController>().getUserInfo();
     }
     _isLoading = false;
@@ -74,10 +81,9 @@ class VerificationController extends GetxController implements GetxService {
     return responseModel;
   }
 
-
   void updateVerificationCode(String query, {bool canUpdate = true}) {
     _verificationCode = query;
-    if(canUpdate){
+    if (canUpdate) {
       update();
     }
   }

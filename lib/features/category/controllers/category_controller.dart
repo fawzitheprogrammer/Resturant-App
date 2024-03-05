@@ -1,7 +1,7 @@
-import 'package:stackfood_multivendor/common/models/product_model.dart';
-import 'package:stackfood_multivendor/common/models/restaurant_model.dart';
-import 'package:stackfood_multivendor/features/category/domain/models/category_model.dart';
-import 'package:stackfood_multivendor/features/category/domain/services/category_service_interface.dart';
+import 'package:swift_tech_resto/common/models/product_model.dart';
+import 'package:swift_tech_resto/common/models/restaurant_model.dart';
+import 'package:swift_tech_resto/features/category/domain/models/category_model.dart';
+import 'package:swift_tech_resto/features/category/domain/services/category_service_interface.dart';
 import 'package:get/get.dart';
 
 class CategoryController extends GetxController implements GetxService {
@@ -59,10 +59,10 @@ class CategoryController extends GetxController implements GetxService {
   // String? _restResultText = '';
   // String? _foodResultText = '';
 
-
   Future<void> getCategoryList(bool reload) async {
-    if(_categoryList == null || reload) {
-      _categoryList = await categoryServiceInterface.getCategoryList(reload, _categoryList);
+    if (_categoryList == null || reload) {
+      _categoryList =
+          await categoryServiceInterface.getCategoryList(reload, _categoryList);
       // _interestCategorySelectedList = categoryServiceInterface.processCategorySelectedList(_categoryList);
       update();
     }
@@ -73,35 +73,50 @@ class CategoryController extends GetxController implements GetxService {
     _subCategoryList = null;
     _categoryProductList = null;
     _isRestaurant = false;
-    _subCategoryList = await categoryServiceInterface.getSubCategoryList(categoryID);
-    if(_subCategoryList != null) {
+    _subCategoryList =
+        await categoryServiceInterface.getSubCategoryList(categoryID);
+    if (_subCategoryList != null) {
       getCategoryProductList(categoryID, 1, 'all', false);
     }
   }
 
   void setSubCategoryIndex(int index, String? categoryID) {
     _subCategoryIndex = index;
-    if(_isRestaurant) {
-      getCategoryRestaurantList(_subCategoryIndex == 0 ? categoryID : _subCategoryList![index].id.toString(), 1, _type, true);
-    }else {
-      getCategoryProductList(_subCategoryIndex == 0 ? categoryID : _subCategoryList![index].id.toString(), 1, _type, true);
+    if (_isRestaurant) {
+      getCategoryRestaurantList(
+          _subCategoryIndex == 0
+              ? categoryID
+              : _subCategoryList![index].id.toString(),
+          1,
+          _type,
+          true);
+    } else {
+      getCategoryProductList(
+          _subCategoryIndex == 0
+              ? categoryID
+              : _subCategoryList![index].id.toString(),
+          1,
+          _type,
+          true);
     }
   }
 
-  void getCategoryProductList(String? categoryID, int offset, String type, bool notify) async {
+  void getCategoryProductList(
+      String? categoryID, int offset, String type, bool notify) async {
     _offset = offset;
-    if(offset == 1) {
-      if(_type == type) {
+    if (offset == 1) {
+      if (_type == type) {
         _isSearching = false;
       }
       _type = type;
-      if(notify) {
+      if (notify) {
         update();
       }
       _categoryProductList = null;
     }
-    ProductModel? productModel = await categoryServiceInterface.getCategoryProductList(categoryID, offset, type);
-    if(productModel != null) {
+    ProductModel? productModel = await categoryServiceInterface
+        .getCategoryProductList(categoryID, offset, type);
+    if (productModel != null) {
       if (offset == 1) {
         _categoryProductList = [];
       }
@@ -112,20 +127,22 @@ class CategoryController extends GetxController implements GetxService {
     update();
   }
 
-  void getCategoryRestaurantList(String? categoryID, int offset, String type, bool notify) async {
+  void getCategoryRestaurantList(
+      String? categoryID, int offset, String type, bool notify) async {
     _offset = offset;
-    if(offset == 1) {
-      if(_type == type) {
+    if (offset == 1) {
+      if (_type == type) {
         _isSearching = false;
       }
       _type = type;
-      if(notify) {
+      if (notify) {
         update();
       }
       _categoryRestaurantList = null;
     }
-    RestaurantModel? restaurantModel = await categoryServiceInterface.getCategoryRestaurantList(categoryID, offset, type);
-    if(restaurantModel != null) {
+    RestaurantModel? restaurantModel = await categoryServiceInterface
+        .getCategoryRestaurantList(categoryID, offset, type);
+    if (restaurantModel != null) {
       if (offset == 1) {
         _categoryRestaurantList = [];
       }
@@ -137,7 +154,9 @@ class CategoryController extends GetxController implements GetxService {
   }
 
   void searchData(String? query, String? categoryID, String type) async {
-    if((_isRestaurant && query!.isNotEmpty /*&& query != _restResultText*/) || (!_isRestaurant && query!.isNotEmpty/* && query != _foodResultText*/)) {
+    if ((_isRestaurant && query!.isNotEmpty /*&& query != _restResultText*/) ||
+        (!_isRestaurant &&
+            query!.isNotEmpty /* && query != _foodResultText*/)) {
       _searchText = query;
       _type = type;
       if (_isRestaurant) {
@@ -148,7 +167,8 @@ class CategoryController extends GetxController implements GetxService {
       _isSearching = true;
       update();
 
-      Response response = await categoryServiceInterface.getSearchData(query, categoryID, _isRestaurant, type);
+      Response response = await categoryServiceInterface.getSearchData(
+          query, categoryID, _isRestaurant, type);
       if (response.statusCode == 200) {
         if (query.isEmpty) {
           if (_isRestaurant) {
@@ -160,11 +180,13 @@ class CategoryController extends GetxController implements GetxService {
           if (_isRestaurant) {
             // _restResultText = query;
             _searchRestaurantList = [];
-            _searchRestaurantList!.addAll(RestaurantModel.fromJson(response.body).restaurants!);
+            _searchRestaurantList!
+                .addAll(RestaurantModel.fromJson(response.body).restaurants!);
           } else {
             // _foodResultText = query;
             _searchProductList = [];
-            _searchProductList!.addAll(ProductModel.fromJson(response.body).products!);
+            _searchProductList!
+                .addAll(ProductModel.fromJson(response.body).products!);
           }
         }
       }
@@ -175,7 +197,7 @@ class CategoryController extends GetxController implements GetxService {
   void toggleSearch() {
     _isSearching = !_isSearching;
     _searchProductList = [];
-    if(_categoryProductList != null) {
+    if (_categoryProductList != null) {
       _searchProductList!.addAll(_categoryProductList!);
     }
     update();
@@ -204,5 +226,4 @@ class CategoryController extends GetxController implements GetxService {
     _isRestaurant = isRestaurant;
     update();
   }
-
 }

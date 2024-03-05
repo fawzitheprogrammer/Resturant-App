@@ -1,7 +1,7 @@
-import 'package:stackfood_multivendor/features/splash/controllers/splash_controller.dart';
-import 'package:stackfood_multivendor/features/business/domain/models/business_plan_body.dart';
-import 'package:stackfood_multivendor/features/business/domain/models/package_model.dart';
-import 'package:stackfood_multivendor/features/business/domain/services/business_service_interface.dart';
+import 'package:swift_tech_resto/features/splash/controllers/splash_controller.dart';
+import 'package:swift_tech_resto/features/business/domain/models/business_plan_body.dart';
+import 'package:swift_tech_resto/features/business/domain/models/package_model.dart';
+import 'package:swift_tech_resto/features/business/domain/services/business_service_interface.dart';
 import 'package:get/get.dart';
 
 class BusinessController extends GetxController implements GetxService {
@@ -36,61 +36,78 @@ class BusinessController extends GetxController implements GetxService {
     _isFirstTime = !_isFirstTime;
   }
 
-  void resetBusiness(){
-    _businessIndex = Get.find<SplashController>().configModel!.businessPlan!.commission == 0 ? 1 : 0;
+  void resetBusiness() {
+    _businessIndex =
+        Get.find<SplashController>().configModel!.businessPlan!.commission == 0
+            ? 1
+            : 0;
     _activeSubscriptionIndex = 0;
     _businessPlanStatus = 'business';
     _isFirstTime = true;
-    _paymentIndex = Get.find<SplashController>().configModel!.freeTrialPeriodStatus == 0 ? 1 : 0;
+    _paymentIndex =
+        Get.find<SplashController>().configModel!.freeTrialPeriodStatus == 0
+            ? 1
+            : 0;
   }
 
   Future<void> getPackageList({bool isUpdate = true}) async {
     _packageModel = await businessServiceInterface.getPackageList();
-    if(isUpdate) {
+    if (isUpdate) {
       update();
     }
   }
 
-  void changeDigitalPaymentName(String? name, {bool canUpdate = true}){
+  void changeDigitalPaymentName(String? name, {bool canUpdate = true}) {
     _digitalPaymentName = name;
-    if(canUpdate) {
+    if (canUpdate) {
       update();
     }
   }
 
-  void setPaymentIndex(int index){
+  void setPaymentIndex(int index) {
     _paymentIndex = index;
     update();
   }
 
-  void setBusiness(int business){
+  void setBusiness(int business) {
     _activeSubscriptionIndex = 0;
     _businessIndex = business;
     update();
   }
 
-  void setBusinessStatus(String status){
+  void setBusinessStatus(String status) {
     _businessPlanStatus = status;
     update();
   }
 
-  void selectSubscriptionCard(int index){
+  void selectSubscriptionCard(int index) {
     _activeSubscriptionIndex = index;
     update();
   }
 
-  Future<void> submitBusinessPlan({required int restaurantId})async {
+  Future<void> submitBusinessPlan({required int restaurantId}) async {
     _isLoading = true;
     update();
-    if(businessIndex == 0){
+    if (businessIndex == 0) {
       String businessPlan = 'commission';
-      await businessServiceInterface.setUpBusinessPlan(BusinessPlanBody(businessPlan: businessPlan, restaurantId: restaurantId.toString()), _digitalPaymentName, businessPlanStatus);
-
-    }else{
+      await businessServiceInterface.setUpBusinessPlan(
+          BusinessPlanBody(
+              businessPlan: businessPlan,
+              restaurantId: restaurantId.toString()),
+          _digitalPaymentName,
+          businessPlanStatus);
+    } else {
       _businessPlanStatus = 'payment';
-      if(!_isFirstTime) {
-        _businessPlanStatus = await businessServiceInterface.processesBusinessPlan(_businessPlanStatus, _paymentIndex, restaurantId, _packageModel, _digitalPaymentName, _activeSubscriptionIndex);
-      }else{
+      if (!_isFirstTime) {
+        _businessPlanStatus =
+            await businessServiceInterface.processesBusinessPlan(
+                _businessPlanStatus,
+                _paymentIndex,
+                restaurantId,
+                _packageModel,
+                _digitalPaymentName,
+                _activeSubscriptionIndex);
+      } else {
         _isFirstTime = false;
       }
     }
@@ -98,5 +115,4 @@ class BusinessController extends GetxController implements GetxService {
     _isLoading = false;
     update();
   }
-
 }

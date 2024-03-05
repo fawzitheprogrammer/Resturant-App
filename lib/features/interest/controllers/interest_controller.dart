@@ -1,6 +1,6 @@
-import 'package:stackfood_multivendor/features/category/controllers/category_controller.dart';
-import 'package:stackfood_multivendor/features/category/domain/models/category_model.dart';
-import 'package:stackfood_multivendor/features/interest/domain/services/interest_service_interface.dart';
+import 'package:swift_tech_resto/features/category/controllers/category_controller.dart';
+import 'package:swift_tech_resto/features/category/domain/models/category_model.dart';
+import 'package:swift_tech_resto/features/interest/domain/services/interest_service_interface.dart';
 import 'package:get/get.dart';
 
 class InterestController extends GetxController implements GetxService {
@@ -18,27 +18,30 @@ class InterestController extends GetxController implements GetxService {
   List<bool>? get interestCategorySelectedList => _interestCategorySelectedList;
 
   Future<void> getCategoryList(bool reload) async {
-    if(Get.find<CategoryController>().categoryList == null || Get.find<CategoryController>().categoryList!.isEmpty) {
+    if (Get.find<CategoryController>().categoryList == null ||
+        Get.find<CategoryController>().categoryList!.isEmpty) {
       await Get.find<CategoryController>().getCategoryList(false);
     }
     _categoryList = Get.find<CategoryController>().categoryList;
-    _interestCategorySelectedList = interestServiceInterface.processCategorySelectedList(_categoryList);
+    _interestCategorySelectedList =
+        interestServiceInterface.processCategorySelectedList(_categoryList);
 
     update();
   }
 
   void addInterestSelection(int index) {
-    _interestCategorySelectedList![index] = !_interestCategorySelectedList![index];
+    _interestCategorySelectedList![index] =
+        !_interestCategorySelectedList![index];
     update();
   }
 
   Future<bool> saveInterest(List<int?> interests) async {
     _isLoading = true;
     update();
-    bool isSuccess = await interestServiceInterface.saveUserInterests(interests);
+    bool isSuccess =
+        await interestServiceInterface.saveUserInterests(interests);
     _isLoading = false;
     update();
     return isSuccess;
   }
-
 }

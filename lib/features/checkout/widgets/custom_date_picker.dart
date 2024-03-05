@@ -1,9 +1,9 @@
-import 'package:stackfood_multivendor/features/order/controllers/order_controller.dart';
-import 'package:stackfood_multivendor/helper/date_converter.dart';
-import 'package:stackfood_multivendor/helper/responsive_helper.dart';
-import 'package:stackfood_multivendor/util/dimensions.dart';
-import 'package:stackfood_multivendor/util/styles.dart';
-import 'package:stackfood_multivendor/common/widgets/custom_snackbar_widget.dart';
+import 'package:swift_tech_resto/features/order/controllers/order_controller.dart';
+import 'package:swift_tech_resto/helper/date_converter.dart';
+import 'package:swift_tech_resto/helper/responsive_helper.dart';
+import 'package:swift_tech_resto/util/dimensions.dart';
+import 'package:swift_tech_resto/util/styles.dart';
+import 'package:swift_tech_resto/common/widgets/custom_snackbar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -12,33 +12,50 @@ class CustomDatePicker extends StatelessWidget {
   final DateTimeRange? range;
   final Function(DateTimeRange range) onDatePicked;
   final bool isPause;
-  const CustomDatePicker({super.key, required this.hint, required this.range, required this.onDatePicked, this.isPause = false});
+  const CustomDatePicker(
+      {super.key,
+      required this.hint,
+      required this.range,
+      required this.onDatePicked,
+      this.isPause = false});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () async {
         DateTimeRange? range = await showDateRangePicker(
-          context: context, firstDate: DateTime.now(), lastDate: isPause ? DateTime.parse(Get.find<OrderController>().trackModel!.subscription!.endAt!) : DateTime.now().add(const Duration(days: 365)),
-          builder: (context, child) {
-            return Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ConstrainedBox(
-                  constraints: BoxConstraints(
-                    maxWidth: ResponsiveHelper.isDesktop(context) ? 400.0 : context.width * 0.8,
-                    maxHeight: ResponsiveHelper.isDesktop(context) ? context.height * 0.8 : context.height * 0.6,
-                  ),
-                  child: SingleChildScrollView(child: child),
-                )
-              ],
-            );
-          }
-        );
-        if(range != null) {
-          if(range.start == range.end){
-            showCustomSnackBar('start_date_and_end_date_can_not_be_same_for_subscription_order'.tr);
-          }else{
+            context: context,
+            firstDate: DateTime.now(),
+            lastDate: isPause
+                ? DateTime.parse(Get.find<OrderController>()
+                    .trackModel!
+                    .subscription!
+                    .endAt!)
+                : DateTime.now().add(const Duration(days: 365)),
+            builder: (context, child) {
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ConstrainedBox(
+                    constraints: BoxConstraints(
+                      maxWidth: ResponsiveHelper.isDesktop(context)
+                          ? 400.0
+                          : context.width * 0.8,
+                      maxHeight: ResponsiveHelper.isDesktop(context)
+                          ? context.height * 0.8
+                          : context.height * 0.6,
+                    ),
+                    child: SingleChildScrollView(child: child),
+                  )
+                ],
+              );
+            });
+        if (range != null) {
+          if (range.start == range.end) {
+            showCustomSnackBar(
+                'start_date_and_end_date_can_not_be_same_for_subscription_order'
+                    .tr);
+          } else {
             onDatePicked(range);
           }
         }
@@ -60,8 +77,11 @@ class CustomDatePicker extends StatelessWidget {
               style: robotoRegular,
             ),
           ),
-
-          Icon(Icons.date_range_rounded, size: 24, color: range != null ? Theme.of(context).primaryColor : Theme.of(context).disabledColor),
+          Icon(Icons.date_range_rounded,
+              size: 24,
+              color: range != null
+                  ? Theme.of(context).primaryColor
+                  : Theme.of(context).disabledColor),
         ]),
       ),
     );

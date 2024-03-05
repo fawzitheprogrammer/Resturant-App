@@ -1,15 +1,19 @@
-import 'package:stackfood_multivendor/features/language/controllers/localization_controller.dart';
-import 'package:stackfood_multivendor/features/language/domain/models/language_model.dart';
-import 'package:stackfood_multivendor/util/app_constants.dart';
-import 'package:stackfood_multivendor/util/dimensions.dart';
-import 'package:stackfood_multivendor/util/styles.dart';
+import 'package:swift_tech_resto/features/language/controllers/localization_controller.dart';
+import 'package:swift_tech_resto/features/language/domain/models/language_model.dart';
+import 'package:swift_tech_resto/util/app_constants.dart';
+import 'package:swift_tech_resto/util/dimensions.dart';
+import 'package:swift_tech_resto/util/styles.dart';
 import 'package:flutter/material.dart';
 
 class LanguageWidget extends StatelessWidget {
   final LanguageModel languageModel;
   final LocalizationController localizationController;
   final int index;
-  const LanguageWidget({super.key, required this.languageModel, required this.localizationController, required this.index});
+  const LanguageWidget(
+      {super.key,
+      required this.languageModel,
+      required this.localizationController,
+      required this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -27,17 +31,20 @@ class LanguageWidget extends StatelessWidget {
         decoration: BoxDecoration(
           color: Theme.of(context).cardColor,
           borderRadius: BorderRadius.circular(Dimensions.radiusSmall),
+
           ///boxShadow: const [BoxShadow(color: Colors.black12, blurRadius: 5, spreadRadius: 1)],
         ),
         child: Stack(children: [
-
           Center(
             child: Column(mainAxisSize: MainAxisSize.min, children: [
               Container(
-                height: 65, width: 65,
+                height: 65,
+                width: 65,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(Dimensions.radiusSmall),
-                  border: Border.all(color: Theme.of(context).textTheme.bodyLarge!.color!, width: 1),
+                  border: Border.all(
+                      color: Theme.of(context).textTheme.bodyLarge!.color!,
+                      width: 1),
                 ),
                 alignment: Alignment.center,
                 child: Image.asset(
@@ -50,12 +57,14 @@ class LanguageWidget extends StatelessWidget {
               Text(languageModel.languageName!, style: robotoRegular),
             ]),
           ),
-
-          localizationController.selectedLanguageIndex == index ? Positioned(
-            top: 0, right: 0,
-            child: Icon(Icons.check_circle, color: Theme.of(context).primaryColor, size: 25),
-          ) : const SizedBox(),
-
+          localizationController.selectedLanguageIndex == index
+              ? Positioned(
+                  top: 0,
+                  right: 0,
+                  child: Icon(Icons.check_circle,
+                      color: Theme.of(context).primaryColor, size: 25),
+                )
+              : const SizedBox(),
         ]),
       ),
     );

@@ -1,6 +1,6 @@
-import 'package:stackfood_multivendor/api/api_client.dart';
-import 'package:stackfood_multivendor/features/favourite/domain/repositories/favourite_repository_interface.dart';
-import 'package:stackfood_multivendor/util/app_constants.dart';
+import 'package:swift_tech_resto/api/api_client.dart';
+import 'package:swift_tech_resto/features/favourite/domain/repositories/favourite_repository_interface.dart';
+import 'package:swift_tech_resto/util/app_constants.dart';
 import 'package:get/get_connect/connect.dart';
 
 class FavouriteRepository implements FavouriteRepositoryInterface<Response> {
@@ -9,12 +9,16 @@ class FavouriteRepository implements FavouriteRepositoryInterface<Response> {
 
   @override
   Future<Response> add(dynamic a, {bool isRestaurant = false, int? id}) async {
-    return await apiClient.postData('${AppConstants.addWishListUri}${isRestaurant ? 'restaurant_id=' : 'food_id='}$id', null);
+    return await apiClient.postData(
+        '${AppConstants.addWishListUri}${isRestaurant ? 'restaurant_id=' : 'food_id='}$id',
+        null);
   }
 
   @override
   Future<Response> delete(int? id, {bool isRestaurant = false}) async {
-    return await apiClient.postData('${AppConstants.removeWishListUri}${isRestaurant ? 'restaurant_id=' : 'food_id='}$id', {"_method": "delete"});
+    return await apiClient.postData(
+        '${AppConstants.removeWishListUri}${isRestaurant ? 'restaurant_id=' : 'food_id='}$id',
+        {"_method": "delete"});
   }
 
   @override
@@ -31,5 +35,4 @@ class FavouriteRepository implements FavouriteRepositoryInterface<Response> {
   Future update(Map<String, dynamic> body, int? id) {
     throw UnimplementedError();
   }
-
 }

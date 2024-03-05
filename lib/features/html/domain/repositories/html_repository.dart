@@ -1,7 +1,7 @@
-import 'package:stackfood_multivendor/api/api_client.dart';
-import 'package:stackfood_multivendor/features/html/domain/repositories/html_repository_interface.dart';
-import 'package:stackfood_multivendor/features/html/enums/html_type.dart';
-import 'package:stackfood_multivendor/util/app_constants.dart';
+import 'package:swift_tech_resto/api/api_client.dart';
+import 'package:swift_tech_resto/features/html/domain/repositories/html_repository_interface.dart';
+import 'package:swift_tech_resto/features/html/enums/html_type.dart';
+import 'package:swift_tech_resto/util/app_constants.dart';
 import 'package:get/get_connect/http/src/response/response.dart';
 
 class HtmlRepository implements HtmlRepositoryInterface {
@@ -11,10 +11,17 @@ class HtmlRepository implements HtmlRepositoryInterface {
   @override
   Future<Response> getHtmlText(HtmlType htmlType, String languageCode) async {
     return await apiClient.getData(
-      htmlType == HtmlType.termsAndCondition ? AppConstants.termsAndConditionUri
-          : htmlType == HtmlType.privacyPolicy ? AppConstants.privacyPolicyUri : htmlType == HtmlType.aboutUs
-          ? AppConstants.aboutUsUri : htmlType == HtmlType.shippingPolicy ? AppConstants.shippingPolicyUri
-          : htmlType == HtmlType.cancellation ? AppConstants.cancellationUri : AppConstants.refundUri,
+      htmlType == HtmlType.termsAndCondition
+          ? AppConstants.termsAndConditionUri
+          : htmlType == HtmlType.privacyPolicy
+              ? AppConstants.privacyPolicyUri
+              : htmlType == HtmlType.aboutUs
+                  ? AppConstants.aboutUsUri
+                  : htmlType == HtmlType.shippingPolicy
+                      ? AppConstants.shippingPolicyUri
+                      : htmlType == HtmlType.cancellation
+                          ? AppConstants.cancellationUri
+                          : AppConstants.refundUri,
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
         'Accept': 'application/json',
@@ -47,5 +54,4 @@ class HtmlRepository implements HtmlRepositoryInterface {
   Future update(Map<String, dynamic> body, int? id) {
     throw UnimplementedError();
   }
-
 }

@@ -1,4 +1,4 @@
-import 'package:stackfood_multivendor/features/chat/domain/models/conversation_model.dart';
+import 'package:swift_tech_resto/features/chat/domain/models/conversation_model.dart';
 
 class UserInfoModel {
   int? id;
@@ -17,23 +17,23 @@ class UserInfoModel {
   User? userInfo;
   String? createdAt;
 
-  UserInfoModel(
-      {this.id,
-        this.fName,
-        this.lName,
-        this.email,
-        this.image,
-        this.phone,
-        this.password,
-        this.orderCount,
-        this.memberSinceDays,
-        this.walletBalance,
-        this.loyaltyPoint,
-        this.refCode,
-        this.socialId,
-        this.userInfo,
-        this.createdAt,
-      });
+  UserInfoModel({
+    this.id,
+    this.fName,
+    this.lName,
+    this.email,
+    this.image,
+    this.phone,
+    this.password,
+    this.orderCount,
+    this.memberSinceDays,
+    this.walletBalance,
+    this.loyaltyPoint,
+    this.refCode,
+    this.socialId,
+    this.userInfo,
+    this.createdAt,
+  });
 
   UserInfoModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -49,7 +49,8 @@ class UserInfoModel {
     loyaltyPoint = json['loyalty_point'];
     refCode = json['ref_code'];
     socialId = json['social_id'];
-    userInfo = json['userinfo'] != null ? User.fromJson(json['userinfo']) : null;
+    userInfo =
+        json['userinfo'] != null ? User.fromJson(json['userinfo']) : null;
     createdAt = json['created_at'];
   }
 

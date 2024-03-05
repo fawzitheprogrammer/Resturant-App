@@ -1,7 +1,7 @@
-import 'package:stackfood_multivendor/api/api_client.dart';
-import 'package:stackfood_multivendor/features/home/domain/models/banner_model.dart';
-import 'package:stackfood_multivendor/features/home/domain/repositories/home_repository_interface.dart';
-import 'package:stackfood_multivendor/util/app_constants.dart';
+import 'package:swift_tech_resto/api/api_client.dart';
+import 'package:swift_tech_resto/features/home/domain/models/banner_model.dart';
+import 'package:swift_tech_resto/features/home/domain/repositories/home_repository_interface.dart';
+import 'package:swift_tech_resto/util/app_constants.dart';
 import 'package:get/get_connect.dart';
 
 class HomeRepository implements HomeRepositoryInterface {
@@ -34,7 +34,7 @@ class HomeRepository implements HomeRepositoryInterface {
   Future<BannerModel?> _getBannerList() async {
     BannerModel? bannerModel;
     Response response = await apiClient.getData(AppConstants.bannerUri);
-    if(response.statusCode == 200) {
+    if (response.statusCode == 200) {
       bannerModel = BannerModel.fromJson(response.body);
     }
     return bannerModel;
@@ -45,6 +45,4 @@ class HomeRepository implements HomeRepositoryInterface {
     // TODO: implement update
     throw UnimplementedError();
   }
-
-  
 }
