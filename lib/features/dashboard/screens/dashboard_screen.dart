@@ -17,9 +17,7 @@ import 'package:swift_tech_resto/features/dashboard/widgets/running_order_view_w
 import 'package:swift_tech_resto/features/favourite/screens/favourite_screen.dart';
 import 'package:swift_tech_resto/features/loyalty/controllers/loyalty_controller.dart';
 import 'package:swift_tech_resto/helper/responsive_helper.dart';
-import 'package:swift_tech_resto/helper/route_helper.dart';
 import 'package:swift_tech_resto/util/dimensions.dart';
-import 'package:swift_tech_resto/common/widgets/cart_widget.dart';
 import 'package:swift_tech_resto/common/widgets/custom_dialog_widget.dart';
 import 'package:expandable_bottom_sheet/expandable_bottom_sheet.dart';
 import 'package:flutter/material.dart';
